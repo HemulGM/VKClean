@@ -8,7 +8,9 @@ uses
   IPPeerClient, REST.Client, REST.Authenticator.OAuth, Data.Bind.Components,
   Data.Bind.ObjectScope, VK.OAuth2, Vcl.StdCtrls, Vcl.ComCtrls, JSON, acPNG,
   Vcl.ExtCtrls, HGM.Controls.Labels, HGM.Button, System.ImageList, Vcl.ImgList,
-  HGM.Controls.PanelExt, IdHTTP, Vcl.Imaging.jpeg, HGM.Popup;
+  HGM.Controls.PanelExt, IdHTTP, Vcl.Imaging.jpeg, HGM.Popup, VKClean.Groups,
+  Vcl.Grids, HGM.Controls.VirtualTable, System.Generics.Defaults,
+  VKClean.Friends;
 
 type
   TOAuth2WebFormRedirectEvent = procedure(const AURL: string; var DoCloseWebView: boolean) of object;
@@ -26,22 +28,9 @@ type
     PageControlMain: TPageControl;
     TabSheetAuth: TTabSheet;
     TabSheetGroupClean: TTabSheet;
-    ButtonGetSubs: TButton;
-    ListView1: TListView;
-    ButtonGetLastPosts: TButton;
-    ListView2: TListView;
-    ButtonGroupLeave: TButton;
     PanelLogin: TPanel;
     TabSheetWelcome: TTabSheet;
-    Panel2: TPanel;
-    Label2: TLabel;
-    Label3: TLabel;
-    ButtonFlatLogin: TButtonFlat;
-    LinkRestorePass: ThLink;
-    Label4: TLabel;
-    Label5: TLabel;
     Label6: TLabel;
-    LabelEx1: TShape;
     Label7: TLabel;
     TabSheetMenu: TTabSheet;
     ButtonFlatCleanGroups: TButtonFlat;
@@ -54,12 +43,39 @@ type
     ButtonFlatLogout: TButtonFlat;
     Memo1: TMemo;
     PanelWOMenu: TPanel;
-    ButtonFlat1: TButtonFlat;
+    ButtonFlatReturnToMenu: TButtonFlat;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    ButtonFlatLogin: TButtonFlat;
+    LinkRestorePass: ThLink;
+    Label4: TLabel;
+    Label5: TLabel;
+    LabelEx1: TShape;
+    Panel3: TPanel;
+    Shape1: TShape;
+    Label1: TLabel;
+    Label8: TLabel;
+    LinkOpenIE: ThLink;
+    ButtonFlatCancelOp: TButtonFlat;
+    TableExGroupClean: TTableEx;
+    PanelGroupCleanTools: TPanel;
+    ButtonFlatGetGroups: TButtonFlat;
+    ButtonFlatLeaveGroup: TButtonFlat;
+    TabSheetFriendClean: TTabSheet;
+    TableExFriendClean: TTableEx;
+    Panel4: TPanel;
+    ButtonFlatGetFriendsDel: TButtonFlat;
+    ButtonFlatFriendDel: TButtonFlat;
+    RESTRequestFriends: TRESTRequest;
+    ButtonFlatCleanFriends: TButtonFlat;
+    LinkClearCache: ThLink;
+    ImageListProfile: TImageList;
+    ImageMask: TImage;
+    RESTRequestFriendDel: TRESTRequest;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure ButtonGetSubsClick(Sender: TObject);
-    procedure ButtonGetLastPostsClick(Sender: TObject);
-    procedure ButtonGroupLeaveClick(Sender: TObject);
     procedure LinkRestorePassClick(Sender: TObject);
     procedure ButtonFlatLoginClick(Sender: TObject);
     procedure ButtonFlatCleanGroupsClick(Sender: TObject);
@@ -68,20 +84,36 @@ type
     procedure DrawPanelLoginPaint(Sender: TObject);
     procedure ButtonFlatLogoutClick(Sender: TObject);
     procedure DrawPanelLoginClick(Sender: TObject);
-    procedure ButtonFlat1Click(Sender: TObject);
+    procedure ButtonFlatReturnToMenuClick(Sender: TObject);
+    procedure LinkOpenIEClick(Sender: TObject);
+    procedure ButtonFlatCancelOpClick(Sender: TObject);
+    procedure TableExGroupCleanGetData(FCol, FRow: Integer; var Value: string);
+    procedure ButtonFlatGetGroupsClick(Sender: TObject);
+    procedure ButtonFlatLeaveGroupClick(Sender: TObject);
+    procedure TableExFriendCleanGetData(FCol, FRow: Integer; var Value: string);
+    procedure ButtonFlatGetFriendsDelClick(Sender: TObject);
+    procedure ButtonFlatCleanFriendsClick(Sender: TObject);
+    procedure LinkClearCacheClick(Sender: TObject);
+    procedure ButtonFlatFriendDelClick(Sender: TObject);
   private
     FAuthForm: TFormOAuth2;
     FFirstName: string;
     FPhoto50: string;
-    FPhoto: TBitmap;
-    FPhotoRGN: HRGN;
     FProfileMenu: TFormPopup;
     FOnBeforeRedirect: TOAuth2WebFormRedirectEvent;
     FOnAfterRedirect: TOAuth2WebFormRedirectEvent;
+    FDoCancelOperation: Boolean;
+    FOpeartion: Boolean;
+    FGroups: TGroups;
+    FFriends: TFriends;
     procedure SetOnAfterRedirect(const Value: TOAuth2WebFormRedirectEvent);
     procedure SetOnBeforeRedirect(const Value: TOAuth2WebFormRedirectEvent);
     procedure AfterRedirect(const AURL: string; var DoCloseWebView: boolean);
     procedure GetProfile;
+    procedure CancelOperation;
+    function StartOperation: Boolean;
+    procedure EndedOperation;
+    function IsCancel: Boolean;
     property OnBeforeRedirect: TOAuth2WebFormRedirectEvent read FOnBeforeRedirect write SetOnBeforeRedirect;
     property OnAfterRedirect: TOAuth2WebFormRedirectEvent read FOnAfterRedirect write SetOnAfterRedirect;
   public
@@ -150,7 +182,7 @@ begin
     procedure
     begin
       FProfileMenu := nil;
-    end, PT.X, PT.Y + DrawPanelLogin.Height, [psShadow, psFrame]);
+    end, PT.X, PT.Y + DrawPanelLogin.Height, [psShadow]);
 end;
 
 procedure TFormMain.DrawPanelLoginMouseEnter(Sender: TObject);
@@ -170,8 +202,8 @@ begin
   with DrawPanelLogin.Canvas do
   begin
     R := Rect(LabelFirstName.Width + 8, DrawPanelLogin.Height div 2 - 14, LabelFirstName.Width + 8 + 28, DrawPanelLogin.Height div 2 - 14 + 28);
-    if not FPhoto.Empty then
-      StretchDraw(R, FPhoto);
+    if ImageListProfile.Count > 0 then
+      ImageListProfile.Draw(DrawPanelLogin.Canvas, R.Left, R.Top, 0, True);
     ImageList16.Draw(DrawPanelLogin.Canvas, R.Right, DrawPanelLogin.Height div 2 - 12, 1, True);
   end;
 end;
@@ -188,14 +220,234 @@ begin
   PageControlMain.ActivePage := Tab;
 end;
 
-procedure TFormMain.ButtonFlat1Click(Sender: TObject);
+procedure TFormMain.ButtonFlatReturnToMenuClick(Sender: TObject);
 begin
+  if FOpeartion then
+  begin
+    if MessageBox(Handle, 'Отменить текущую операцию?', 'Прерывание', MB_ICONQUESTION or MB_YESNOCANCEL or MB_DEFBUTTON3) <> ID_YES then
+      Exit;
+    CancelOperation;
+  end;
   OpenMenu;
+end;
+
+function TFormMain.StartOperation: Boolean;
+begin
+  if FOpeartion then
+    Exit(False);
+  ButtonFlatCancelOp.Show;
+  FDoCancelOperation := False;
+  FOpeartion := True;
+  Result := True;
+end;
+
+procedure TFormMain.TableExFriendCleanGetData(FCol, FRow: Integer; var Value: string);
+begin
+  if not FFriends.IndexIn(FRow) then
+    Exit;
+  case FCol of
+    0:
+      Value := FFriends[FRow].ID.ToString;
+    1:
+      Value := FFriends[FRow].Name;
+    2:
+      if FFriends[FRow].LastOnline <> 0 then
+        Value := DateToStr(FFriends[FRow].LastOnline);
+    3:
+      Value := FFriends[FRow].AccState;
+  end;
+end;
+
+procedure TFormMain.TableExGroupCleanGetData(FCol, FRow: Integer; var Value: string);
+begin
+  if not FGroups.IndexIn(FRow) then
+    Exit;
+  case FCol of
+    0:
+      Value := FGroups[FRow].ID.ToString;
+    1:
+      Value := FGroups[FRow].Name;
+    2:
+      if FGroups[FRow].LastMessage.DateTime <> 0 then
+        Value := DateToStr(FGroups[FRow].LastMessage.DateTime);
+    3:
+      Value := FGroups[FRow].LastMessage.Text;
+  end;
+end;
+
+procedure TFormMain.CancelOperation;
+begin
+  FDoCancelOperation := True;
+end;
+
+procedure TFormMain.EndedOperation;
+begin
+  FDoCancelOperation := False;
+  FOpeartion := False;
+  ButtonFlatCancelOp.Hide;
+end;
+
+function TFormMain.IsCancel: Boolean;
+begin
+  Application.ProcessMessages;
+  Result := FDoCancelOperation;
+end;
+
+procedure TFormMain.ButtonFlatGetFriendsDelClick(Sender: TObject);
+var
+  JS: TJSONValue;
+  JArr: TJSONArray;
+  i, p: Integer;
+  Item: TFriend;
+begin
+  if not StartOperation then
+    Exit;
+  try
+    FFriends.BeginUpdate;
+    FFriends.Clear;
+    RESTRequestFriends.Execute;
+    JS := RESTResponse.JSONValue;
+    JArr := JS.GetValue<TJSONValue>('response.items') as TJSONArray;
+    for i := 0 to JArr.Count - 1 do
+    begin
+      if IsCancel then
+        Break;
+      Item.Name := JArr.Items[i].GetValue<string>('first_name', '') + ' ' + JArr.Items[i].GetValue<string>('last_name', '');
+      Item.ID := JArr.Items[i].GetValue<Integer>('id');
+      Item.AccState := JArr.Items[i].GetValue<string>('deactivated', '');
+      if Item.AccState = '' then
+        Item.LastOnline := UnixToDateTime(JArr.Items[i].GetValue<Integer>('last_seen.time'), False)
+      else
+        Item.LastOnline := 0;
+      FFriends.Add(Item);
+    end;
+    FFriends.Sort(TComparer<TFriend>.Construct(
+      function(const Left, Right: TFriend): Integer
+      begin
+        Result := AnsiCompareStr(Right.AccState, Left.AccState);
+        if Result = 0 then
+          Result := CompareDate(Left.LastOnline, Right.LastOnline);
+      end));
+    FFriends.EndUpdate;
+  finally
+    EndedOperation;
+  end;
+end;
+
+procedure TFormMain.ButtonFlatGetGroupsClick(Sender: TObject);
+var
+  JS: TJSONValue;
+  JArr: TJSONArray;
+  i, p: Integer;
+  Item: TGroup;
+  TS: Cardinal;
+begin
+  if not StartOperation then
+    Exit;
+  try
+    FGroups.BeginUpdate;
+    FGroups.Clear;
+    RESTRequestGetSubs.Execute;
+    JS := RESTResponse.JSONValue;
+    JArr := JS.GetValue<TJSONValue>('response.items') as TJSONArray;
+    for i := 0 to JArr.Count - 1 do
+    begin
+      if IsCancel then
+        Break;
+      Item.Name := JArr.Items[i].GetValue<string>('name');
+      Item.ID := JArr.Items[i].GetValue<Integer>('id');
+      FGroups.Add(Item);
+    end;
+    FGroups.EndUpdate;
+    for i := 0 to FGroups.Count - 1 do
+    begin
+      if IsCancel then
+        Break;
+      RESTRequestGetWall.Params.ParameterByName('owner_id').Value := '-' + FGroups[i].ID.ToString;
+      RESTRequestGetWall.Execute;
+      JS := RESTResponse.JSONValue;
+      Memo1.Text := JS.ToJSON;
+      JArr := JS.GetValue<TJSONValue>('response.items') as TJSONArray;
+      Memo1.Text := JArr.ToJSON;
+      if JArr.Count > 0 then
+      begin
+        if JArr.Count > 1 then
+        begin
+          if JArr.Items[0].GetValue<Boolean>('is_pinned', False) then
+            p := 1
+          else
+            p := 0;
+        end
+        else
+          p := 0;
+        Item := FGroups[i];
+        Item.LastMessage.DateTime := UnixToDateTime(JArr.Items[p].GetValue<Integer>('date'), False);
+        Item.LastMessage.Text := JArr.Items[p].GetValue<string>('text');
+        FGroups[i] := Item;
+      end;
+      TS := GetTickCount;
+      while TS + 400 > GetTickCount do
+        Application.ProcessMessages;
+    end;
+
+    FGroups.Sort(TComparer<TGroup>.Construct(
+      function(const Left, Right: TGroup): Integer
+      begin
+        Result := CompareDate(Left.LastMessage.DateTime, Right.LastMessage.DateTime);
+      end));
+    FGroups.UpdateTable;
+  finally
+    EndedOperation;
+  end;
+end;
+
+procedure TFormMain.ButtonFlatCancelOpClick(Sender: TObject);
+begin
+  CancelOperation;
+end;
+
+procedure TFormMain.ButtonFlatCleanFriendsClick(Sender: TObject);
+begin
+  OpenPage(TabSheetFriendClean);
+  if FFriends.Count <= 0 then
+    ButtonFlatGetFriendsDelClick(nil);
 end;
 
 procedure TFormMain.ButtonFlatCleanGroupsClick(Sender: TObject);
 begin
   OpenPage(TabSheetGroupClean);
+  if FGroups.Count <= 0 then
+    ButtonFlatGetGroupsClick(nil);
+end;
+
+procedure TFormMain.ButtonFlatFriendDelClick(Sender: TObject);
+begin
+  if not FFriends.IndexIn(TableExFriendClean.ItemIndex) then
+    Exit;
+  RESTRequestFriendDel.Params.ParameterByName('user_id').Value := FFriends[TableExFriendClean.ItemIndex].ID.ToString;
+  RESTRequestFriendDel.Execute;
+  if RESTResponse.JSONValue.GetValue<Integer>('response.success', 0) = 1 then
+  begin
+    FFriends.Delete(TableExFriendClean.ItemIndex);
+    MessageBox(Handle, 'Удаление выполнено успешно!', '', MB_ICONINFORMATION or MB_OK);
+  end
+  else
+    MessageBox(Handle, 'Произошла неизвестная ошибка', '', MB_ICONERROR or MB_OK);
+end;
+
+procedure TFormMain.ButtonFlatLeaveGroupClick(Sender: TObject);
+begin
+  if not FGroups.IndexIn(TableExGroupClean.ItemIndex) then
+    Exit;
+  RESTRequestGroupLeave.Params.ParameterByName('group_id').Value := FGroups[TableExGroupClean.ItemIndex].ID.ToString;
+  RESTRequestGroupLeave.Execute;
+  if RESTResponse.JSONValue.GetValue<Integer>('response', 0) = 1 then
+  begin
+    FGroups.Delete(TableExGroupClean.ItemIndex);
+    MessageBox(Handle, 'Отписка выполнена успешно!', '', MB_ICONINFORMATION or MB_OK);
+  end
+  else
+    MessageBox(Handle, 'Произошла неизвестная ошибка', '', MB_ICONERROR or MB_OK);
 end;
 
 procedure TFormMain.ButtonFlatLoginClick(Sender: TObject);
@@ -205,86 +457,20 @@ end;
 
 procedure TFormMain.ButtonFlatLogoutClick(Sender: TObject);
 begin
-  FProfileMenu.Close;
+  if Assigned(FProfileMenu) then
+    FProfileMenu.Close;
   FAuthForm.DeleteCache;
   DrawPanelLogin.Hide;
   FFirstName := '';
-  FPhoto.FreeImage;
   PageControlMain.ActivePage := TabSheetWelcome;
-end;
-
-procedure TFormMain.ButtonGetLastPostsClick(Sender: TObject);
-var
-  i, p: Integer;
-  JS: TJSONValue;
-  JArr: TJSONArray;
-begin
-  for i := 0 to ListView1.Items.Count - 1 do
-  begin
-    RESTRequestGetWall.Params.ParameterByName('owner_id').Value := '-' + ListView1.Items[i].Caption;
-    RESTRequestGetWall.Execute;
-    JS := RESTResponse.JSONValue;
-    Memo1.Text := JS.ToJSON;
-    JArr := JS.GetValue<TJSONValue>('response.items') as TJSONArray;
-    Memo1.Text := JArr.ToJSON;
-    if JArr.Count > 0 then
-    begin
-      if JArr.Count > 1 then
-      begin
-        if JArr.Items[0].GetValue<Boolean>('is_pinned', False) then
-          p := 1
-        else
-          p := 0;
-      end
-      else
-        p := 0;
-      with ListView2.Items.Add do
-      begin
-        Caption := ListView1.Items[i].SubItems[0];
-        SubItems.Add(DateTimeToStr(UnixToDateTime(JArr.Items[p].GetValue<Integer>('date'), False)));
-        SubItems.Add(JArr.Items[p].GetValue<string>('text'));
-        SubItems.Add(ListView1.Items[i].Caption);
-      end;
-    end;
-    Sleep(400);
-    Application.ProcessMessages;
-  end;
-end;
-
-procedure TFormMain.ButtonGetSubsClick(Sender: TObject);
-var
-  JS: TJSONValue;
-  JArr: TJSONArray;
-  i: Integer;
-begin
-  RESTRequestGetSubs.Execute;
-  JS := RESTResponse.JSONValue;
-
-  JArr := JS.GetValue<TJSONValue>('response.items') as TJSONArray;
-  Memo1.Text := JArr.ToJSON;
-  for i := 0 to JArr.Count - 1 do
-    with ListView1.Items.Add do
-    begin
-      Caption := JArr.Items[i].GetValue<Integer>('id').ToString;
-      SubItems.Add(JArr.Items[i].GetValue<string>('name'));
-    end;
-end;
-
-procedure TFormMain.ButtonGroupLeaveClick(Sender: TObject);
-begin
-  RESTRequestGroupLeave.Params.ParameterByName('group_id').Value := ListView2.Selected.SubItems[2];
-  RESTRequestGroupLeave.Execute;
-  Memo1.Text := RESTResponse.Content;
 end;
 
 procedure TFormMain.FormCreate(Sender: TObject);
 var
   i: Integer;
 begin
-  FPhoto := TBitmap.Create;
-  FPhoto.PixelFormat := pf32bit;
-  FPhoto.SetSize(50, 50);
-  FPhotoRGN := CreateEllipticRgn(0, 0, 50, 50);
+  FGroups := TGroups.Create(TableExGroupClean);
+  FFriends := TFriends.Create(TableExFriendClean);
   FAuthForm := TFormOAuth2.Create(nil);
   FAuthForm.OnAfterRedirect := AfterRedirect;
   for i := 0 to PageControlMain.PageCount - 1 do
@@ -295,7 +481,6 @@ end;
 procedure TFormMain.FormDestroy(Sender: TObject);
 begin
   FAuthForm.Free;
-  FPhoto.Free;
 end;
 
 procedure TFormMain.LinkRestorePassClick(Sender: TObject);
@@ -328,20 +513,15 @@ begin
     JPG := TJPEGImage.Create;
     BMP := TBitmap.Create;
     BMP.PixelFormat := pf24bit;
-    BMP.SetSize(50, 50);
+    BMP.SetSize(28, 28);
     try
       if Mem.Size > 0 then
       begin
         Mem.Position := 0;
         JPG.LoadFromStream(Mem);
-        BMP.Assign(JPG);
-        FPhoto.TransparentColor := clFuchsia;
-        FPhoto.TransparentMode := tmFixed;
-        FPhoto.Transparent := True;
-        FPhoto.Canvas.Brush.Color := FPhoto.TransparentColor;
-        FPhoto.Canvas.FillRect(Rect(0, 0, 50, 50));
-        FPhoto.Canvas.Brush.Bitmap := BMP;
-        PaintRgn(FPhoto.Canvas.Handle, FPhotoRGN);
+        BMP.Canvas.StretchDraw(Rect(0, 0, 28, 28), JPG);
+        ImageListProfile.Clear;
+        ImageListProfile.Add(BMP, ImageMask.Picture.Bitmap);
       end;
     finally
       JPG.Free;
@@ -351,6 +531,17 @@ begin
   end;
   DrawPanelLogin.Show;
   DrawPanelLogin.Repaint;
+end;
+
+procedure TFormMain.LinkClearCacheClick(Sender: TObject);
+begin
+  FAuthForm.DeleteCache;
+  MessageBox(Handle, 'Кеш очищен. Авторизация сброшена.', 'Готово', MB_ICONINFORMATION or MB_OK);
+end;
+
+procedure TFormMain.LinkOpenIEClick(Sender: TObject);
+begin
+  ShellExecute(Handle, 'open', 'iexplore', 'https://m.vk.com/login', nil, SW_NORMAL);
 end;
 
 procedure TFormMain.AfterRedirect(const AURL: string; var DoCloseWebView: boolean);
