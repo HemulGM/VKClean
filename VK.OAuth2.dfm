@@ -68,9 +68,9 @@ object FormOAuth2: TFormOAuth2
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+    ReadOnly = True
     TabOrder = 1
     Text = ' '#1047#1072#1075#1088#1091#1079#1082#1072'...'
     OnChange = EditAddrChange
-    ExplicitTop = -5
   end
 end
