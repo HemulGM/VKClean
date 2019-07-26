@@ -70,20 +70,6 @@ type
     ImageListProfile: TImageList;
     ImageMask: TImage;
     RESTRequestFriendDel: TRESTRequest;
-    PanelHint1: TPanel;
-    Shape3: TShape;
-    Label10: TLabel;
-    ButtonFlatCloseHint1: TButtonFlat;
-    Image2: TImage;
-    Panel5: TPanel;
-    ButtonFlatCleanFriends: TButtonFlat;
-    ButtonFlatCleanGroups: TButtonFlat;
-    Shape2: TShape;
-    ButtonFlatAppDel: TButtonFlat;
-    LinkBlog: ThLink;
-    LinkAutor: ThLink;
-    Shape4: TShape;
-    ButtonFlatCleanMainPage: TButtonFlat;
     PanelLog: TPanel;
     Shape5: TShape;
     Panel7: TPanel;
@@ -98,7 +84,7 @@ type
     ButtonFlatGetWallInfo: TButtonFlat;
     ButtonFlat2: TButtonFlat;
     RESTRequestGetPosts: TRESTRequest;
-    Panel8: TDrawPanel;
+    DrawPanelPosts: TDrawPanel;
     LabelWallCaption: TLabel;
     Label11: TLabel;
     Label12: TLabel;
@@ -111,6 +97,40 @@ type
     CalendarPickerPostDateEnd: TCalendarPicker;
     ButtonFlatPostDel: TButtonFlat;
     RESTRequestDelPosts: TRESTRequest;
+    Panel8: TPanel;
+    Panel5: TPanel;
+    LinkBlog: ThLink;
+    LinkAutor: ThLink;
+    ButtonFlatCleanFriends: TButtonFlat;
+    ButtonFlatCleanGroups: TButtonFlat;
+    ButtonFlatCleanMainPage: TButtonFlat;
+    ButtonFlat1: TButtonFlat;
+    ButtonFlat3: TButtonFlat;
+    ButtonFlat4: TButtonFlat;
+    Shape3: TShape;
+    Shape6: TShape;
+    ButtonFlat5: TButtonFlat;
+    ScrollBox1: TScrollBox;
+    PanelHint1: TDrawPanel;
+    Label10: TLabel;
+    Image2: TImage;
+    Panel9: TPanel;
+    DrawPanel1: TDrawPanel;
+    DrawPanel2: TDrawPanel;
+    ButtonFlatAppDel: TButtonFlat;
+    Label13: TLabel;
+    Label14: TLabel;
+    ButtonFlat6: TButtonFlat;
+    ButtonFlat7: TButtonFlat;
+    Label15: TLabel;
+    LinkAutor2: ThLink;
+    ButtonFlat8: TButtonFlat;
+    hLink1: ThLink;
+    Image3: TImage;
+    Image4: TImage;
+    Label16: TLabel;
+    ButtonFlat9: TButtonFlat;
+    ButtonFlat10: TButtonFlat;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure LinkRestorePassClick(Sender: TObject);
@@ -145,9 +165,12 @@ type
     procedure ButtonFlatCleanMainPageClick(Sender: TObject);
     procedure ComboBoxGiftUsersMeasureItem(Control: TWinControl; Index: Integer; var Height: Integer);
     procedure ButtonFlatGetWallInfoClick(Sender: TObject);
-    procedure Panel8Paint(Sender: TObject);
+    procedure DrawPanelPostsPaint(Sender: TObject);
     procedure ButtonFlatWallCleanClick(Sender: TObject);
     procedure ButtonFlatPostDelClick(Sender: TObject);
+    procedure hLink1Click(Sender: TObject);
+    procedure ButtonFlat9Click(Sender: TObject);
+    procedure ButtonFlat10Click(Sender: TObject);
   private
     FAuthForm: TFormOAuth2;
     FFirstName: string;
@@ -178,6 +201,7 @@ type
     procedure Error(Text: string);
     function AskCapcha(const CapchaImg: string; var Answer: string): Boolean;
     procedure WebOpen(URL: string);
+    procedure ProcError(ErrorCode: Integer);
     property OnBeforeRedirect: TOAuth2WebFormRedirectEvent read FOnBeforeRedirect write SetOnBeforeRedirect;
     property OnAfterRedirect: TOAuth2WebFormRedirectEvent read FOnAfterRedirect write SetOnAfterRedirect;
   public
@@ -255,7 +279,7 @@ procedure TFormMain.DrawPanelProgressPaint(Sender: TObject);
 var
   R, PR: TRect;
   S: string;
-  i, cnt: Integer;
+  i: Integer;
 begin
   with DrawPanelProgress.Canvas do
   begin
@@ -351,7 +375,7 @@ begin
   Application.ProcessMessages;
 end;
 
-procedure TFormMain.Panel8Paint(Sender: TObject);
+procedure TFormMain.DrawPanelPostsPaint(Sender: TObject);
 var
   Panel: TDrawPanel absolute Sender;
 begin
@@ -379,7 +403,6 @@ end;
 procedure TFormMain.ButtonFlatWallCleanClick(Sender: TObject);
 var
   Offset, Cnt: Integer;
-  JS: TJSONValue;
   JSArray: TJSONArray;
   Item: TPost;
   i: Integer;
@@ -419,6 +442,7 @@ begin
             Continue;
         FPosts.Add(Item);
       end;
+      if Cnt <= 100 then Break;
       Offset := Offset + 100;
     until JSArray.Count <= 0;
     FPosts.EndUpdate;
@@ -522,9 +546,8 @@ end;
 
 procedure TFormMain.ButtonFlatGetFriendsDelClick(Sender: TObject);
 var
-  JS: TJSONValue;
   JArr: TJSONArray;
-  i, p: Integer;
+  i: Integer;
   Item: TFriend;
 begin
   if not StartOperation then
@@ -533,8 +556,7 @@ begin
     FFriends.BeginUpdate;
     FFriends.Clear;
     RESTRequestFriends.Execute;
-    JS := RESTResponse.JSONValue;
-    JArr := JS.GetValue<TJSONValue>('response.items') as TJSONArray;
+    JArr := RESTResponse.JSONValue.GetValue<TJSONValue>('response.items') as TJSONArray;
     OperProgress := 10;
     for i := 0 to JArr.Count - 1 do
     begin
@@ -580,19 +602,117 @@ begin
   Result := TFormCaptcha.Execute(CapchaImg, Answer);
 end;
 
+procedure TFormMain.ProcError(ErrorCode: Integer);
+var
+  ErrStr: string;
+begin
+  case ErrorCode of
+    1:
+      ErrStr := 'Произошла неизвестная ошибка. Попробуйте повторить запрос позже.';
+    2:
+      ErrStr := 'Приложение выключено. Необходимо включить приложение в настройках https://vk.com/editapp?id={Ваш API_ID} или использовать тестовый режим (test_mode=1)';
+    3:
+      ErrStr := 'Передан неизвестный метод. Проверьте, правильно ли указано название вызываемого метода: https://vk.com/dev/methods.';
+    4:
+      ErrStr := 'Неверная подпись.';
+    5:
+      ErrStr := 'Авторизация пользователя не удалась. Убедитесь, что Вы используете верную схему авторизации.';
+    6:
+      ErrStr := 'Слишком много запросов в секунду. Задайте больший интервал между вызовами или используйте метод execute. Подробнее об ограничениях на частоту вызовов см. на странице https://vk.com/dev/api_requests.';
+    7:
+      ErrStr := 'Нет прав для выполнения этого действия. Проверьте, получены ли нужные права доступа при авторизации. Это можно сделать с помощью метода account.getAppPermissions.';
+    8:
+      ErrStr := 'Неверный запрос. Проверьте синтаксис запроса и список используемых параметров (его можно найти на странице с описанием метода).';
+    9:
+      ErrStr := 'Слишком много однотипных действий. Нужно сократить число однотипных обращений. Для более эффективной работы Вы можете использовать execute или JSONP.';
+    10:
+      ErrStr := 'Произошла внутренняя ошибка сервера. Попробуйте повторить запрос позже.';
+    11:
+      ErrStr := 'В тестовом режиме приложение должно быть выключено или пользователь должен быть залогинен. Выключите приложение в настройках https://vk.com/editapp?id={Ваш API_ID}';
+    14:
+      ErrStr := 'Требуется ввод кода с картинки (Captcha).';
+    15:
+      ErrStr := 'Доступ запрещён. Убедитесь, что Вы используете верные идентификаторы, и доступ к контенту для текущего пользователя есть в полной версии сайта.';
+    16:
+      ErrStr := 'Требуется выполнение запросов по протоколу HTTPS, т.к. пользователь включил настройку, требующую работу через безопасное соединение.'#13#10 + ' Чтобы избежать появления такой ошибки, в Standalone-приложении Вы можете предварительно проверять состояние этой настройки у пользователя методом account.getInfo.';
+    17:
+      ErrStr := 'Требуется валидация пользователя. Действие требует подтверждения — необходимо перенаправить пользователя на служебную страницу для валидации.';
+    18:
+      ErrStr := 'Страница удалена или заблокирована. Страница пользователя была удалена или заблокирована';
+    20:
+      ErrStr := 'Данное действие запрещено для не Standalone приложений. Если ошибка возникает несмотря на то, что Ваше приложение имеет тип Standalone, убедитесь, что при авторизации Вы используете redirect_uri=https://oauth.vk.com/blank.html.';
+    21:
+      ErrStr := 'Данное действие разрешено только для Standalone и Open API приложений.';
+    23:
+      ErrStr := 'Метод был выключен. Все актуальные методы ВК API, которые доступны в настоящий момент, перечислены здесь: https://vk.com/dev/methods.';
+    24:
+      ErrStr := 'Требуется подтверждение со стороны пользователя.';
+    27:
+      ErrStr := 'Ключ доступа сообщества недействителен.';
+    28:
+      ErrStr := 'Ключ доступа приложения недействителен.';
+    29:
+      ErrStr := 'Достигнут количественный лимит на вызов метода Подробнее об ограничениях на количество вызовов см. на странице https://vk.com/dev/data_limits';
+    30:
+      ErrStr := 'Профиль является приватным Информация, запрашиваемая о профиле, недоступна с используемым ключом доступа';
+    33:
+      ErrStr := 'Not implemented yet';
+    100:
+      ErrStr := 'Один из необходимых параметров был не передан или неверен. Проверьте список требуемых параметров и их формат на странице с описанием метода.';
+    101:
+      ErrStr := 'Неверный API ID приложения. Найдите приложение в списке администрируемых на странице https://vk.com/apps?act=settings и укажите в запросе верный API_ID (идентификатор приложения).';
+    113:
+      ErrStr := 'Неверный идентификатор пользователя. Убедитесь, что Вы используете верный идентификатор. Получить ID по короткому имени можно методом utils.resolveScreenName.';
+    150:
+      ErrStr := 'Неверный timestamp. Получить актуальное значение Вы можете методом utils.getServerTime.';
+    200:
+      ErrStr := 'Доступ к альбому запрещён. Убедитесь, что Вы используете верные идентификаторы (для пользователей owner_idположительный, для сообществ — отрицательный), и доступ к запрашиваемому контенту для текущего пользователя есть в полной версии сайта.';
+    201:
+      ErrStr := 'Доступ к аудио запрещён. Убедитесь, что Вы используете верные идентификаторы (для пользователей owner_idположительный, для сообществ — отрицательный), и доступ к запрашиваемому контенту для текущего пользователя есть в полной версии сайта.';
+    203:
+      ErrStr := 'Доступ к группе запрещён. Убедитесь, что текущий пользователь является участником или руководителем сообщества (для закрытых и частных групп и встреч).';
+    300:
+      ErrStr := 'Альбом переполнен. Перед продолжением работы нужно удалить лишние объекты из альбома или использовать другой альбом.';
+    500:
+      ErrStr := 'Действие запрещено. Вы должны включить переводы голосов в настройках приложения. Проверьте настройки приложения: https://vk.com/editapp?id={Ваш API_ID}&section=payments';
+    600:
+      ErrStr := 'Нет прав на выполнение данных операций с рекламным кабинетом.';
+    603:
+      ErrStr := 'Произошла ошибка при работе с рекламным кабинетом.';
+    3300:
+      ErrStr := 'Recaptcha needed';
+    3301:
+      ErrStr := 'Phone validation needed';
+    3302:
+      ErrStr := 'Password validation needed';
+    3303:
+      ErrStr := 'Otp app validation needed';
+    3304:
+      ErrStr := 'Email confirmation needed';
+    3305:
+      ErrStr := 'Assert votes';
+  else
+    ErrStr := 'Неизвестная ошибка';
+  end;
+
+  Error('VKError: '+ErrStr);
+end;
+
 function TFormMain.Execute(Request: TRESTRequest): Boolean;
 var
   JS: TJSONValue;
   CaptchaSID: string;
   CaptchaImg: string;
   CaptchaAns: string;
+  ErrorCode: Integer;
 begin
   Result := False;
   try
     Request.Execute;
     if RESTResponse.JSONValue.TryGetValue<TJSONValue>('error', JS) then
     begin
-      case JS.GetValue<Integer>('error_code', -1) of
+      ErrorCode := JS.GetValue<Integer>('error_code', -1);
+      case ErrorCode of
         14:
           begin
             CaptchaSID := JS.GetValue<string>('captcha_sid', '');
@@ -605,7 +725,9 @@ begin
               Request.Params.Delete('captcha_sid');
               Request.Params.Delete('captcha_key');
               Exit;
-            end;
+            end
+            else
+              ProcError(ErrorCode);
           end;
         24:
           begin
@@ -616,11 +738,13 @@ begin
               Result := Execute(Request);
               Request.Params.Delete('confirm');
               Exit;
-            end;
+            end
+            else
+              ProcError(ErrorCode);
           end;
+      else
+        ProcError(ErrorCode);
       end;
-
-      Error(JS.GetValue<string>('error_msg', 'Неизвестная ошибка'));
       Exit(False);
     end;
     Result := True;
@@ -638,7 +762,6 @@ var
   JArr: TJSONArray;
   i, p: Integer;
   Item: TGroup;
-  TS: Cardinal;
 begin
   if not StartOperation then
     Exit;
@@ -734,12 +857,23 @@ begin
         Break;
       RESTRequestDelPosts.Params.ParameterByName('owner_id').Value := FPosts[i].OwnerID.ToString;
       RESTRequestDelPosts.Params.ParameterByName('post_id').Value := FPosts[i].ID.ToString;
-      if not Execute(RESTRequestDelPosts) then Break;
+      if not Execute(RESTRequestDelPosts) then
+        Break;
       WaitTime(400);
     end;
   finally
     EndedOperation;
   end;
+end;
+
+procedure TFormMain.ButtonFlat10Click(Sender: TObject);
+begin
+  WebOpen('https://vk.com/app6326142_-184755622');
+end;
+
+procedure TFormMain.ButtonFlat9Click(Sender: TObject);
+begin
+  WebOpen('https://vk.com/app5727453_-184755622');
 end;
 
 procedure TFormMain.ButtonFlatAppDelClick(Sender: TObject);
@@ -829,7 +963,7 @@ begin
     FProfileMenu.Close;
   if MessageBox(Handle, 'Выход произойдет и в браузере Internet Explorer, продолжить?' + #13#10#13#10 + 'Если хотите отключить приложение, выберите соответствующий пункт в Меню.', 'Внимание', MB_ICONWARNING or MB_YESNOCANCEL or MB_DEFBUTTON2) <> ID_YES then
     Exit;
-  FAuthForm.DeleteCache;
+  FAuthForm.DeleteCache('vk.com');
   DrawPanelLogin.Hide;
   FFriends.Clear;
   FGroups.Clear;
@@ -947,6 +1081,11 @@ begin
   DrawPanelLogin.Repaint;
 end;
 
+procedure TFormMain.hLink1Click(Sender: TObject);
+begin
+  WebOpen('https://hemulgm.ru/vk-cleaner/');
+end;
+
 procedure TFormMain.LinkAutorClick(Sender: TObject);
 begin
   WebOpen('https://vk.com/hemulgm');
@@ -959,7 +1098,7 @@ end;
 
 procedure TFormMain.LinkClearCacheClick(Sender: TObject);
 begin
-  FAuthForm.DeleteCache;
+  FAuthForm.DeleteCache('vk.com');
   MessageBox(Handle, 'Кэш очищен. Авторизация сброшена.', 'Готово', MB_ICONINFORMATION or MB_OK);
 end;
 

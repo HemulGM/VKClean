@@ -30,7 +30,7 @@ type
     FLastURL: string;
     FNeedShow: Boolean;
   public
-    procedure DeleteCache;
+    procedure DeleteCache(URLContains: string);
     procedure ShowWithURL(const AURL: string); overload;
     procedure ShowWithURL(Parent: TWinControl; const AURL: string); overload;
     property LastTitle: string read FLastTitle;
@@ -65,7 +65,8 @@ begin
   if hCacheDir <> 0 then
   begin
     repeat
-      DeleteUrlCacheEntry(lpEntryInfo^.lpszSourceUrlName);
+      if (URLContains = '') or (Pos(URLContains, lpEntryInfo^.lpszSourceUrlName) <> 0) then
+        DeleteUrlCacheEntry(lpEntryInfo^.lpszSourceUrlName);
       FreeMem(lpEntryInfo, dwEntrySize);
       dwEntrySize := 0;
       FindNextUrlCacheEntry(hCacheDir, TInternetCacheEntryInfo(nil^), dwEntrySize);
