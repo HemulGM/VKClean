@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>VKClean.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -65,7 +65,7 @@
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <AppEnableHighDPI>true</AppEnableHighDPI>
         <Icon_MainIcon>VKClean_Icon.ico</Icon_MainIcon>
-        <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;vclactnband;vclFireDAC;RichViewActionsD10_1;RW_ADO_D10_1;emsclientfiredac;DataSnapFireDAC;svnui;tethering;FireDACADSDriver;DBSRVPkgD10_1;DBXMSSQLDriver;RvXmlD10_1;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;vcldb;bindcompfmx;svn;Intraweb;DBXOracleDriver;PasLibVlcPlayer;inetdb;CEF4Delphi;FmxTeeUI;emsedge;FireDACIBDriver;fmx;fmxdae;frx24;vclib;UIRibbonPackage;FireDACDBXDriver;dbexpress;IndyCore;vclx;dsnap;DataSnapCommon;emsclient;EsVclCore;FireDACCommon;RVPkgD10_1;RW_FDMongo_D10_1;RVMathD10_1;RESTBackendComponents;DataSnapConnectors;RW_DBX_D10_1;AlphaDBDX10Berlin;VCLRESTComponents;soapserver;RW_IB_D10_1;RvHtmlD10_1;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;EsVclComponents;RVHunSpellPkgD10_1;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;GLControls;inet;bindcompdbx;IndyIPCommon;vcl;DBXSybaseASEDriver;IndyIPServer;PngComponents;IndySystem;mbColorLibDXBerlin;FireDACDb2Driver;acntDX10Berlin_R;dsnapcon;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;TeeDB;FireDAC;emshosting;ReportWorkshopD10_1;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;ChromeTabs_R;DBXOdbcDriver;FireDACTDataDriver;FMXTee;soaprtl;DbxCommonDriver;ibxpress;Tee;Python_2010;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;ibxbindings;rtl;FireDACDSDriver;DbxClientDriver;SRVPkgD10_1;DBXSybaseASADriver;frxTee24;CustomIPTransport;vcldsnap;RW_FD_D10_1;bindcomp;appanalytics;MusicPro;DBXInformixDriver;IndyIPClient;bindcompvcl;TeeUI;frxe24;RVDBPkgD10_1;dbxcds;VclSmp;SRVControlsD10_1;adortl;FireDACODBCDriver;DataSnapIndy10ServerTransport;frxDB24;RVASpellPkgD10_1;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;RVIndyD10_1;HGMComponents;SynEdit_RXE5;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;vclactnband;vclFireDAC;RichViewActionsD10_1;RW_ADO_D10_1;emsclientfiredac;DataSnapFireDAC;svnui;tethering;FireDACADSDriver;DBSRVPkgD10_1;DBXMSSQLDriver;RvXmlD10_1;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;vcldb;bindcompfmx;svn;Intraweb;DBXOracleDriver;PasLibVlcPlayer;inetdb;CEF4Delphi;FmxTeeUI;emsedge;FireDACIBDriver;fmx;fmxdae;frx24;vclib;UIRibbonPackage;FireDACDBXDriver;dbexpress;IndyCore;vclx;dsnap;DataSnapCommon;emsclient;EsVclCore;FireDACCommon;RVPkgD10_1;RW_FDMongo_D10_1;RVMathD10_1;RESTBackendComponents;DataSnapConnectors;RW_DBX_D10_1;VCLRESTComponents;soapserver;RW_IB_D10_1;RvHtmlD10_1;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;EsVclComponents;RVHunSpellPkgD10_1;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;GLControls;inet;bindcompdbx;IndyIPCommon;vcl;DBXSybaseASEDriver;IndyIPServer;PngComponents;IndySystem;mbColorLibDXBerlin;FireDACDb2Driver;dsnapcon;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;TeeDB;FireDAC;emshosting;ReportWorkshopD10_1;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;ChromeTabs_R;DBXOdbcDriver;FireDACTDataDriver;FMXTee;soaprtl;DbxCommonDriver;ibxpress;Tee;Python_2010;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;ibxbindings;rtl;FireDACDSDriver;DbxClientDriver;SRVPkgD10_1;DBXSybaseASADriver;frxTee24;CustomIPTransport;vcldsnap;RW_FD_D10_1;bindcomp;appanalytics;MusicPro;DBXInformixDriver;IndyIPClient;bindcompvcl;TeeUI;frxe24;RVDBPkgD10_1;dbxcds;VclSmp;SRVControlsD10_1;adortl;FireDACODBCDriver;DataSnapIndy10ServerTransport;frxDB24;RVASpellPkgD10_1;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;RVIndyD10_1;HGMComponents;SynEdit_RXE5;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BT_BuildType>Debug</BT_BuildType>
@@ -85,9 +85,12 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <VerInfo_MinorVer>1</VerInfo_MinorVer>
+        <VerInfo_MajorVer>0</VerInfo_MajorVer>
+        <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <Icon_MainIcon>VKClean_Icon.ico</Icon_MainIcon>
-        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.2;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
-        <VerInfo_Build>2</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.51;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
+        <VerInfo_Build>51</VerInfo_Build>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -104,8 +107,8 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <Icon_MainIcon>VKClean_Icon.ico</Icon_MainIcon>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Build>3</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.3;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
+        <VerInfo_Build>5</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.5;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
     </PropertyGroup>
@@ -129,6 +132,13 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="VKClean.Posts.pas"/>
+        <DCCReference Include="VKClean.Photos.pas"/>
+        <DCCReference Include="VKClean.Albums.pas"/>
+        <RcItem Include="License.rtf">
+            <ContainerId>ResourceItem</ContainerId>
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>LicenseRTF</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -150,6 +160,8 @@
                     <Source Name="MainSource">VKClean.dpr</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\18.0\Bpl\AlphaDBDX10Berlin.bpl">AlphaControls DB-aware pack</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\18.0\Bpl\acntDX10Berlin.bpl">AlphaControls</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Геннадий\Desktop\pascalscript-master\Dcu\D24\win32\PascalScript_Core_D24.bpl">File C:\Users\Геннадий\Desktop\pascalscript-master\Dcu\D24\win32\PascalScript_Core_D24.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k240.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp240.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
@@ -168,12 +180,33 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                <DeployFile LocalName="License.rtf" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -552,27 +585,12 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>

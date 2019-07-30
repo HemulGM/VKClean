@@ -1,4 +1,4 @@
-unit VKClean.Posts;
+unit VKClean.Photos;
 
 interface
 
@@ -6,16 +6,16 @@ uses
   HGM.Controls.VirtualTable;
 
 type
-  TPost = record
+  TPhoto = record
     ID: Integer;
-    FromID: Integer;
+    AlbumID: Integer;
     OwnerID: Integer;
     Date: TDateTime;
     Likes: Integer;
     Reposts: Integer;
   end;
 
-  TPosts = class(TTableData<TPost>)
+  TPhotos = class(TTableData<TPhoto>)
   end;
 
 implementation
