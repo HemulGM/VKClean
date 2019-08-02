@@ -8,28 +8,25 @@ uses
   IPPeerClient, REST.Client, REST.Authenticator.OAuth, Data.Bind.Components,
   Data.Bind.ObjectScope, Vcl.StdCtrls, Vcl.ComCtrls, JSON, Vcl.Imaging.pngimage,
   Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.Imaging.jpeg,
-  Vcl.Samples.Spin, Vcl.WinXCalendars, System.Generics.Defaults,
+  Vcl.Samples.Spin, Vcl.WinXCalendars, System.Generics.Defaults, System.Types,
   HGM.Controls.Labels, HGM.Button, HGM.Controls.PanelExt, HGM.Popup,
-  HGM.Controls.VirtualTable, HGM.Controls.SpinEdit, HGM.Common.Utils, VK.OAuth2,
-  VKClean.Groups, VKClean.Friends, VKClean.InnerLog, VKClean.Posts,
-  VKClean.Photos, VKClean.Albums;
+  System.UITypes, HGM.Controls.VirtualTable, HGM.Controls.SpinEdit,
+  HGM.Common.Utils, VK.OAuth2, VKClean.Groups, VKClean.Friends, VKClean.InnerLog,
+  VKClean.Posts, VKClean.RequestConstruct, VKClean.Photos, VKClean.Albums,
+  VKClean.Videos, VKClean.DocTypes, VKClean.Docs, VKClean.Profile;
 
 type
   TBackToElements = (beMenu = 0, beWelcome, beGroupMenu);
 
   TFormMain = class(TForm)
     RESTClient: TRESTClient;
-    RESTRequestGetGroups: TRESTRequest;
     RESTResponse: TRESTResponse;
     OAuth2Authenticator: TOAuth2Authenticator;
-    RESTRequestGetWall: TRESTRequest;
-    RESTRequestLogout: TRESTRequest;
-    RESTRequestGroupLeave: TRESTRequest;
     PanelHead: TPanel;
     Image1: TImage;
     PageControlMain: TPageControl;
     TabSheetAuth: TTabSheet;
-    TabSheetGroupClean: TTabSheet;
+    TabSheetGroups: TTabSheet;
     PanelLogin: TPanel;
     TabSheetWelcome: TTabSheet;
     LabelPS: TLabel;
@@ -38,7 +35,6 @@ type
     ImageList16: TImageList;
     LabelAuthState: TLabel;
     DrawPanelLogin: TDrawPanel;
-    RESTRequestProfile: TRESTRequest;
     LabelFirstName: TLabel;
     PanelProfileMenu: TPanel;
     ButtonFlatLogout: TButtonFlat;
@@ -53,15 +49,13 @@ type
     PanelGroupCleanTools: TPanel;
     ButtonFlatGetGroups: TButtonFlat;
     ButtonFlatLeaveGroup: TButtonFlat;
-    TabSheetFriendClean: TTabSheet;
+    TabSheetFriends: TTabSheet;
     TableExFriendClean: TTableEx;
     Panel4: TPanel;
     ButtonFlatGetFriendsDel: TButtonFlat;
     ButtonFlatFriendDel: TButtonFlat;
-    RESTRequestFriends: TRESTRequest;
     ImageListProfile: TImageList;
     ImageMask: TImage;
-    RESTRequestFriendDel: TRESTRequest;
     PanelLog: TPanel;
     Shape5: TShape;
     Panel7: TPanel;
@@ -74,8 +68,7 @@ type
     ButtonFlatOpenGroup: TButtonFlat;
     Panel6: TPanel;
     ButtonFlatGetWallInfo: TButtonFlat;
-    RESTRequestGetPosts: TRESTRequest;
-    DrawPanelPosts: TDrawPanel;
+    DrawPanelPostsClean: TDrawPanel;
     LabelWallCaption: TLabel;
     Label11: TLabel;
     Label12: TLabel;
@@ -87,7 +80,6 @@ type
     CalendarPickerPostDateStart: TCalendarPicker;
     CalendarPickerPostDateEnd: TCalendarPicker;
     ButtonFlatPostDel: TButtonFlat;
-    RESTRequestDelPosts: TRESTRequest;
     PanelMenuClient: TPanel;
     PanelMenuLeft: TPanel;
     LinkBlog: ThLink;
@@ -96,8 +88,8 @@ type
     ButtonFlatCleanGroups: TButtonFlat;
     ButtonFlatCleanMainPage: TButtonFlat;
     ButtonFlat1: TButtonFlat;
-    ButtonFlat3: TButtonFlat;
-    ButtonFlat4: TButtonFlat;
+    ButtonFlatFave: TButtonFlat;
+    ButtonFlatVideos: TButtonFlat;
     Shape3: TShape;
     Shape6: TShape;
     ButtonFlatPhotos: TButtonFlat;
@@ -126,13 +118,12 @@ type
     Shape2: TShape;
     PanelOwnerGroups: TPanel;
     ButtonFlatGroupID_Num: TButtonFlat;
-    RESTRequestOwnerGroups: TRESTRequest;
     Shape4: TShape;
     Shape7: TShape;
     CheckBoxPostReply: TCheckBoxFlat;
     SpinEditPostReply: TlkSpinEdit;
     TabSheetPhotos: TTabSheet;
-    DrawPanel1: TDrawPanel;
+    DrawPanelPhotosClean: TDrawPanel;
     LabelPhotosCaption: TLabel;
     Label20: TLabel;
     Label21: TLabel;
@@ -150,15 +141,11 @@ type
     SpinEditPhotosReples: TlkSpinEdit;
     Panel5: TPanel;
     ButtonFlatGetPhotosInfo: TButtonFlat;
-    RESTRequestGetPhotos: TRESTRequest;
-    RESTRequestDelPhotos: TRESTRequest;
     CheckBoxPhotosAlbums: TCheckBoxFlat;
     ButtonFlatPhotosSelectAlbums: TButtonFlat;
     ButtonFlatCurrentOwner: TButtonFlat;
     PanelPhotosAlbums: TPanel;
     TableExPhotosAlbums: TTableEx;
-    RESTRequestGetAlbums: TRESTRequest;
-    RESTRequestGetSavedPhotos: TRESTRequest;
     DrawPanelAuth: TDrawPanel;
     Label4: TLabel;
     Label5: TLabel;
@@ -188,7 +175,7 @@ type
     ButtonFlatGroupWall: TButtonFlat;
     ButtonFlatGroupVideos: TButtonFlat;
     ButtonFlatGroupPhotos: TButtonFlat;
-    ScrollBox2: TScrollBox;
+    ScrollBoxGroupMenu: TScrollBox;
     Panel9: TPanel;
     DrawPanel5: TDrawPanel;
     Label24: TLabel;
@@ -200,8 +187,72 @@ type
     ButtonFlatGroupMessage: TButtonFlat;
     Shape1: TShape;
     Shape8: TShape;
-    RESTRequestGetGroupSub: TRESTRequest;
-    RESTRequestGroupRemoveUser: TRESTRequest;
+    TabSheetVideo: TTabSheet;
+    DrawPanelVideosClean: TDrawPanel;
+    LabelVideosCaption: TLabel;
+    Label23: TLabel;
+    Label26: TLabel;
+    Shape11: TShape;
+    Shape12: TShape;
+    ButtonFlatVideosCalc: TButtonFlat;
+    CheckBoxVideoLikes: TCheckBoxFlat;
+    SpinEditVideoLikes: TlkSpinEdit;
+    CheckBoxVideoFromOnly: TCheckBoxFlat;
+    CheckBoxVideoDate: TCheckBoxFlat;
+    CalendarPickerVideoDateS: TCalendarPicker;
+    CalendarPickerVideoDateE: TCalendarPicker;
+    ButtonFlatVideosDelete: TButtonFlat;
+    CheckBoxVideoReply: TCheckBoxFlat;
+    SpinEditVideoReply: TlkSpinEdit;
+    CheckBoxVideoAlbums: TCheckBoxFlat;
+    ButtonFlatVideoAlbumsSelect: TButtonFlat;
+    Panel10: TPanel;
+    ButtonFlatGetVideosInfo: TButtonFlat;
+    PanelVideoAlbums: TPanel;
+    TableExVideosAlbums: TTableEx;
+    TabSheetAutoClean: TTabSheet;
+    DrawPanelFullClean: TDrawPanel;
+    Label22: TLabel;
+    Shape13: TShape;
+    Shape14: TShape;
+    CheckBoxFlat1: TCheckBoxFlat;
+    ButtonFlat4: TButtonFlat;
+    CheckBoxFlat2: TCheckBoxFlat;
+    CheckBoxFlat3: TCheckBoxFlat;
+    CheckBoxFlat4: TCheckBoxFlat;
+    CheckBoxFlat5: TCheckBoxFlat;
+    CheckBoxFlat6: TCheckBoxFlat;
+    CheckBoxFlat7: TCheckBoxFlat;
+    CheckBoxFlat8: TCheckBoxFlat;
+    CheckBoxFlat9: TCheckBoxFlat;
+    DrawPanel6: TDrawPanel;
+    Label27: TLabel;
+    CheckBoxFlat10: TCheckBoxFlat;
+    CheckBoxFlat11: TCheckBoxFlat;
+    DrawPanel7: TDrawPanel;
+    ButtonFlatAutoClean: TButtonFlat;
+    DrawPanel8: TDrawPanel;
+    ButtonFlatAutoCleanGroup: TButtonFlat;
+    TabSheetDocs: TTabSheet;
+    DrawPanelDocClean: TDrawPanel;
+    LabelDocsCaption: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
+    Shape15: TShape;
+    Shape16: TShape;
+    ButtonFlatDocsCalc: TButtonFlat;
+    CheckBoxDocsDate: TCheckBoxFlat;
+    CalendarPickerDocsDateS: TCalendarPicker;
+    CalendarPickerDocsDateE: TCalendarPicker;
+    ButtonFlatDocsDel: TButtonFlat;
+    Panel11: TPanel;
+    ButtonFlatDocsGetInfo: TButtonFlat;
+    PanelDocTypes: TPanel;
+    TableExDocTypes: TTableEx;
+    CheckBoxDocTypes: TCheckBoxFlat;
+    ButtonFlatDocTypes: TButtonFlat;
+    ButtonFlatGroupDocs: TButtonFlat;
+    ButtonFlatNotes: TButtonFlat;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure LinkRestorePassClick(Sender: TObject);
@@ -235,7 +286,7 @@ type
     procedure ButtonFlatCleanMainPageClick(Sender: TObject);
     procedure ComboBoxGiftUsersMeasureItem(Control: TWinControl; Index: Integer; var Height: Integer);
     procedure ButtonFlatGetWallInfoClick(Sender: TObject);
-    procedure DrawPanelPostsPaint(Sender: TObject);
+    procedure DrawPanelPostsCleanPaint(Sender: TObject);
     procedure ButtonFlatWallCleanClick(Sender: TObject);
     procedure ButtonFlatPostDelClick(Sender: TObject);
     procedure hLink1Click(Sender: TObject);
@@ -245,8 +296,8 @@ type
     procedure ButtonFlatGroupID_NumClick(Sender: TObject);
     procedure ButtonFlatPhotoCleanClick(Sender: TObject);
     procedure ButtonFlatPhotosClick(Sender: TObject);
-    procedure ButtonFlat4Click(Sender: TObject);
-    procedure ButtonFlat3Click(Sender: TObject);
+    procedure ButtonFlatVideosClick(Sender: TObject);
+    procedure ButtonFlatFaveClick(Sender: TObject);
     procedure ButtonFlat1Click(Sender: TObject);
     procedure ButtonFlatPhotosDelClick(Sender: TObject);
     procedure ButtonFlatPhotosSelectAlbumsClick(Sender: TObject);
@@ -259,60 +310,94 @@ type
     procedure ButtonFlatGroupWallClick(Sender: TObject);
     procedure ButtonFlatGroupUsersClick(Sender: TObject);
     procedure ButtonFlatGroupPhotosClick(Sender: TObject);
+    procedure ButtonFlatGetVideosInfoClick(Sender: TObject);
+    procedure ButtonFlatVideosCalcClick(Sender: TObject);
+    procedure ButtonFlatVideoAlbumsSelectClick(Sender: TObject);
+    procedure TableExVideosAlbumsGetData(FCol, FRow: Integer; var Value: string);
+    procedure TableExVideosAlbumsDrawCellData(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
+    procedure TableExVideosAlbumsItemColClick(Sender: TObject; MouseButton: TMouseButton; const Index: Integer);
+    procedure ButtonFlatVideosDeleteClick(Sender: TObject);
+    procedure ButtonFlatAutoCleanClick(Sender: TObject);
+    procedure ButtonFlatAutoCleanGroupClick(Sender: TObject);
+    procedure ScrollBoxMenuWallMouseWheelDown(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+    procedure ScrollBoxMenuWallMouseWheelUp(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+    procedure FormResize(Sender: TObject);
+    procedure ButtonFlatDocsGetInfoClick(Sender: TObject);
+    procedure ButtonFlatDocTypesClick(Sender: TObject);
+    procedure TableExDocTypesDrawCellData(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
+    procedure TableExDocTypesGetData(FCol, FRow: Integer; var Value: string);
+    procedure TableExDocTypesItemColClick(Sender: TObject; MouseButton: TMouseButton; const Index: Integer);
+    procedure ButtonFlatGroupDocsClick(Sender: TObject);
+    procedure ButtonFlatDocsCalcClick(Sender: TObject);
+    procedure ButtonFlatDocsDelClick(Sender: TObject);
+    procedure ButtonFlatGroupVideosClick(Sender: TObject);
+    procedure ButtonFlatGroupMessageClick(Sender: TObject);
   private
+    //Форма и методы авторизации
     FAuthForm: TFormOAuth2;
-    FFirstName: string;
-    FPhoto50: string;
-    FProfileMenu: TFormPopup;
-    FAlbumsMenu: TFormPopup;
     FOnBeforeRedirect: TOAuth2WebFormRedirectEvent;
     FOnAfterRedirect: TOAuth2WebFormRedirectEvent;
+    //Всплывающие окна
+    FAlbumsMenu: TFormPopup;
+    FDocTypesMenu: TFormPopup;
+    FProfileMenu: TFormPopup;
+    FVideoAlbumsMenu: TFormPopup;
+    //Прогресс операций
     FDoCancelOperation: Boolean;
     FOpeartion: Boolean;
-    FGroups: TGroups;
-    FFriends: TFriends;
-    FLog: TLogs;
-    FPosts: TPosts;
-    FPhotos: TPhotos;
-    FAlbums: TAlbums;
     FOperProgress: Integer;
     FProgOffset: Integer;
     FProgressText: string;
-    FFullName: string;
+    //Данные из ВК
+    FAlbums: TAlbums;
+    FAlbumsVideos: TAlbums;
+    FDocs: TDocs;
+    FDocTypes: TDocTypes;
+    FFriends: TFriends;
+    FGroups: TGroups;
+    FLog: TLogs;
+    FPhotos: TPhotos;
+    FPosts: TPosts;
+    FProfile: TProfile;
+    FVideos: TVideos;
+    //Данные группы и выбрана ли группа
     FIsGroup: Boolean;
     FGroupID: Integer;
     FGroupName: string;
+    FGroupIsPage: Boolean;
+    //Дата последнего запроса в ВК
+    FLastRequest: Cardinal;
+    function StartOperation: Boolean;
+    procedure AfterRedirect(const AURL: string; var DoCloseWebView: boolean);
+    procedure EndedOperation;
+    procedure FillOwnerGroups;
+    procedure GetProfile;
+    procedure OpenWelcome;
+    procedure SetFirstName(const Value: string);
     procedure SetOnAfterRedirect(const Value: TOAuth2WebFormRedirectEvent);
     procedure SetOnBeforeRedirect(const Value: TOAuth2WebFormRedirectEvent);
-    procedure AfterRedirect(const AURL: string; var DoCloseWebView: boolean);
-    procedure GetProfile;
-    procedure CancelOperation;
-    function StartOperation: Boolean;
-    procedure EndedOperation;
-    function IsCancel: Boolean;
-    procedure SetFirstName(const Value: string);
     procedure SetOperProgress(const Value: Integer);
-    function Execute(Request: TRESTRequest): Boolean;
-    procedure Error(Text: string);
-    function AskCapcha(const CapchaImg: string; var Answer: string): Boolean;
-    procedure WebOpen(URL: string);
-    procedure ProcError(ErrorCode: Integer);
-    procedure FillOwnerGroups;
-    procedure OpenWelcome;
-    procedure Log(Text: string);
-    property OnBeforeRedirect: TOAuth2WebFormRedirectEvent read FOnBeforeRedirect write SetOnBeforeRedirect;
-    property OnAfterRedirect: TOAuth2WebFormRedirectEvent read FOnAfterRedirect write SetOnAfterRedirect;
-  public
     procedure OpenMenu;
+    property OnAfterRedirect: TOAuth2WebFormRedirectEvent read FOnAfterRedirect write SetOnAfterRedirect;
+    property OnBeforeRedirect: TOAuth2WebFormRedirectEvent read FOnBeforeRedirect write SetOnBeforeRedirect;
+  public
+    function AskCapcha(const CapchaImg: string; var Answer: string): Boolean;
+    function Execute(Request: string; Params: array of TParam): Boolean; overload;
+    function Execute(Request: TRESTRequest; FreeRequset: Boolean = False): Boolean; overload;
+    function IsCancel: Boolean;
+    procedure CancelOperation;
+    procedure Error(Text: string);
+    procedure Log(Text: string);
     procedure OpenPage(Tab: TTabSheet; BackToWelcome: TBackToElements = beMenu);
-    property FirstName: string read FFirstName write SetFirstName;
+    procedure ProcError(ErrorCode: Integer);
+    procedure WebOpen(URL: string);
     property OperProgress: Integer read FOperProgress write SetOperProgress;
   end;
 
 const
   {$INCLUDE APPIDENT.inc} //в этом файле находятся заккоментированные строчки ниже, чтоб не светить ключами на гите
   {
-  cAppID = '7xxxxxx';
+  cAppID = '5xxxxxx';
   cAppKey = 'xxxxxxxxxxxxxxxxxxxxxxxx';
   Для работы, необходимо указывать данные standalone-приложения ВК
   }
@@ -332,7 +417,6 @@ procedure WaitTime(MS: Cardinal);
 var
   TS: Cardinal;
 begin
-
   TS := GetTickCount;
   while TS + MS > GetTickCount do
     Application.ProcessMessages;
@@ -450,7 +534,7 @@ begin
   Application.ProcessMessages;
 end;
 
-procedure TFormMain.DrawPanelPostsPaint(Sender: TObject);
+procedure TFormMain.DrawPanelPostsCleanPaint(Sender: TObject);
 var
   Panel: TDrawPanel absolute Sender;
 begin
@@ -496,18 +580,12 @@ begin
   try
     Offset := 0;
     FProgressText := 'Анализ стены';
-    if FIsGroup then
-      RESTRequestGetPosts.Params.AddItem('owner_id', '-' + FGroupID.ToString)
-    else
-      RESTRequestGetPosts.Params.Delete('owner_id');
-    RESTRequestGetPosts.Params.ParameterByName('count').Value := MaxCnt.ToString;
     FPosts.BeginUpdate;
     FPosts.Clear;
     repeat
       if IsCancel then
         Break;
-      RESTRequestGetPosts.Params.ParameterByName('offset').Value := Offset.ToString;
-      if not Execute(RESTRequestGetPosts) then
+      if not Execute('wall.get', [VkOwner(-FGroupID, not FIsGroup), VkCount(MaxCnt), VkOffset(Offset)]) then
         Break;
       Cnt := RESTResponse.JSONValue.GetValue<Integer>('response.count');
       LabelWallCaption.Caption := 'Посты (' + Cnt.ToString + ')';
@@ -543,7 +621,7 @@ begin
   finally
     EndedOperation;
   end;
-  ButtonFlatPostDel.Caption := 'Удалить посты (' + FPosts.Count.ToString + ')';
+  ButtonFlatPostDel.Caption := 'Удалить записи (' + FPosts.Count.ToString + ')';
 end;
 
 function TFormMain.StartOperation: Boolean;
@@ -556,7 +634,42 @@ begin
   FOpeartion := True;
   FProgressText := 'Выполнено';
   OperProgress := 0;
+  PageControlMain.Enabled := False;
   Result := True;
+end;
+
+procedure TFormMain.TableExDocTypesDrawCellData(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
+begin
+  if ACol <> 0 then
+    Exit;
+  if not FDocTypes.IndexIn(ARow) then
+    Exit;
+  with TableExDocTypes.Canvas do
+  begin
+    if FDocTypes.Checked[ARow] then
+      ImageList16.Draw(TableExDocTypes.Canvas, Rect.Left, Rect.Top, 8, True)
+    else
+      ImageList16.Draw(TableExDocTypes.Canvas, Rect.Left, Rect.Top, 9, True);
+  end;
+end;
+
+procedure TFormMain.TableExDocTypesGetData(FCol, FRow: Integer; var Value: string);
+begin
+  if not FDocTypes.IndexIn(FRow) then
+    Exit;
+  case FCol of
+    0:
+      Value := '';
+    1:
+      Value := FDocTypes[FRow].Name + ' (' + FDocTypes[FRow].Count.ToString + ')';
+  end;
+end;
+
+procedure TFormMain.TableExDocTypesItemColClick(Sender: TObject; MouseButton: TMouseButton; const Index: Integer);
+begin
+  if not FDocTypes.IndexIn(TableExDocTypes.ItemIndex) then
+    Exit;
+  FDocTypes.Checked[TableExDocTypes.ItemIndex] := not FDocTypes.Checked[TableExDocTypes.ItemIndex];
 end;
 
 procedure TFormMain.TableExFriendCleanGetData(FCol, FRow: Integer; var Value: string);
@@ -639,6 +752,40 @@ begin
   FAlbums.Checked[TableExPhotosAlbums.ItemIndex] := not FAlbums.Checked[TableExPhotosAlbums.ItemIndex];
 end;
 
+procedure TFormMain.TableExVideosAlbumsDrawCellData(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
+begin
+  if ACol <> 0 then
+    Exit;
+  if not FAlbumsVideos.IndexIn(ARow) then
+    Exit;
+  with TableExVideosAlbums.Canvas do
+  begin
+    if FAlbumsVideos.Checked[ARow] then
+      ImageList16.Draw(TableExVideosAlbums.Canvas, Rect.Left, Rect.Top, 8, True)
+    else
+      ImageList16.Draw(TableExVideosAlbums.Canvas, Rect.Left, Rect.Top, 9, True);
+  end;
+end;
+
+procedure TFormMain.TableExVideosAlbumsGetData(FCol, FRow: Integer; var Value: string);
+begin
+  if not FAlbumsVideos.IndexIn(FRow) then
+    Exit;
+  case FCol of
+    0:
+      Value := '';
+    1:
+      Value := FAlbumsVideos[FRow].Title + ' (' + FAlbumsVideos[FRow].Size.ToString + ')';
+  end;
+end;
+
+procedure TFormMain.TableExVideosAlbumsItemColClick(Sender: TObject; MouseButton: TMouseButton; const Index: Integer);
+begin
+  if not FAlbumsVideos.IndexIn(TableExVideosAlbums.ItemIndex) then
+    Exit;
+  FAlbumsVideos.Checked[TableExVideosAlbums.ItemIndex] := not FAlbumsVideos.Checked[TableExVideosAlbums.ItemIndex];
+end;
+
 procedure TFormMain.TimerAnimateTimer(Sender: TObject);
 begin
   FProgOffset := FProgOffset + 1;
@@ -662,6 +809,7 @@ begin
   OperProgress := 100;
   FDoCancelOperation := False;
   FOpeartion := False;
+  PageControlMain.Enabled := True;
   ButtonFlatCancelOp.Hide;
   DrawPanelProgress.Hide;
 end;
@@ -678,6 +826,8 @@ var
   i: Integer;
   Item: TFriend;
   Ok: Boolean;
+  Offset, Cnt: Integer;
+  MaxCnt: Integer;
 begin
   if not StartOperation then
     Exit;
@@ -685,38 +835,45 @@ begin
     FFriends.BeginUpdate;
     FFriends.Clear;
     if FIsGroup then
-    begin
-      RESTRequestGetGroupSub.Params.AddItem('group_id', FGroupID.ToString);
-      Ok := Execute(RESTRequestGetGroupSub)
-    end
+      MaxCnt := 1000
     else
-      Ok := Execute(RESTRequestFriends);
-    if Ok then
-    begin
-      JArr := RESTResponse.JSONValue.GetValue<TJSONValue>('response.items') as TJSONArray;
-      OperProgress := 10;
-      for i := 0 to JArr.Count - 1 do
+      MaxCnt := 5000;
+    Cnt := 0;
+    Offset := 0;
+    repeat
+      if FIsGroup then
+        Ok := Execute('groups.getMembers', [VkFields('deactivated,last_seen'), VkGroup(FGroupID), VkCount(MaxCnt), VkOffset(Offset)])
+      else
+        Ok := Execute('friends.get', [VkFields('deactivated,last_seen'), VkCount(MaxCnt), VkOrder('name'), VkOffset(Offset)]);
+      if Ok then
       begin
-        OperProgress := Round(80 / FGroups.Count * i) + 10;
-        if IsCancel then
-          Break;
-        Item.Name := JArr.Items[i].GetValue<string>('first_name', '') + ' ' + JArr.Items[i].GetValue<string>('last_name', '');
-        Item.ID := JArr.Items[i].GetValue<Integer>('id');
-        Item.AccState := JArr.Items[i].GetValue<string>('deactivated', '');
-        if Item.AccState = '' then
-          Item.LastOnline := UnixToDateTime(JArr.Items[i].GetValue<Integer>('last_seen.time'), False)
-        else
-          Item.LastOnline := 0;
-        FFriends.Add(Item);
-      end;
-      FFriends.Sort(TComparer<TFriend>.Construct(
-        function(const Left, Right: TFriend): Integer
+        JArr := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
+        Cnt := RESTResponse.JSONValue.GetValue<Integer>('response.count');
+        OperProgress := 10;
+        for i := 0 to JArr.Count - 1 do
         begin
-          Result := AnsiCompareStr(Right.AccState, Left.AccState);
-          if Result = 0 then
-            Result := CompareDate(Left.LastOnline, Right.LastOnline);
-        end));
-    end;
+          OperProgress := Round(80 / FGroups.Count * i) + 10;
+          if IsCancel then
+            Break;
+          Item.Name := JArr.Items[i].GetValue<string>('first_name', '') + ' ' + JArr.Items[i].GetValue<string>('last_name', '');
+          Item.ID := JArr.Items[i].GetValue<Integer>('id');
+          Item.AccState := JArr.Items[i].GetValue<string>('deactivated', '');
+          if Item.AccState = '' then
+            Item.LastOnline := UnixToDateTime(JArr.Items[i].GetValue<Integer>('last_seen.time'), False)
+          else
+            Item.LastOnline := 0;
+          FFriends.Add(Item);
+        end;
+      end;
+      Offset := Offset + MaxCnt;
+    until Cnt <= MaxCnt;
+    FFriends.Sort(TComparer<TFriend>.Construct(
+      function(const Left, Right: TFriend): Integer
+      begin
+        Result := AnsiCompareStr(Right.AccState, Left.AccState);
+        if Result = 0 then
+          Result := CompareDate(Left.LastOnline, Right.LastOnline);
+      end));
     FFriends.EndUpdate;
   finally
     EndedOperation;
@@ -845,17 +1002,34 @@ begin
   Error('VKError: ' + ErrStr);
 end;
 
-function TFormMain.Execute(Request: TRESTRequest): Boolean;
+function TFormMain.Execute(Request: string; Params: array of TParam): Boolean;
+begin
+  Result := Execute(TRequestConstruct.Request(Request, Params), True);
+end;
+
+function TFormMain.Execute(Request: TRESTRequest; FreeRequset: Boolean): Boolean;
 var
   JS: TJSONValue;
   CaptchaSID: string;
   CaptchaImg: string;
   CaptchaAns: string;
   ErrorCode: Integer;
+  IsDone: Boolean;
 begin
   Result := False;
   try
-    Request.Execute;
+    IsDone := False;
+    if GetTickCount - FLastRequest < 350 then
+      WaitTime(350 - (GetTickCount - FLastRequest));
+    Log('Запрос: ' + Request.GetFullRequestURL);
+    Request.ExecuteAsync(
+      procedure
+      begin
+        IsDone := True;
+      end);
+    while not IsDone do
+      Application.ProcessMessages;
+    FLastRequest := GetTickCount;
     if RESTResponse.JSONValue.TryGetValue<TJSONValue>('error', JS) then
     begin
       ErrorCode := JS.GetValue<Integer>('error_code', -1);
@@ -871,6 +1045,8 @@ begin
               Result := Execute(Request);
               Request.Params.Delete('captcha_sid');
               Request.Params.Delete('captcha_key');
+              if FreeRequset then
+                Request.Free;
               Exit;
             end
             else
@@ -884,6 +1060,8 @@ begin
               Request.Params.AddItem('confirm', '1');
               Result := Execute(Request);
               Request.Params.Delete('confirm');
+              if FreeRequset then
+                Request.Free;
               Exit;
             end
             else
@@ -892,6 +1070,8 @@ begin
       else
         ProcError(ErrorCode);
       end;
+      if FreeRequset then
+        Request.Free;
       Exit(False);
     end;
     Result := True;
@@ -901,6 +1081,8 @@ begin
       Error(E.Message);
     end;
   end;
+  if FreeRequset then
+    Request.Free;
 end;
 
 procedure TFormMain.ButtonFlatGetGroupsClick(Sender: TObject);
@@ -909,37 +1091,49 @@ var
   JArr: TJSONArray;
   i, p: Integer;
   Item: TGroup;
+  Offset, Cnt: Integer;
+const
+  MaxCnt = 1000;
 begin
   if not StartOperation then
     Exit;
   try
+    FProgressText := 'Получение списка групп';
     FGroups.BeginUpdate;
     FGroups.Clear;
-    if Execute(RESTRequestGetGroups) then
-    begin
-      JS := RESTResponse.JSONValue;
-      JArr := JS.GetValue<TJSONValue>('response.items') as TJSONArray;
-      for i := 0 to JArr.Count - 1 do
+    Offset := 0;
+    Cnt := 0;
+    repeat
+      if Execute('groups.get', [VkExtended, VkFields('name, id'), VkCount(MaxCnt), VkOffset(Offset)]) then
       begin
-        if IsCancel then
-          Break;
-        Item.Name := JArr.Items[i].GetValue<string>('name');
-        Item.ID := JArr.Items[i].GetValue<Integer>('id');
-        Item.ScreenName := JArr.Items[i].GetValue<string>('screen_name');
-        Item.LastMessage.DateTime := 0;
-        FGroups.Add(Item);
-      end;
-      FGroups.EndUpdate;
-      OperProgress := 10;
-      for i := 0 to FGroups.Count - 1 do
-      begin
-        OperProgress := Round(80 / FGroups.Count * i) + 10;
-        if IsCancel then
-          Break;
-        RESTRequestGetWall.Params.ParameterByName('owner_id').Value := '-' + FGroups[i].ID.ToString;
-        RESTRequestGetWall.Execute;
         JS := RESTResponse.JSONValue;
-        JArr := JS.GetValue<TJSONValue>('response.items') as TJSONArray;
+        Cnt := JS.GetValue<integer>('response.count', 0);
+        JArr := JS.GetValue<TJSONArray>('response.items');
+        for i := 0 to JArr.Count - 1 do
+        begin
+          if IsCancel then
+            Break;
+          Item.Name := JArr.Items[i].GetValue<string>('name');
+          Item.ID := JArr.Items[i].GetValue<Integer>('id');
+          Item.ScreenName := JArr.Items[i].GetValue<string>('screen_name');
+          Item.LastMessage.DateTime := 0;
+          FGroups.Add(Item);
+        end;
+        Offset := Offset + Cnt;
+      end;
+    until Cnt <= Offset;
+    FGroups.EndUpdate;
+    OperProgress := 10;
+    FProgressText := 'Анализ группы';
+    for i := 0 to FGroups.Count - 1 do
+    begin
+      OperProgress := Round(80 / FGroups.Count * i) + 10;
+      if IsCancel then
+        Break;
+      if Execute('wall.get', [VkOwner(-FGroups[i].ID), VkCount(2)]) then
+      begin
+        JS := RESTResponse.JSONValue;
+        JArr := JS.GetValue<TJSONArray>('response.items');
         if JArr.Count > 0 then
         begin
           if JArr.Count > 1 then
@@ -956,15 +1150,14 @@ begin
           Item.LastMessage.Text := JArr.Items[p].GetValue<string>('text');
           FGroups[i] := Item;
         end;
-        WaitTime(400);
       end;
-
-      FGroups.Sort(TComparer<TGroup>.Construct(
-        function(const Left, Right: TGroup): Integer
-        begin
-          Result := CompareDate(Left.LastMessage.DateTime, Right.LastMessage.DateTime);
-        end));
     end;
+
+    FGroups.Sort(TComparer<TGroup>.Construct(
+      function(const Left, Right: TGroup): Integer
+      begin
+        Result := CompareDate(Left.LastMessage.DateTime, Right.LastMessage.DateTime);
+      end));
     FGroups.UpdateTable;
   finally
     EndedOperation;
@@ -983,35 +1176,20 @@ begin
   FAlbums.BeginUpdate;
   FAlbums.Clear;
   try
-    if FIsGroup then
-      RESTRequestGetPhotos.Params.AddItem('owner_id', '-' + FGroupID.ToString)
-    else
-      RESTRequestGetPhotos.Params.Delete('owner_id');
-    RESTRequestGetPhotos.Params.ParameterByName('offset').Value := '0';
-    RESTRequestGetPhotos.Params.ParameterByName('count').Value := '1';
     Cnt := 0;
-    if FIsGroup then
-      RESTRequestGetPhotos.Params.AddItem('owner_id', '-' + FGroupID.ToString)
-    else
-      RESTRequestGetPhotos.Params.Delete('owner_id');
-    if Execute(RESTRequestGetPhotos) then
+    if Execute('photos.getAll', [VkOwner(-FGroupID, not FIsGroup), VkCount1]) then
     begin
       Cnt := RESTResponse.JSONValue.GetValue<Integer>('response.count', -1);
     end;
+
     if not FIsGroup then
     begin
-      if Execute(RESTRequestGetSavedPhotos) then
+      if Execute('photos.get', [VkAlbum('saved')]) then
       begin
         Cnt := Cnt + RESTResponse.JSONValue.GetValue<Integer>('response.count', -1);
       end;
     end;
-    WaitTime(400);
-    LabelPhotosCaption.Caption := 'Фотографии (' + Cnt.ToString + ')';
-    if FIsGroup then
-      RESTRequestGetAlbums.Params.AddItem('owner_id', '-' + FGroupID.ToString)
-    else
-      RESTRequestGetAlbums.Params.Delete('owner_id');
-    if Execute(RESTRequestGetAlbums) then
+    if Execute('photos.getAlbums', [VkOwner(-FGroupID, not FIsGroup), VkNeedSystem]) then
     begin
       JSArr := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
       for i := 0 to JSArr.Count - 1 do
@@ -1026,9 +1204,57 @@ begin
         FAlbums.Add(Item);
       end;
     end;
+    LabelPhotosCaption.Caption := 'Фотографии (' + Cnt.ToString + ')';
   finally
     EndedOperation;
     FAlbums.EndUpdate;
+  end;
+end;
+
+procedure TFormMain.ButtonFlatGetVideosInfoClick(Sender: TObject);
+var
+  JSArr: TJSONArray;
+  i, Cnt: Integer;
+  Item: TAlbum;
+begin
+  if not StartOperation then
+    Exit;
+  ButtonFlatVideosDelete.Caption := 'Удалить видео';
+  FAlbumsVideos.BeginUpdate;
+  FAlbumsVideos.Clear;
+  try
+    //Получение альбомов
+    if Execute('video.getAlbums', [VkExtended, VkNeedSystem, VkOwner(-FGroupID, not FIsGroup), VkCount(100)]) then
+    begin
+      JSArr := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
+      for i := 0 to JSArr.Count - 1 do
+      begin
+        Item.ID := JSArr.Items[i].GetValue<Integer>('id', -1);
+        if Item.ID = -1 then
+          Continue; //Пропуск альбома "Загруженное"
+        Item.OwnerID := JSArr.Items[i].GetValue<Integer>('owner_id', -1);
+        Item.Created := UnixToDateTime(JSArr.Items[i].GetValue<Integer>('updated_time', 0), False);
+        Item.Size := JSArr.Items[i].GetValue<Integer>('count', 0);
+        Item.Title := JSArr.Items[i].GetValue<string>('title', '');
+        FAlbumsVideos.Add(Item);
+      end;
+    end;
+    //
+    WaitTime(400);
+    Cnt := 0;
+    for i := 0 to FAlbumsVideos.Count - 1 do
+    begin
+      if Execute('video.get', [VkExtended, VkAlbum(FAlbumsVideos[i].ID), VkOwner(-FGroupID, not FIsGroup), VkCount1]) then
+      begin
+        Cnt := Cnt + RESTResponse.JSONValue.GetValue<Integer>('response.count', -1);
+      end;
+      WaitTime(400);
+    end;
+
+    LabelVideosCaption.Caption := 'Видеозаписи (' + Cnt.ToString + ')';
+  finally
+    EndedOperation;
+    FAlbumsVideos.EndUpdate;
   end;
 end;
 
@@ -1036,22 +1262,26 @@ procedure TFormMain.ButtonFlatGetWallInfoClick(Sender: TObject);
 begin
   if not StartOperation then
     Exit;
-  ButtonFlatPostDel.Caption := 'Удалить посты';
+  ButtonFlatPostDel.Caption := 'Удалить записи';
   try
-    if FIsGroup then
-      RESTRequestGetPosts.Params.AddItem('owner_id', '-' + FGroupID.ToString)
-    else
-      RESTRequestGetPosts.Params.Delete('owner_id');
-    RESTRequestGetPosts.Params.ParameterByName('offset').Value := '0';
-    RESTRequestGetPosts.Params.ParameterByName('count').Value := '1';
-    Log('Запрос: ' + RESTRequestGetPosts.GetFullRequestURL);
-    if Execute(RESTRequestGetPosts) then
+    if Execute('wall.get', [VkOwner(-FGroupID, not FIsGroup), VkCount1]) then
     begin
-      LabelWallCaption.Caption := 'Посты (' + RESTResponse.JSONValue.GetValue<Integer>('response.count', -1).ToString + ')';
+      LabelWallCaption.Caption := 'Записи (' + RESTResponse.JSONValue.GetValue<Integer>('response.count', -1).ToString + ')';
     end;
   finally
     EndedOperation;
   end;
+end;
+
+procedure TFormMain.ButtonFlatGroupDocsClick(Sender: TObject);
+begin
+  if FIsGroup and FGroupIsPage then
+  begin
+    MessageBox(Handle, 'У публичной страницы нет раздела с документами!', '', MB_ICONINFORMATION or MB_OK);
+    Exit;
+  end;
+  OpenPage(TabSheetDocs, beGroupMenu);
+  ButtonFlatDocsGetInfoClick(nil);
 end;
 
 procedure TFormMain.ButtonFlatGroupID_NumClick(Sender: TObject);
@@ -1059,10 +1289,16 @@ begin
   FIsGroup := True;
   FGroupID := (Sender as TButtonFlat).Tag;
   FGroupName := (Sender as TButtonFlat).Caption;
+  FGroupIsPage := (Sender as TButtonFlat).SubText = 'page';
   ButtonFlatCurrentOwner.Caption := FGroupName;
   ButtonFlatCurrentOwner.Visible := True;
   LinkOpenCurrentGroup.Caption := 'https://vk.com/public' + FGroupID.ToString;
   OpenPage(TabSheetGroupMenu);
+end;
+
+procedure TFormMain.ButtonFlatGroupMessageClick(Sender: TObject);
+begin
+  MessageBox(Handle, 'В скором времени будет доступно!', 'В разработке', MB_ICONINFORMATION or MB_OK);
 end;
 
 procedure TFormMain.ButtonFlatGroupPhotosClick(Sender: TObject);
@@ -1073,9 +1309,15 @@ end;
 
 procedure TFormMain.ButtonFlatGroupUsersClick(Sender: TObject);
 begin
-  OpenPage(TabSheetFriendClean, beGroupMenu);
+  OpenPage(TabSheetFriends, beGroupMenu);
   if FFriends.Count <= 0 then
     ButtonFlatGetFriendsDelClick(nil);
+end;
+
+procedure TFormMain.ButtonFlatGroupVideosClick(Sender: TObject);
+begin
+  OpenPage(TabSheetVideo, beGroupMenu);
+  ButtonFlatGetVideosInfoClick(nil);
 end;
 
 procedure TFormMain.ButtonFlatGroupWallClick(Sender: TObject);
@@ -1096,7 +1338,7 @@ var
   Offset, Cnt, AllCnt: Integer;
   JSArray: TJSONArray;
   Item: TPhoto;
-  i, Alb, r: Integer;
+  i, r: Integer;
 begin
   if not StartOperation then
     Exit;
@@ -1104,41 +1346,31 @@ begin
     FPhotos.BeginUpdate;
     FPhotos.Clear;
     AllCnt := 0;
+    Cnt := 0;
     for r := 1 to 2 do
     begin
-      Offset := 0;
+      if FIsGroup and (r = 2) then
+        Continue;
+
       case r of
         1:
-          begin
-            FProgressText := 'Подсчёт фотографий';
-            if FIsGroup then
-              RESTRequestGetPhotos.Params.AddItem('owner_id', '-' + FGroupID.ToString)
-            else
-              RESTRequestGetPhotos.Params.Delete('owner_id');
-            RESTRequestGetPhotos.Params.ParameterByName('count').Value := MaxCnt.ToString;
-          end;
+          FProgressText := 'Подсчёт фотографий';
         2:
-          begin
-            FProgressText := 'Подсчёт сохранённых фотографий';
-            if FIsGroup then
-              Continue;
-            RESTRequestGetSavedPhotos.Params.ParameterByName('count').Value := MaxCnt.ToString;
-          end;
+          FProgressText := 'Подсчёт сохранённых фотографий';
       end;
+      Offset := 0;
       repeat
         if IsCancel then
           Break;
         case r of
           1:
             begin
-              RESTRequestGetPhotos.Params.ParameterByName('offset').Value := Offset.ToString;
-              if not Execute(RESTRequestGetPhotos) then
+              if not Execute('photos.get', [VkOwner(-FGroupID, not FIsGroup), VkExtended, VkCount(MaxCnt), VkOffset(Offset)]) then
                 Break;
             end;
           2:
             begin
-              RESTRequestGetSavedPhotos.Params.ParameterByName('offset').Value := Offset.ToString;
-              if not Execute(RESTRequestGetSavedPhotos) then
+              if not Execute('photos.get', [VkAlbum('saved'), VkExtended, VkCount(MaxCnt), VkOffset(Offset)]) then
                 Break;
             end;
         end;
@@ -1199,23 +1431,30 @@ end;
 procedure TFormMain.ButtonFlatPostDelClick(Sender: TObject);
 var
   i: Integer;
+  ErrNotifed: Boolean;
 begin
   if MessageBox(Handle, PChar('Будет удалено записей: ' + FPosts.Count.ToString + ' Продолжить?'), 'Внимание', MB_ICONWARNING or MB_YESNOCANCEL) <> ID_YES then
     Exit;
   if not StartOperation then
     Exit;
   try
+    ErrNotifed := False;
     for i := 0 to FPosts.Count - 1 do
     begin
       OperProgress := Round(100 / FPosts.Count * i);
-      FProgressText := 'Удаление. Осталось времени ~' + IntToStr(Round(((FPosts.Count - i) * 400) / (1000 * 60))) + ' мин.';
+      FProgressText := 'Удаление. Осталось времени ~' + Round(((FPosts.Count - i) * 400) / (1000 * 60)).ToString + ' мин.';
       if IsCancel then
         Break;
-      RESTRequestDelPosts.Params.ParameterByName('owner_id').Value := FPosts[i].OwnerID.ToString;
-      RESTRequestDelPosts.Params.ParameterByName('post_id').Value := FPosts[i].ID.ToString;
-      if not Execute(RESTRequestDelPosts) then
-        Break;
-      WaitTime(400);
+      if not Execute('wall.delete', [VkOwner(FPosts[i].OwnerID), VkPost(FPosts[i].ID)]) then
+      begin
+        Log('Не удалось удалить пост ' + FPosts[i].ID.ToString);
+        if not ErrNotifed then
+        begin
+          ErrNotifed := True;
+          if MessageBox(Handle, PChar('Не удалось удалить пост ' + FPosts[i].ID.ToString + #13#10 + 'Прервать?'), 'Ошибка', MB_ICONSTOP or MB_YESNO) = ID_YES then
+            Break;
+        end;
+      end;
     end;
     ButtonFlatGetWallInfoClick(nil);
     ButtonFlatPostDel.TimedText('Готово', 3000);
@@ -1229,26 +1468,83 @@ begin
   WebOpen('https://vk.com/app6326142_-184755622');
 end;
 
+procedure TFormMain.ButtonFlatDocsGetInfoClick(Sender: TObject);
+var
+  JSArray: TJSONArray;
+  Item: TDocType;
+  i: Integer;
+begin
+  if not StartOperation then
+    Exit;
+  ButtonFlatDocsDel.Caption := 'Удалить документы';
+  FDocTypes.BeginUpdate;
+  FDocTypes.Clear;
+  try
+    if Execute('docs.get', [VkCount1, VkOwner(-FGroupID, not FIsGroup)]) then
+    begin
+      LabelDocsCaption.Caption := 'Документы (' + RESTResponse.JSONValue.GetValue<Integer>('response.count', -1).ToString + ')';
+    end;
+    //
+    if Execute('docs.getTypes', [VkOwner(-FGroupID, not FIsGroup)]) then
+    begin
+      JSArray := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
+      for i := 0 to JSArray.Count - 1 do
+      begin
+        Item.ID := JSArray.Items[i].GetValue<Integer>('id', -1);
+        if Item.ID = 7 then     //Фикс бага VK API (может скоро поправят)
+          Item.Name := 'Книги'
+        else
+          Item.Name := JSArray.Items[i].GetValue<string>('name', '');
+        Item.Count := JSArray.Items[i].GetValue<Integer>('count', -1);
+        FDocTypes.Add(Item);
+      end;
+    end;
+  finally
+    FDocTypes.EndUpdate;
+    EndedOperation;
+  end;
+end;
+
+procedure TFormMain.ButtonFlatDocTypesClick(Sender: TObject);
+var
+  PT: TPoint;
+begin
+  PanelDocTypes.Height := Min(TableExDocTypes.DefaultRowHeight * TableExDocTypes.ItemCount, 300);
+  PT := CheckBoxDocTypes.ClientToScreen(Point(0, 0));
+  FDocTypesMenu := TFormPopup.CreatePopup(Self, PanelDocTypes,
+    procedure
+    begin
+      FDocTypesMenu := nil;
+    end, PT.X, PT.Y + CheckBoxDocTypes.Height, [psShadow]);
+end;
+
 procedure TFormMain.ButtonFlatPhotosDelClick(Sender: TObject);
 var
   i: Integer;
+  ErrNotifed: Boolean;
 begin
   if MessageBox(Handle, PChar('Будет удалено фотографий: ' + FPhotos.Count.ToString + ' Продолжить?'), 'Внимание', MB_ICONWARNING or MB_YESNOCANCEL) <> ID_YES then
     Exit;
   if not StartOperation then
     Exit;
   try
+    ErrNotifed := False;
     for i := 0 to FPhotos.Count - 1 do
     begin
       OperProgress := Round(100 / FPhotos.Count * i);
       FProgressText := 'Удаление. Осталось времени ~' + IntToStr(Round(((FPhotos.Count - i) * 400) / (1000 * 60))) + ' мин.';
       if IsCancel then
         Break;
-      RESTRequestDelPhotos.Params.AddItem('owner_id', FPhotos[i].OwnerID.ToString);
-      RESTRequestDelPhotos.Params.AddItem('photo_id', FPhotos[i].ID.ToString);
-      if not Execute(RESTRequestDelPhotos) then
-        Break;
-      WaitTime(400);
+      if not Execute('photos.delete', [VkOwner(FPhotos[i].OwnerID), VkPhoto(FPhotos[i].ID)]) then
+      begin
+        Log('Не удалось удалить фото ' + FPhotos[i].ID.ToString);
+        if not ErrNotifed then
+        begin
+          ErrNotifed := True;
+          if MessageBox(Handle, PChar('Не удалось удалить фото ' + FPhotos[i].ID.ToString + #13#10 + 'Прервать?'), 'Ошибка', MB_ICONSTOP or MB_YESNO) = ID_YES then
+            Break;
+        end;
+      end;
     end;
     ButtonFlatGetPhotosInfoClick(nil);
     ButtonFlatPhotosDel.TimedText('Готово', 3000);
@@ -1272,17 +1568,226 @@ end;
 
 procedure TFormMain.ButtonFlat1Click(Sender: TObject);
 begin
-  MessageBox(Handle, 'В скором времени будет доступно!', 'В разработке', MB_ICONINFORMATION or MB_OK);
+  OpenPage(TabSheetDocs);
+  ButtonFlatDocsGetInfoClick(nil);
 end;
 
-procedure TFormMain.ButtonFlat3Click(Sender: TObject);
+procedure TFormMain.ButtonFlatDocsCalcClick(Sender: TObject);
+const
+  MaxCnt = 2000;
+var
+  Offset, Cnt: Integer;
+  JSArray: TJSONArray;
+  Item: TDoc;
+  i: Integer;
+begin
+  if not StartOperation then
+    Exit;
+  try
+    Offset := 0;
+    FProgressText := 'Анализ документов';
+    FDocs.BeginUpdate;
+    FDocs.Clear;
+    repeat
+      if IsCancel then
+        Break;
+      if not Execute('docs.get', [VkOwner(-FGroupID, not FIsGroup), VkCount(MaxCnt), VkOffset(Offset)]) then
+        Break;
+      Cnt := RESTResponse.JSONValue.GetValue<Integer>('response.count');
+      LabelDocsCaption.Caption := 'Документы (' + Cnt.ToString + ')';
+      OperProgress := Round(100 / Cnt * Offset);
+      JSArray := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
+      for i := 0 to JSArray.Count - 1 do
+      begin
+        Item.ID := JSArray.Items[i].GetValue<Integer>('id');
+        Item.OwnerID := JSArray.Items[i].GetValue<Integer>('owner_id');
+        Item.Date := UnixToDateTime(JSArray.Items[i].GetValue<Integer>('date'), False);
+        Item.TypeID := JSArray.Items[i].GetValue<Integer>('type');
+        if CheckBoxDocsDate.Checked then
+          if not DateTimeInRange(DateOf(Item.Date), DateOf(CalendarPickerDocsDateS.Date), DateOf(CalendarPickerDocsDateE.Date), True) then
+            Continue;
+        if CheckBoxDocTypes.Checked then
+          if FDocTypes.FindCheckedID(Item.TypeID) < 0 then
+            Continue;
+        FDocs.Add(Item);
+      end;
+      if Cnt <= MaxCnt then
+        Break;
+      Offset := Offset + MaxCnt;
+    until JSArray.Count <= 0;
+    FDocs.EndUpdate;
+  finally
+    EndedOperation;
+  end;
+  ButtonFlatDocsDel.Caption := 'Удалить документы (' + FDocs.Count.ToString + ')';
+end;
+
+procedure TFormMain.ButtonFlatDocsDelClick(Sender: TObject);
+var
+  i: Integer;
+  ErrNotifed: Boolean;
+begin
+  if MessageBox(Handle, PChar('Будет удалено документов: ' + FDocs.Count.ToString + ' Продолжить?'), 'Внимание', MB_ICONWARNING or MB_YESNOCANCEL) <> ID_YES then
+    Exit;
+  if not StartOperation then
+    Exit;
+  try
+    ErrNotifed := False;
+    for i := 0 to FDocs.Count - 1 do
+    begin
+      OperProgress := Round(100 / FDocs.Count * i);
+      FProgressText := 'Удаление. Осталось времени ~' + Round(((FDocs.Count - i) * 400) / (1000 * 60)).ToString + ' мин.';
+      if IsCancel then
+        Break;
+      if not Execute('docs.delete', [VkOwner(FDocs[i].OwnerID), VkDoc(FDocs[i].ID)]) then
+      begin
+        Log('Не удалось удалить документ ' + FDocs[i].ID.ToString);
+        if not ErrNotifed then
+        begin
+          ErrNotifed := True;
+          if MessageBox(Handle, PChar('Не удалось удалить документ ' + FDocs[i].ID.ToString + #13#10 + 'Прервать?'), 'Ошибка', MB_ICONSTOP or MB_YESNO) = ID_YES then
+            Break;
+        end;
+      end;
+    end;
+    FDocs.Clear;
+    ButtonFlatDocsGetInfoClick(nil);
+    ButtonFlatDocsDel.TimedText('Готово', 3000);
+  finally
+    EndedOperation;
+  end;
+end;
+
+procedure TFormMain.ButtonFlatAutoCleanGroupClick(Sender: TObject);
+begin
+  OpenPage(TabSheetAutoClean, beGroupMenu);
+end;
+
+procedure TFormMain.ButtonFlatFaveClick(Sender: TObject);
 begin
   MessageBox(Handle, 'В скором времени будет доступно!', 'В разработке', MB_ICONINFORMATION or MB_OK);
 end;
 
-procedure TFormMain.ButtonFlat4Click(Sender: TObject);
+procedure TFormMain.ButtonFlatVideoAlbumsSelectClick(Sender: TObject);
+var
+  PT: TPoint;
 begin
-  MessageBox(Handle, 'В скором времени будет доступно!', 'В разработке', MB_ICONINFORMATION or MB_OK);
+  PanelVideoAlbums.Height := Min(TableExVideosAlbums.DefaultRowHeight * TableExVideosAlbums.ItemCount, 300);
+  PT := CheckBoxVideoAlbums.ClientToScreen(Point(0, 0));
+  FVideoAlbumsMenu := TFormPopup.CreatePopup(Self, PanelVideoAlbums,
+    procedure
+    begin
+      FVideoAlbumsMenu := nil;
+    end, PT.X, PT.Y + CheckBoxVideoAlbums.Height, [psShadow]);
+end;
+
+procedure TFormMain.ButtonFlatVideosCalcClick(Sender: TObject);
+const
+  MaxCnt = 200;
+var
+  Offset, Cnt, AllCnt, a: Integer;
+  JSArray: TJSONArray;
+  Item: TVideo;
+  i: Integer;
+begin
+  if not StartOperation then
+    Exit;
+  try
+    FVideos.BeginUpdate;
+    FVideos.Clear;
+    AllCnt := 0;
+    Cnt := 0;
+
+    FProgressText := 'Подсчёт видеозаписей';
+    for a := 0 to FAlbumsVideos.Count - 1 do
+    begin
+      if IsCancel then
+        Break;
+      Offset := 0;
+      repeat
+        if IsCancel then
+          Break;
+        if not Execute('video.get', [VkExtended, VkOwner(-FGroupID, not FIsGroup), VkCount(MaxCnt), VkAlbum(FAlbumsVideos[a].ID), VkOffset(Offset)]) then
+          Break;
+
+        Cnt := RESTResponse.JSONValue.GetValue<Integer>('response.count');
+        OperProgress := Round(100 / Cnt * Offset);
+        JSArray := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
+        for i := 0 to JSArray.Count - 1 do
+        begin
+          Item.ID := JSArray.Items[i].GetValue<Integer>('id');
+          Item.AlbumID := FAlbumsVideos[a].ID;
+          Item.OwnerID := JSArray.Items[i].GetValue<Integer>('owner_id');
+          Item.Date := UnixToDateTime(JSArray.Items[i].GetValue<Integer>('date'), False);
+          Item.Likes := JSArray.Items[i].GetValue<Integer>('likes.count');
+          Item.Reposts := JSArray.Items[i].GetValue<Integer>('reposts.count');
+          if CheckBoxVideoLikes.Checked then
+            if Item.Likes >= SpinEditVideoLikes.Value then
+              Continue;
+          if CheckBoxVideoReply.Checked then
+            if Item.Reposts >= SpinEditVideoReply.Value then
+              Continue;
+          if FIsGroup then
+          begin
+            if CheckBoxVideoFromOnly.Checked then
+              if Item.AlbumID = Item.OwnerID then
+                Continue;
+          end;
+          if CheckBoxVideoDate.Checked then
+            if not DateTimeInRange(DateOf(Item.Date), DateOf(CalendarPickerVideoDateS.Date), DateOf(CalendarPickerVideoDateE.Date), True) then
+              Continue;
+          if CheckBoxVideoAlbums.Checked then
+          begin
+            if FAlbumsVideos.FindCheckedID(Item.AlbumID) < 0 then
+              Continue;
+          end;
+          FVideos.Add(Item);
+        end;
+        if Cnt <= MaxCnt then
+          Break;
+        Offset := Offset + MaxCnt;
+      until JSArray.Count <= 0;
+      AllCnt := AllCnt + Cnt;
+    end;
+
+    LabelVideosCaption.Caption := 'Видеозаписи (' + AllCnt.ToString + ')';
+    FVideos.EndUpdate;
+  finally
+    EndedOperation;
+  end;
+  ButtonFlatVideosDelete.Caption := 'Удалить видео (' + FVideos.Count.ToString + ')';
+end;
+
+procedure TFormMain.ButtonFlatVideosClick(Sender: TObject);
+begin
+  OpenPage(TabSheetVideo);
+  ButtonFlatGetVideosInfoClick(nil);
+end;
+
+procedure TFormMain.ButtonFlatVideosDeleteClick(Sender: TObject);
+var
+  i: Integer;
+begin
+  if MessageBox(Handle, PChar('Будет удалено видеозаписей: ' + FVideos.Count.ToString + ' Продолжить?'), 'Внимание', MB_ICONWARNING or MB_YESNOCANCEL) <> ID_YES then
+    Exit;
+  if not StartOperation then
+    Exit;
+  try
+    for i := 0 to FVideos.Count - 1 do
+    begin
+      OperProgress := Round(100 / FVideos.Count * i);
+      FProgressText := 'Удаление. Осталось времени ~' + IntToStr(Round(((FVideos.Count - i) * 400) / (1000 * 60))) + ' мин.';
+      if IsCancel then
+        Break;
+
+      if not Execute('videos.delete', [VkOwner(FVideos[i].OwnerID), VkVideo(FVideos[i].ID)]) then
+        Break;
+    end;
+    ButtonFlatGetVideosInfoClick(nil);
+    ButtonFlatVideosDelete.TimedText('Готово', 3000);
+  finally
+    EndedOperation;
+  end;
 end;
 
 procedure TFormMain.ButtonFlat9Click(Sender: TObject);
@@ -1296,6 +1801,11 @@ begin
   WebOpen('https://vk.com/settings?act=apps');
 end;
 
+procedure TFormMain.ButtonFlatAutoCleanClick(Sender: TObject);
+begin
+  OpenPage(TabSheetAutoClean);
+end;
+
 procedure TFormMain.ButtonFlatCancelOpClick(Sender: TObject);
 begin
   CancelOperation;
@@ -1303,14 +1813,14 @@ end;
 
 procedure TFormMain.ButtonFlatCleanFriendsClick(Sender: TObject);
 begin
-  OpenPage(TabSheetFriendClean);
+  OpenPage(TabSheetFriends);
   if FFriends.Count <= 0 then
     ButtonFlatGetFriendsDelClick(nil);
 end;
 
 procedure TFormMain.ButtonFlatCleanGroupsClick(Sender: TObject);
 begin
-  OpenPage(TabSheetGroupClean);
+  OpenPage(TabSheetGroups);
   if FGroups.Count <= 0 then
     ButtonFlatGetGroupsClick(nil);
 end;
@@ -1334,47 +1844,44 @@ begin
   begin
     if MessageBox(Handle, 'Удалить подписчика?', '', MB_ICONINFORMATION or MB_YESNO or MB_DEFBUTTON1) <> ID_YES then
       Exit;
-    RESTRequestGroupRemoveUser.Params.AddItem('group_id', FGroupID.ToString);
-    RESTRequestGroupRemoveUser.Params.ParameterByName('user_id').Value := FFriends[TableExFriendClean.ItemIndex].ID.ToString;
-    if not Execute(RESTRequestGroupRemoveUser) then
-      Exit;
-    if RESTResponse.JSONValue.GetValue<Integer>('response', 0) = 1 then
+    if Execute('groups.removeUser', [VkGroup(FGroupID), VkUser(FFriends[TableExFriendClean.ItemIndex].ID)]) then
     begin
-      FFriends.Delete(TableExFriendClean.ItemIndex);
-      MessageBox(Handle, 'Удаление выполнено успешно!', '', MB_ICONINFORMATION or MB_OK);
+      if RESTResponse.JSONValue.GetValue<Integer>('response', 0) = 1 then
+      begin
+        FFriends.Delete(TableExFriendClean.ItemIndex);
+        MessageBox(Handle, 'Удаление выполнено успешно!', '', MB_ICONINFORMATION or MB_OK);
+      end;
     end;
   end
   else
   begin
     if MessageBox(Handle, 'Удалить из друзей?', '', MB_ICONINFORMATION or MB_YESNO or MB_DEFBUTTON1) <> ID_YES then
       Exit;
-    RESTRequestFriendDel.Params.ParameterByName('user_id').Value := FFriends[TableExFriendClean.ItemIndex].ID.ToString;
-    if not Execute(RESTRequestFriendDel) then
-      Exit;
-    if RESTResponse.JSONValue.GetValue<Integer>('response.success', 0) = 1 then
+    if Execute('friends.delete', [VkUser(FFriends[TableExFriendClean.ItemIndex].ID)]) then
     begin
-      FFriends.Delete(TableExFriendClean.ItemIndex);
-      MessageBox(Handle, 'Удаление выполнено успешно!', '', MB_ICONINFORMATION or MB_OK);
+      if RESTResponse.JSONValue.GetValue<Integer>('response.success', 0) = 1 then
+      begin
+        FFriends.Delete(TableExFriendClean.ItemIndex);
+        MessageBox(Handle, 'Удаление выполнено успешно!', '', MB_ICONINFORMATION or MB_OK);
+      end;
     end;
   end;
-
 end;
 
 procedure TFormMain.ButtonFlatLeaveGroupClick(Sender: TObject);
 begin
   if not FGroups.IndexIn(TableExGroupClean.ItemIndex) then
     Exit;
-  if MessageBox(Handle, 'Отписаться от группы?', '', MB_ICONINFORMATION or MB_YESNO or MB_DEFBUTTON1) <> ID_YES then
+  if MessageBox(Handle, 'Выйти из группы (отписаться)?', '', MB_ICONINFORMATION or MB_YESNO or MB_DEFBUTTON1) <> ID_YES then
     Exit;
-  RESTRequestGroupLeave.Params.ParameterByName('group_id').Value := FGroups[TableExGroupClean.ItemIndex].ID.ToString;
-  RESTRequestGroupLeave.Execute;
-  if RESTResponse.JSONValue.GetValue<Integer>('response', 0) = 1 then
+  if Execute('groups.leave', [VkGroup(FGroups[TableExGroupClean.ItemIndex].ID)]) then
   begin
-    FGroups.Delete(TableExGroupClean.ItemIndex);
-    MessageBox(Handle, 'Отписка выполнена успешно!', '', MB_ICONINFORMATION or MB_OK);
-  end
-  else
-    MessageBox(Handle, 'Произошла неизвестная ошибка', '', MB_ICONERROR or MB_OK);
+    if RESTResponse.JSONValue.GetValue<Integer>('response', 0) = 1 then
+    begin
+      FGroups.Delete(TableExGroupClean.ItemIndex);
+      MessageBox(Handle, 'Отписка выполнена успешно!', '', MB_ICONINFORMATION or MB_OK);
+    end;
+  end;
 end;
 
 procedure TFormMain.ButtonFlatLoginClick(Sender: TObject);
@@ -1402,11 +1909,12 @@ begin
     FProfileMenu.Close;
   if MessageBox(Handle, 'Выход произойдет и в браузере Internet Explorer, продолжить?' + #13#10#13#10 + 'Если хотите отключить приложение, выберите соответствующий пункт в Меню.', 'Внимание', MB_ICONWARNING or MB_YESNOCANCEL or MB_DEFBUTTON2) <> ID_YES then
     Exit;
+  Execute('auth.logout', []);
   FAuthForm.DeleteCache('vk.com');
   DrawPanelLogin.Hide;
   FFriends.Clear;
   FGroups.Clear;
-  FirstName := '';
+  FProfile.FirstName := '';
   ImageListProfile.Clear;
   OpenWelcome;
 end;
@@ -1462,7 +1970,7 @@ var
 begin
   while PanelOwnerGroups.ControlCount > 0 do
     PanelOwnerGroups.Controls[0].Free;
-  if Execute(RESTRequestOwnerGroups) then
+  if Execute('groups.get', [VkFilter('admin, editor, moder'), VkFields('name, id'), VkExtended]) then
   begin
     JSArray := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
     for i := 0 to JSArray.Count - 1 do
@@ -1471,6 +1979,7 @@ begin
       begin
         Caption := JSArray.Items[i].GetValue<string>('name');
         Tag := JSArray.Items[i].GetValue<Integer>('id');
+        SubText := JSArray.Items[i].GetValue<string>('type');
       end;
     end;
   end;
@@ -1480,6 +1989,9 @@ procedure TFormMain.FormCreate(Sender: TObject);
 var
   i: Integer;
 begin
+  FLastRequest := 0;
+  TRequestConstruct.Response := RESTResponse;
+  TRequestConstruct.Client := RESTClient;
   Caption := 'VK Cleaner ' + GetVersion;
   FProgOffset := 0;
   FLog := TLogs.Create(TableExLog);
@@ -1487,7 +1999,11 @@ begin
   FFriends := TFriends.Create(TableExFriendClean);
   FPosts := TPosts.Create;
   FPhotos := TPhotos.Create;
+  FVideos := TVideos.Create;
   FAlbums := TAlbums.Create(TableExPhotosAlbums);
+  FAlbumsVideos := TAlbums.Create(TableExVideosAlbums);
+  FDocTypes := TDocTypes.Create(TableExDocTypes);
+  FDocs := TDocs.Create;
   FAuthForm := TFormOAuth2.Create(nil);
   FAuthForm.OnAfterRedirect := AfterRedirect;
   for i := 0 to PageControlMain.PageCount - 1 do
@@ -1498,8 +2014,16 @@ end;
 
 procedure TFormMain.FormDestroy(Sender: TObject);
 begin
+  FDocTypes.Clear;
+  FDocTypes.Free;
+  FDocs.Clear;
+  FDocs.Free;
   FAlbums.Clear;
   FAlbums.Free;
+  FVideos.Clear;
+  FVideos.Free;
+  FAlbumsVideos.Clear;
+  FAlbumsVideos.Free;
   FPhotos.Clear;
   FPhotos.Free;
   FPosts.Clear;
@@ -1513,6 +2037,15 @@ begin
   FAuthForm.Free;
 end;
 
+procedure TFormMain.FormResize(Sender: TObject);
+begin
+  DrawPanelVideosClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelVideosClean.Width div 2;
+  DrawPanelPhotosClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelPhotosClean.Width div 2;
+  DrawPanelFullClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelFullClean.Width div 2;
+  DrawPanelPostsClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelPostsClean.Width div 2;
+  DrawPanelDocClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelDocClean.Width div 2;
+end;
+
 procedure TFormMain.LinkRestorePassClick(Sender: TObject);
 begin
   WebOpen('https://vk.com/restore');
@@ -1523,9 +2056,20 @@ begin
   DrawPanelProgress.Repaint;
 end;
 
+procedure TFormMain.ScrollBoxMenuWallMouseWheelDown(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+begin
+  Handled := True;
+  ScrollBoxMenuWall.Perform(WM_VSCROLL, SB_LINEDOWN, 0);
+end;
+
+procedure TFormMain.ScrollBoxMenuWallMouseWheelUp(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+begin
+  Handled := True;
+  ScrollBoxMenuWall.Perform(WM_VSCROLL, SB_LINEUP, 0);
+end;
+
 procedure TFormMain.SetFirstName(const Value: string);
 begin
-  FFirstName := Value;
   LabelFirstName.Caption := Value;
 end;
 
@@ -1551,35 +2095,38 @@ var
   JPG: TJPEGImage;
   BMP: TBitmap;
 begin
-  RESTRequestProfile.Execute;
-  FirstName := RESTResponse.JSONValue.GetValue<TJSONArray>('response').Items[0].GetValue<string>('first_name', '');
-  FFullName := FirstName + ' ' + RESTResponse.JSONValue.GetValue<TJSONArray>('response').Items[0].GetValue<string>('nickname', '');
-  FFullName := Trim(FFullName) + ' ' + RESTResponse.JSONValue.GetValue<TJSONArray>('response').Items[0].GetValue<string>('last_name', '');
-  FPhoto50 := RESTResponse.JSONValue.GetValue<TJSONArray>('response').Items[0].GetValue<string>('photo_50', '');
-  if FPhoto50 <> '' then
+  if Execute('users.get', [VkFields('photo_50, nickname')]) then
   begin
-    Mem := DownloadURL(FPhoto50);
-    JPG := TJPEGImage.Create;
-    BMP := TBitmap.Create;
-    BMP.PixelFormat := pf24bit;
-    BMP.SetSize(28, 28);
-    try
-      if Mem.Size > 0 then
-      begin
-        Mem.Position := 0;
-        JPG.LoadFromStream(Mem);
-        BMP.Canvas.StretchDraw(Rect(0, 0, 28, 28), JPG);
-        ImageListProfile.Clear;
-        ImageListProfile.Add(BMP, ImageMask.Picture.Bitmap);
+    FProfile.FirstName := RESTResponse.JSONValue.GetValue<TJSONArray>('response').Items[0].GetValue<string>('first_name', '');
+    FProfile.FullName := FProfile.FirstName + ' ' + RESTResponse.JSONValue.GetValue<TJSONArray>('response').Items[0].GetValue<string>('nickname', '');
+    FProfile.FullName := Trim(FProfile.FullName) + ' ' + RESTResponse.JSONValue.GetValue<TJSONArray>('response').Items[0].GetValue<string>('last_name', '');
+    FProfile.Photo50 := RESTResponse.JSONValue.GetValue<TJSONArray>('response').Items[0].GetValue<string>('photo_50', '');
+    if FProfile.Photo50 <> '' then
+    begin
+      Mem := DownloadURL(FProfile.Photo50);
+      JPG := TJPEGImage.Create;
+      BMP := TBitmap.Create;
+      BMP.PixelFormat := pf24bit;
+      BMP.SetSize(28, 28);
+      try
+        if Mem.Size > 0 then
+        begin
+          Mem.Position := 0;
+          JPG.LoadFromStream(Mem);
+          BMP.Canvas.StretchDraw(Rect(0, 0, 28, 28), JPG);
+          ImageListProfile.Clear;
+          ImageListProfile.Add(BMP, ImageMask.Picture.Bitmap);
+        end;
+      finally
+        JPG.Free;
+        Mem.Free;
+        BMP.Free;
       end;
-    finally
-      JPG.Free;
-      Mem.Free;
-      BMP.Free;
     end;
+    DrawPanelLogin.Show;
+    DrawPanelLogin.Repaint;
+    SetFirstName(FProfile.FirstName);
   end;
-  DrawPanelLogin.Show;
-  DrawPanelLogin.Repaint;
 end;
 
 procedure TFormMain.hLink1Click(Sender: TObject);

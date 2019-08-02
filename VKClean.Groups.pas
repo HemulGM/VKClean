@@ -14,6 +14,7 @@ type
       Text: string;
       DateTime: TDateTime;
     end;
+    GroupType: string;
   end;
 
   TGroups = class(TTableData<TGroup>)

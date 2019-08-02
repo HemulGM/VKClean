@@ -12,7 +12,12 @@ uses
   VKClean.Captcha in 'VKClean.Captcha.pas' {FormCaptcha},
   VKClean.Posts in 'VKClean.Posts.pas',
   VKClean.Photos in 'VKClean.Photos.pas',
-  VKClean.Albums in 'VKClean.Albums.pas';
+  VKClean.Albums in 'VKClean.Albums.pas',
+  VKClean.Videos in 'VKClean.Videos.pas',
+  VKClean.DocTypes in 'VKClean.DocTypes.pas',
+  VKClean.Docs in 'VKClean.Docs.pas',
+  VKClean.RequestConstruct in 'VKClean.RequestConstruct.pas',
+  VKClean.Profile in 'VKClean.Profile.pas';
 
 {$R *.res}
 

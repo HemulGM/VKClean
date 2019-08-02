@@ -2,8 +2,8 @@ object FormMain: TFormMain
   Left = 0
   Top = 0
   Caption = 'VK Cleaner'
-  ClientHeight = 729
-  ClientWidth = 1057
+  ClientHeight = 612
+  ClientWidth = 949
   Color = 15789805
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -17,12 +17,13 @@ object FormMain: TFormMain
   ShowHint = True
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
   object PanelHead: TPanel
     Left = 0
     Top = 0
-    Width = 1057
+    Width = 949
     Height = 41
     Align = alTop
     BevelOuter = bvNone
@@ -163,7 +164,7 @@ object FormMain: TFormMain
     end
     object DrawPanelLogin: TDrawPanel
       AlignWithMargins = True
-      Left = 898
+      Left = 790
       Top = 0
       Width = 149
       Height = 41
@@ -254,8 +255,8 @@ object FormMain: TFormMain
   object PageControlMain: TPageControl
     Left = 0
     Top = 71
-    Width = 1057
-    Height = 541
+    Width = 949
+    Height = 424
     ActivePage = TabSheetMenu
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
@@ -271,13 +272,13 @@ object FormMain: TFormMain
       Caption = 'Welcome'
       ImageIndex = 2
       DesignSize = (
-        1049
-        510)
+        941
+        393)
       object LabelPS: TLabel
         AlignWithMargins = True
         Left = 3
-        Top = 477
-        Width = 1043
+        Top = 360
+        Width = 935
         Height = 30
         Align = alBottom
         Caption = 
@@ -293,10 +294,10 @@ object FormMain: TFormMain
         Font.Quality = fqClearType
         ParentFont = False
         WordWrap = True
-        ExplicitWidth = 1024
+        ExplicitWidth = 898
       end
       object PanelMainHead: TPanel
-        Left = 104
+        Left = 50
         Top = 0
         Width = 833
         Height = 210
@@ -366,7 +367,7 @@ object FormMain: TFormMain
           Margins.Right = 175
           Margins.Bottom = 7
           DefaultPaint = False
-          OnPaint = DrawPanelPostsPaint
+          OnPaint = DrawPanelPostsCleanPaint
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
@@ -468,7 +469,7 @@ object FormMain: TFormMain
         Left = 18
         Top = 169
         Width = 479
-        Height = 297
+        Height = 180
         VertScrollBar.Smooth = True
         VertScrollBar.Tracking = True
         Anchors = [akLeft, akTop, akBottom]
@@ -483,7 +484,7 @@ object FormMain: TFormMain
           Margins.Right = 175
           Margins.Bottom = 7
           DefaultPaint = False
-          OnPaint = DrawPanelPostsPaint
+          OnPaint = DrawPanelPostsCleanPaint
           Align = alTop
           BevelOuter = bvNone
           Color = clWhite
@@ -494,7 +495,7 @@ object FormMain: TFormMain
             Left = 11
             Top = 27
             Width = 428
-            Height = 164
+            Height = 165
             Caption = 
               '...'#13#10'4.2. '#1055#1054' '#1087#1088#1077#1076#1086#1089#1090#1072#1074#1083#1103#1077#1090#1089#1103' '#1042#1072#1084' '#171#1050#1040#1050' '#1045#1057#1058#1068#187' ('#171'AS IS'#187'), '#1074' '#1089#1086#1086#1090#1074#1077#1090 +
               #1089#1090#1074#1080#1080' '#1089' '#1086#1073#1097#1077#1087#1088#1080#1085#1103#1090#1099#1084' '#1074' '#1084#1077#1078#1076#1091#1085#1072#1088#1086#1076#1085#1086#1081' '#1087#1088#1072#1082#1090#1080#1082#1077' '#1087#1088#1080#1085#1094#1080#1087#1086#1084'. '#1069#1090#1086' '#1086#1079#1085 +
@@ -555,7 +556,7 @@ object FormMain: TFormMain
           Margins.Right = 175
           Margins.Bottom = 7
           DefaultPaint = False
-          OnPaint = DrawPanelPostsPaint
+          OnPaint = DrawPanelPostsCleanPaint
           Align = alTop
           BevelOuter = bvNone
           Color = clWhite
@@ -637,7 +638,7 @@ object FormMain: TFormMain
           Margins.Right = 175
           Margins.Bottom = 7
           DefaultPaint = False
-          OnPaint = DrawPanelPostsPaint
+          OnPaint = DrawPanelPostsCleanPaint
           Align = alTop
           BevelOuter = bvNone
           Color = clWhite
@@ -682,24 +683,54 @@ object FormMain: TFormMain
         end
       end
     end
+    object TabSheetLicense: TTabSheet
+      Caption = 'License'
+      ImageIndex = 7
+      object RichEditLicense: TRichEdit
+        AlignWithMargins = True
+        Left = 30
+        Top = 20
+        Width = 881
+        Height = 353
+        Margins.Left = 30
+        Margins.Top = 20
+        Margins.Right = 30
+        Margins.Bottom = 20
+        Align = alClient
+        Alignment = taCenter
+        BorderStyle = bsNone
+        Color = 15789805
+        Font.Charset = RUSSIAN_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Roboto'
+        Font.Style = []
+        Font.Quality = fqClearType
+        ParentFont = False
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 0
+        Zoom = 100
+      end
+    end
     object TabSheetAuth: TTabSheet
       Caption = 'Auth'
       object PanelLogin: TPanel
         Left = 0
         Top = 0
-        Width = 1049
-        Height = 510
+        Width = 941
+        Height = 393
         Align = alClient
         BevelOuter = bvNone
         Color = 15789805
         ParentBackground = False
         TabOrder = 0
         DesignSize = (
-          1049
-          510)
+          941
+          393)
         object LabelAuthState: TLabel
-          Left = 156
-          Top = 224
+          Left = 103
+          Top = 170
           Width = 721
           Height = 23
           Alignment = taCenter
@@ -722,13 +753,13 @@ object FormMain: TFormMain
       Caption = 'Menu'
       ImageIndex = 3
       DesignSize = (
-        1049
-        510)
+        941
+        393)
       object PanelMenuClient: TPanel
-        Left = 53
-        Top = 3
-        Width = 941
-        Height = 504
+        Left = 0
+        Top = 0
+        Width = 945
+        Height = 393
         Anchors = [akTop, akBottom]
         BevelOuter = bvNone
         TabOrder = 0
@@ -737,7 +768,7 @@ object FormMain: TFormMain
           Left = 0
           Top = 15
           Width = 163
-          Height = 486
+          Height = 375
           Margins.Left = 0
           Margins.Top = 15
           Margins.Right = 10
@@ -747,7 +778,7 @@ object FormMain: TFormMain
           object LinkBlog: ThLink
             AlignWithMargins = True
             Left = 10
-            Top = 289
+            Top = 317
             Width = 143
             Height = 13
             Cursor = crHandPoint
@@ -762,12 +793,13 @@ object FormMain: TFormMain
             Font.Style = []
             ParentFont = False
             OnClick = LinkBlogClick
+            ExplicitTop = 289
             ExplicitWidth = 24
           end
           object LinkAutor: ThLink
             AlignWithMargins = True
             Left = 10
-            Top = 308
+            Top = 336
             Width = 143
             Height = 13
             Cursor = crHandPoint
@@ -782,6 +814,7 @@ object FormMain: TFormMain
             Font.Style = []
             ParentFont = False
             OnClick = LinkAutorClick
+            ExplicitTop = 308
             ExplicitWidth = 126
           end
           object Shape3: TShape
@@ -804,7 +837,7 @@ object FormMain: TFormMain
           object Shape6: TShape
             AlignWithMargins = True
             Left = 10
-            Top = 227
+            Top = 255
             Width = 143
             Height = 1
             Margins.Left = 10
@@ -1004,13 +1037,16 @@ object FormMain: TFormMain
             TabOrder = 3
             TabStop = True
             TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubText = '312'
             SubTextFont.Charset = DEFAULT_CHARSET
             SubTextFont.Color = clWhite
             SubTextFont.Height = -13
             SubTextFont.Name = 'Tahoma'
             SubTextFont.Style = []
+            ExplicitLeft = 10
+            ExplicitTop = 180
           end
-          object ButtonFlat3: TButtonFlat
+          object ButtonFlatFave: TButtonFlat
             AlignWithMargins = True
             Left = 3
             Top = 161
@@ -1045,7 +1081,7 @@ object FormMain: TFormMain
             ImageIndentRight = 5
             ImageIndex = 10
             Images = ImageList16
-            OnClick = ButtonFlat3Click
+            OnClick = ButtonFlatFaveClick
             RoundRectParam = 6
             Shape = stRoundRect
             ShowFocusRect = False
@@ -1058,7 +1094,7 @@ object FormMain: TFormMain
             SubTextFont.Name = 'Tahoma'
             SubTextFont.Style = []
           end
-          object ButtonFlat4: TButtonFlat
+          object ButtonFlatVideos: TButtonFlat
             AlignWithMargins = True
             Left = 3
             Top = 112
@@ -1093,7 +1129,7 @@ object FormMain: TFormMain
             ImageIndentRight = 5
             ImageIndex = 13
             Images = ImageList16
-            OnClick = ButtonFlat4Click
+            OnClick = ButtonFlatVideosClick
             RoundRectParam = 6
             Shape = stRoundRect
             ShowFocusRect = False
@@ -1157,7 +1193,7 @@ object FormMain: TFormMain
           object PanelOwnerGroups: TPanel
             AlignWithMargins = True
             Left = 0
-            Top = 238
+            Top = 266
             Width = 163
             Height = 28
             Margins.Left = 0
@@ -1169,6 +1205,7 @@ object FormMain: TFormMain
             BevelOuter = bvNone
             Constraints.MinHeight = 5
             TabOrder = 7
+            ExplicitTop = 238
             object ButtonFlatGroupID_Num: TButtonFlat
               AlignWithMargins = True
               Left = 3
@@ -1218,31 +1255,80 @@ object FormMain: TFormMain
               SubTextFont.Style = []
             end
           end
+          object ButtonFlatNotes: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 217
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1047#1072#1084#1077#1090#1082#1080
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 20
+            Images = ImageList16
+            OnClick = ButtonFlatFaveClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 8
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+            ExplicitLeft = 2
+          end
         end
         object ScrollBoxMenuWall: TScrollBox
           Left = 173
           Top = 0
-          Width = 748
-          Height = 504
+          Width = 556
+          Height = 393
           VertScrollBar.Smooth = True
-          VertScrollBar.Style = ssFlat
           VertScrollBar.Tracking = True
           Align = alLeft
           BorderStyle = bsNone
           Color = 15789805
           ParentColor = False
           TabOrder = 1
+          OnMouseWheelDown = ScrollBoxMenuWallMouseWheelDown
+          OnMouseWheelUp = ScrollBoxMenuWallMouseWheelUp
           object DrawPanelMenuWallDelApp: TDrawPanel
             AlignWithMargins = True
             Left = 3
-            Top = 436
-            Width = 553
+            Top = 515
+            Width = 533
             Height = 210
             Margins.Top = 7
-            Margins.Right = 175
             Margins.Bottom = 7
             DefaultPaint = False
-            OnPaint = DrawPanelPostsPaint
+            OnPaint = DrawPanelPostsCleanPaint
             Align = alTop
             BevelOuter = bvNone
             Color = clWhite
@@ -1265,7 +1351,7 @@ object FormMain: TFormMain
             object Image2: TImage
               Left = 0
               Top = 74
-              Width = 553
+              Width = 533
               Height = 136
               Align = alBottom
               Center = True
@@ -1603,6 +1689,7 @@ object FormMain: TFormMain
                 D7412D020000B6438A000080ED90220000603BA4080000D80E29020000B6438A
                 000080EDFE1F040D720A8E37D3B10000000049454E44AE426082}
               ExplicitTop = 64
+              ExplicitWidth = 553
             end
             object ButtonFlatAppDel: TButtonFlat
               AlignWithMargins = True
@@ -1654,8 +1741,8 @@ object FormMain: TFormMain
           end
           object PanelMenuBottom: TPanel
             Left = 0
-            Top = 653
-            Width = 731
+            Top = 732
+            Width = 539
             Height = 12
             Align = alTop
             BevelOuter = bvNone
@@ -1664,14 +1751,13 @@ object FormMain: TFormMain
           object DrawPanelMenuWallMenu: TDrawPanel
             AlignWithMargins = True
             Left = 3
-            Top = 240
-            Width = 553
+            Top = 319
+            Width = 533
             Height = 182
             Margins.Top = 7
-            Margins.Right = 175
             Margins.Bottom = 7
             DefaultPaint = False
-            OnPaint = DrawPanelPostsPaint
+            OnPaint = DrawPanelPostsCleanPaint
             Align = alTop
             BevelOuter = bvNone
             Color = clWhite
@@ -2753,13 +2839,12 @@ object FormMain: TFormMain
             AlignWithMargins = True
             Left = 3
             Top = 7
-            Width = 553
+            Width = 533
             Height = 219
             Margins.Top = 7
-            Margins.Right = 175
             Margins.Bottom = 7
             DefaultPaint = False
-            OnPaint = DrawPanelPostsPaint
+            OnPaint = DrawPanelPostsCleanPaint
             Align = alTop
             BevelOuter = bvNone
             Color = clWhite
@@ -2995,18 +3080,743 @@ object FormMain: TFormMain
               SubTextFont.Style = []
             end
           end
+          object DrawPanel7: TDrawPanel
+            AlignWithMargins = True
+            Left = 3
+            Top = 240
+            Width = 533
+            Height = 65
+            Margins.Top = 7
+            Margins.Bottom = 7
+            DefaultPaint = False
+            OnPaint = DrawPanelPostsCleanPaint
+            Align = alTop
+            BevelOuter = bvNone
+            Color = clWhite
+            ParentBackground = False
+            TabOrder = 4
+            DesignSize = (
+              533
+              65)
+            object ButtonFlatAutoClean: TButtonFlat
+              AlignWithMargins = True
+              Left = 19
+              Top = 18
+              Width = 494
+              Height = 28
+              Margins.Top = 0
+              Margins.Bottom = 0
+              Anchors = [akLeft, akTop, akRight, akBottom]
+              Caption = #1055#1086#1083#1085#1072#1103' '#1072#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1072#1103' '#1086#1095#1080#1089#1090#1082#1072
+              ColorNormal = 15789805
+              ColorOver = 15459809
+              ColorPressed = 15789805
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 7558185
+              Font.Height = -13
+              Font.Name = 'Roboto'
+              Font.Style = []
+              Font.Quality = fqClearType
+              FontOver.Charset = DEFAULT_CHARSET
+              FontOver.Color = 7558185
+              FontOver.Height = -13
+              FontOver.Name = 'Roboto'
+              FontOver.Style = []
+              FontOver.Quality = fqClearType
+              FontDown.Charset = DEFAULT_CHARSET
+              FontDown.Color = 7558185
+              FontDown.Height = -13
+              FontDown.Name = 'Roboto'
+              FontDown.Style = []
+              FontDown.Quality = fqClearType
+              IgnorBounds = True
+              ImageIndentRight = 3
+              ImageIndex = 14
+              Images = ImageList16
+              OnClick = ButtonFlatAutoCleanClick
+              RoundRectParam = 6
+              Shape = stRoundRect
+              ShowFocusRect = False
+              TabOrder = 0
+              TabStop = True
+              TextFormat = [tfSingleLine, tfVerticalCenter]
+              SubTextFont.Charset = DEFAULT_CHARSET
+              SubTextFont.Color = clWhite
+              SubTextFont.Height = -13
+              SubTextFont.Name = 'Tahoma'
+              SubTextFont.Style = []
+            end
+          end
         end
       end
     end
-    object TabSheetGroupClean: TTabSheet
-      Caption = 'GroupClean'
+    object TabSheetGroupMenu: TTabSheet
+      Caption = 'GroupMenu'
+      ImageIndex = 8
+      DesignSize = (
+        941
+        393)
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 941
+        Height = 393
+        Anchors = [akTop, akBottom]
+        BevelOuter = bvNone
+        TabOrder = 0
+        object Panel3: TPanel
+          AlignWithMargins = True
+          Left = 0
+          Top = 15
+          Width = 163
+          Height = 375
+          Margins.Left = 0
+          Margins.Top = 15
+          Margins.Right = 10
+          Align = alLeft
+          BevelOuter = bvNone
+          TabOrder = 0
+          object hLink2: ThLink
+            AlignWithMargins = True
+            Left = 10
+            Top = 259
+            Width = 143
+            Height = 13
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            Align = alTop
+            Caption = #1041#1083#1086#1075
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 10591643
+            Font.Height = -11
+            Font.Name = 'Roboto'
+            Font.Style = []
+            ParentFont = False
+            OnClick = LinkBlogClick
+            ExplicitWidth = 24
+          end
+          object hLink3: ThLink
+            AlignWithMargins = True
+            Left = 10
+            Top = 278
+            Width = 143
+            Height = 13
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            Align = alTop
+            Caption = #1056#1072#1079#1088#1072#1073#1086#1090#1095#1080#1082' [HemulGM]'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 10591643
+            Font.Height = -11
+            Font.Name = 'Roboto'
+            Font.Style = []
+            ParentFont = False
+            OnClick = LinkAutorClick
+            ExplicitWidth = 126
+          end
+          object Shape1: TShape
+            AlignWithMargins = True
+            Left = 30
+            Top = 66
+            Width = 123
+            Height = 1
+            Margins.Left = 30
+            Margins.Top = 10
+            Margins.Right = 10
+            Margins.Bottom = 10
+            Align = alTop
+            Brush.Color = 15262431
+            Pen.Color = 15262431
+            ExplicitTop = 87
+          end
+          object Shape8: TShape
+            AlignWithMargins = True
+            Left = 30
+            Top = 143
+            Width = 123
+            Height = 1
+            Margins.Left = 30
+            Margins.Top = 10
+            Margins.Right = 10
+            Margins.Bottom = 10
+            Align = alTop
+            Brush.Color = 15262431
+            Pen.Color = 15262431
+            ExplicitLeft = 37
+            ExplicitTop = 152
+          end
+          object ButtonFlatGroupUsers: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 28
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1055#1086#1076#1087#1080#1089#1095#1080#1082#1080
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 5
+            Images = ImageList16
+            OnClick = ButtonFlatGroupUsersClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 0
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+          end
+          object ButtonFlatGroupWall: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 0
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1057#1090#1077#1085#1072' '#1089#1086#1086#1073#1097#1077#1089#1090#1074#1072
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 7
+            Images = ImageList16
+            OnClick = ButtonFlatGroupWallClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 1
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+          end
+          object ButtonFlatGroupVideos: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 105
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1042#1080#1076#1077#1086
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 13
+            Images = ImageList16
+            OnClick = ButtonFlatGroupVideosClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 2
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+          end
+          object ButtonFlatGroupPhotos: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 77
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1060#1086#1090#1086#1075#1088#1072#1092#1080#1080
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 12
+            Images = ImageList16
+            OnClick = ButtonFlatGroupPhotosClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 3
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+          end
+          object Panel8: TPanel
+            AlignWithMargins = True
+            Left = 0
+            Top = 215
+            Width = 163
+            Height = 21
+            Margins.Left = 0
+            Margins.Top = 5
+            Margins.Right = 0
+            Margins.Bottom = 20
+            Align = alTop
+            AutoSize = True
+            BevelOuter = bvNone
+            Constraints.MinHeight = 5
+            TabOrder = 4
+          end
+          object ButtonFlatGroupMessage: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 182
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1054#1073#1089#1091#1078#1076#1077#1085#1080#1103
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 19
+            Images = ImageList16
+            OnClick = ButtonFlatGroupMessageClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 5
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+          end
+          object ButtonFlatGroupDocs: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 154
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 11
+            Images = ImageList16
+            OnClick = ButtonFlatGroupDocsClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 6
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+          end
+        end
+        object ScrollBoxGroupMenu: TScrollBox
+          Left = 173
+          Top = 0
+          Width = 556
+          Height = 393
+          VertScrollBar.Smooth = True
+          VertScrollBar.Style = ssFlat
+          VertScrollBar.Tracking = True
+          Align = alLeft
+          BorderStyle = bsNone
+          Color = 15789805
+          ParentColor = False
+          TabOrder = 1
+          object Panel9: TPanel
+            Left = 0
+            Top = 312
+            Width = 556
+            Height = 12
+            Align = alTop
+            BevelOuter = bvNone
+            TabOrder = 0
+          end
+          object DrawPanel5: TDrawPanel
+            AlignWithMargins = True
+            Left = 3
+            Top = 7
+            Width = 550
+            Height = 219
+            Margins.Top = 7
+            Margins.Bottom = 7
+            DefaultPaint = False
+            OnPaint = DrawPanelPostsCleanPaint
+            Align = alTop
+            BevelOuter = bvNone
+            Color = clWhite
+            ParentBackground = False
+            TabOrder = 1
+            object Label24: TLabel
+              Left = 11
+              Top = 6
+              Width = 178
+              Height = 23
+              Caption = #1044#1086#1073#1088#1086' '#1087#1086#1078#1072#1083#1086#1074#1072#1090#1100'!'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 5721926
+              Font.Height = -19
+              Font.Name = 'Roboto'
+              Font.Style = []
+              Font.Quality = fqAntialiased
+              ParentFont = False
+            end
+            object Label25: TLabel
+              AlignWithMargins = True
+              Left = 54
+              Top = 40
+              Width = 483
+              Height = 81
+              Margins.Left = 20
+              Margins.Top = 40
+              Margins.Right = 20
+              Margins.Bottom = 20
+              AutoSize = False
+              Caption = 
+                #1057#1077#1081#1095#1072#1089' '#1074#1099' '#1091#1087#1088#1072#1074#1083#1103#1077#1090#1077' '#1075#1088#1091#1087#1087#1086#1081'. '#1042#1099#1073#1077#1088#1080#1090#1077' '#1101#1083#1077#1084#1077#1085#1090' '#1086#1095#1080#1089#1090#1082#1080' '#1075#1088#1091#1087#1087#1099' '#1074' ' +
+                #1084#1077#1085#1102' '#1089#1083#1077#1074#1072'.'#13#10#13#10#1041#1091#1076#1100#1090#1077' '#1086#1089#1090#1086#1088#1086#1078#1085#1099', '#1091#1076#1072#1083#1077#1085#1080#1077' '#1085#1077#1083#1100#1079#1103' '#1086#1090#1084#1077#1085#1080#1090#1100'! '#1055#1088#1077#1088#1099 +
+                #1074#1072#1085#1080#1077' '#1086#1087#1077#1088#1072#1094#1080#1080' '#1087#1086#1079#1074#1086#1083#1080#1090' '#1089#1086#1093#1088#1072#1085#1080#1090#1100' '#1090#1086#1083#1100#1082#1086' '#1095#1072#1089#1090#1100' '#1076#1072#1085#1085#1099#1093', '#1082#1086#1090#1086#1088#1091#1102' '#1077 +
+                #1097#1105' '#1085#1077' '#1091#1089#1087#1077#1083#1080' '#1086#1073#1088#1072#1073#1086#1090#1072#1090#1100
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 3881787
+              Font.Height = -13
+              Font.Name = 'Roboto'
+              Font.Style = []
+              Font.Quality = fqClearType
+              ParentFont = False
+              WordWrap = True
+            end
+            object LinkOpenCurrentGroup: ThLink
+              Left = 53
+              Top = 188
+              Width = 183
+              Height = 15
+              Cursor = crHandPoint
+              Caption = 'https://hemulgm.ru/vk-cleaner/'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 8738858
+              Font.Height = -13
+              Font.Name = 'Roboto'
+              Font.Style = []
+              ParentFont = False
+              OnClick = LinkOpenCurrentGroupClick
+            end
+            object ButtonFlat20: TButtonFlat
+              Left = 19
+              Top = 40
+              Width = 28
+              Height = 28
+              Margins.Top = 0
+              Margins.Bottom = 0
+              Caption = ''
+              ColorNormal = clWhite
+              ColorOver = clWhite
+              ColorPressed = clWhite
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 7558185
+              Font.Height = -13
+              Font.Name = 'Roboto'
+              Font.Style = []
+              Font.Quality = fqClearType
+              FontOver.Charset = DEFAULT_CHARSET
+              FontOver.Color = 7558185
+              FontOver.Height = -13
+              FontOver.Name = 'Roboto'
+              FontOver.Style = []
+              FontOver.Quality = fqClearType
+              FontDown.Charset = DEFAULT_CHARSET
+              FontDown.Color = 7558185
+              FontDown.Height = -13
+              FontDown.Name = 'Roboto'
+              FontDown.Style = []
+              FontDown.Quality = fqClearType
+              IgnorBounds = True
+              ImageIndentLeft = 1
+              ImageIndentRight = 3
+              ImageIndex = 16
+              Images = ImageList16
+              RoundRectParam = 6
+              Shape = stRoundRect
+              ShowFocusRect = False
+              TabOrder = 0
+              TabStop = True
+              TextFormat = [tfSingleLine, tfVerticalCenter]
+              SubTextFont.Charset = DEFAULT_CHARSET
+              SubTextFont.Color = clWhite
+              SubTextFont.Height = -13
+              SubTextFont.Name = 'Tahoma'
+              SubTextFont.Style = []
+            end
+            object ButtonFlat22: TButtonFlat
+              Left = 19
+              Top = 180
+              Width = 28
+              Height = 28
+              Margins.Top = 0
+              Margins.Bottom = 0
+              Caption = ''
+              ColorNormal = clWhite
+              ColorOver = clWhite
+              ColorPressed = clWhite
+              Enabled = False
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 7558185
+              Font.Height = -13
+              Font.Name = 'Roboto'
+              Font.Style = []
+              Font.Quality = fqClearType
+              FontOver.Charset = DEFAULT_CHARSET
+              FontOver.Color = 7558185
+              FontOver.Height = -13
+              FontOver.Name = 'Roboto'
+              FontOver.Style = []
+              FontOver.Quality = fqClearType
+              FontDown.Charset = DEFAULT_CHARSET
+              FontDown.Color = 7558185
+              FontDown.Height = -13
+              FontDown.Name = 'Roboto'
+              FontDown.Style = []
+              FontDown.Quality = fqClearType
+              IgnorBounds = True
+              ImageIndentLeft = 1
+              ImageIndentRight = 3
+              ImageIndex = 18
+              Images = ImageList16
+              RoundRectParam = 6
+              Shape = stRoundRect
+              ShowFocusRect = False
+              TabOrder = 1
+              TabStop = True
+              TextFormat = [tfSingleLine, tfVerticalCenter]
+              SubTextFont.Charset = DEFAULT_CHARSET
+              SubTextFont.Color = clWhite
+              SubTextFont.Height = -13
+              SubTextFont.Name = 'Tahoma'
+              SubTextFont.Style = []
+            end
+          end
+          object DrawPanel8: TDrawPanel
+            AlignWithMargins = True
+            Left = 3
+            Top = 240
+            Width = 550
+            Height = 65
+            Margins.Top = 7
+            Margins.Bottom = 7
+            DefaultPaint = False
+            OnPaint = DrawPanelPostsCleanPaint
+            Align = alTop
+            BevelOuter = bvNone
+            Color = clWhite
+            ParentBackground = False
+            TabOrder = 2
+            DesignSize = (
+              550
+              65)
+            object ButtonFlatAutoCleanGroup: TButtonFlat
+              AlignWithMargins = True
+              Left = 19
+              Top = 18
+              Width = 511
+              Height = 28
+              Margins.Top = 0
+              Margins.Bottom = 0
+              Anchors = [akLeft, akTop, akRight, akBottom]
+              Caption = #1055#1086#1083#1085#1072#1103' '#1072#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1072#1103' '#1086#1095#1080#1089#1090#1082#1072
+              ColorNormal = 15789805
+              ColorOver = 15459809
+              ColorPressed = 15789805
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 7558185
+              Font.Height = -13
+              Font.Name = 'Roboto'
+              Font.Style = []
+              Font.Quality = fqClearType
+              FontOver.Charset = DEFAULT_CHARSET
+              FontOver.Color = 7558185
+              FontOver.Height = -13
+              FontOver.Name = 'Roboto'
+              FontOver.Style = []
+              FontOver.Quality = fqClearType
+              FontDown.Charset = DEFAULT_CHARSET
+              FontDown.Color = 7558185
+              FontDown.Height = -13
+              FontDown.Name = 'Roboto'
+              FontDown.Style = []
+              FontDown.Quality = fqClearType
+              IgnorBounds = True
+              ImageIndentRight = 3
+              ImageIndex = 14
+              Images = ImageList16
+              OnClick = ButtonFlatAutoCleanGroupClick
+              RoundRectParam = 6
+              Shape = stRoundRect
+              ShowFocusRect = False
+              TabOrder = 0
+              TabStop = True
+              TextFormat = [tfSingleLine, tfVerticalCenter]
+              SubTextFont.Charset = DEFAULT_CHARSET
+              SubTextFont.Color = clWhite
+              SubTextFont.Height = -13
+              SubTextFont.Name = 'Tahoma'
+              SubTextFont.Style = []
+            end
+          end
+        end
+      end
+    end
+    object TabSheetGroups: TTabSheet
+      Caption = 'Groups'
       ImageIndex = 1
       object TableExGroupClean: TTableEx
         AlignWithMargins = True
         Left = 3
         Top = 27
-        Width = 1043
-        Height = 480
+        Width = 935
+        Height = 363
         Align = alClient
         BevelKind = bkFlat
         BevelOuter = bvRaised
@@ -3041,7 +3851,7 @@ object FormMain: TFormMain
           end
           item
             Caption = #1058#1077#1082#1089#1090' '#1087#1086#1089#1090#1072
-            Width = 639
+            Width = 531
           end>
         ItemCount = 1
         LineColor = 15856113
@@ -3075,7 +3885,7 @@ object FormMain: TFormMain
       object PanelGroupCleanTools: TPanel
         Left = 0
         Top = 0
-        Width = 1049
+        Width = 941
         Height = 24
         Align = alTop
         BevelOuter = bvNone
@@ -3218,15 +4028,15 @@ object FormMain: TFormMain
         end
       end
     end
-    object TabSheetFriendClean: TTabSheet
-      Caption = 'FriendClean'
+    object TabSheetFriends: TTabSheet
+      Caption = 'Friends'
       ImageIndex = 4
       object TableExFriendClean: TTableEx
         AlignWithMargins = True
         Left = 3
         Top = 27
-        Width = 1043
-        Height = 480
+        Width = 935
+        Height = 363
         Align = alClient
         BevelKind = bkFlat
         BevelOuter = bvRaised
@@ -3261,7 +4071,7 @@ object FormMain: TFormMain
           end
           item
             Caption = #1057#1090#1072#1090#1091#1089' '#1072#1082#1082#1072#1091#1085#1090#1072
-            Width = 529
+            Width = 421
           end>
         ItemCount = 1
         LineColor = 15856113
@@ -3295,7 +4105,7 @@ object FormMain: TFormMain
       object Panel4: TPanel
         Left = 0
         Top = 0
-        Width = 1049
+        Width = 941
         Height = 24
         Align = alTop
         BevelOuter = bvNone
@@ -3394,12 +4204,12 @@ object FormMain: TFormMain
       end
     end
     object TabSheetWall: TTabSheet
-      Caption = 'WallClean'
+      Caption = 'Wall'
       ImageIndex = 5
       object Panel6: TPanel
         Left = 0
         Top = 0
-        Width = 1049
+        Width = 941
         Height = 24
         Align = alTop
         BevelOuter = bvNone
@@ -3451,13 +4261,13 @@ object FormMain: TFormMain
           SubTextFont.Style = []
         end
       end
-      object DrawPanelPosts: TDrawPanel
+      object DrawPanelPostsClean: TDrawPanel
         Left = 10
         Top = 30
         Width = 495
         Height = 271
         DefaultPaint = False
-        OnPaint = DrawPanelPostsPaint
+        OnPaint = DrawPanelPostsCleanPaint
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -3467,7 +4277,7 @@ object FormMain: TFormMain
           Top = 15
           Width = 118
           Height = 23
-          Caption = #1055#1086#1089#1090#1086#1074' - 200'
+          Caption = #1047#1072#1087#1080#1089#1080' - 200'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 5721926
           Font.Height = -19
@@ -3884,13 +4694,13 @@ object FormMain: TFormMain
     object TabSheetPhotos: TTabSheet
       Caption = 'Photos'
       ImageIndex = 6
-      object DrawPanel1: TDrawPanel
+      object DrawPanelPhotosClean: TDrawPanel
         Left = 10
         Top = 30
         Width = 495
         Height = 303
         DefaultPaint = False
-        OnPaint = DrawPanelPostsPaint
+        OnPaint = DrawPanelPostsCleanPaint
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -4405,7 +5215,7 @@ object FormMain: TFormMain
       object Panel5: TPanel
         Left = 0
         Top = 0
-        Width = 1049
+        Width = 941
         Height = 24
         Align = alTop
         BevelOuter = bvNone
@@ -4528,576 +5338,1715 @@ object FormMain: TFormMain
         end
       end
     end
-    object TabSheetLicense: TTabSheet
-      Caption = 'License'
-      ImageIndex = 7
-      object RichEditLicense: TRichEdit
-        AlignWithMargins = True
-        Left = 30
-        Top = 20
-        Width = 989
-        Height = 470
-        Margins.Left = 30
-        Margins.Top = 20
-        Margins.Right = 30
-        Margins.Bottom = 20
-        Align = alClient
-        Alignment = taCenter
-        BorderStyle = bsNone
-        Color = 15789805
-        Font.Charset = RUSSIAN_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Roboto'
-        Font.Style = []
-        Font.Quality = fqClearType
-        ParentFont = False
-        ReadOnly = True
-        ScrollBars = ssVertical
-        TabOrder = 0
-        Zoom = 100
-      end
-    end
-    object TabSheetGroupMenu: TTabSheet
-      Caption = 'GroupMenu'
-      ImageIndex = 8
-      DesignSize = (
-        1049
-        510)
-      object Panel1: TPanel
-        Left = 53
-        Top = 3
+    object TabSheetVideo: TTabSheet
+      Caption = 'Videos'
+      ImageIndex = 9
+      object Panel10: TPanel
+        Left = 0
+        Top = 0
         Width = 941
-        Height = 504
-        Anchors = [akTop, akBottom]
+        Height = 24
+        Align = alTop
         BevelOuter = bvNone
+        TabOrder = 1
+        object ButtonFlatGetVideosInfo: TButtonFlat
+          Left = 0
+          Top = 0
+          Width = 105
+          Height = 24
+          Align = alLeft
+          Caption = #1054#1073#1085#1086#1074#1080#1090#1100
+          ColorNormal = 15789805
+          ColorOver = 15459809
+          ColorPressed = 15789805
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 7558185
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontOver.Quality = fqClearType
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 7558185
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          FontDown.Quality = fqClearType
+          IgnorBounds = True
+          ImageIndentLeft = 5
+          ImageIndentRight = 5
+          ImageIndex = 4
+          Images = ImageList16
+          OnClick = ButtonFlatGetVideosInfoClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 0
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+      end
+      object PanelVideoAlbums: TPanel
+        Left = 534
+        Top = 38
+        Width = 309
+        Height = 83
+        BevelOuter = bvNone
+        TabOrder = 2
+        Visible = False
+        object TableExVideosAlbums: TTableEx
+          Left = 0
+          Top = 0
+          Width = 309
+          Height = 83
+          Align = alClient
+          BorderStyle = bsNone
+          Color = 15856113
+          DefaultRowHeight = 25
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          TabOrder = 0
+          OnDrawCellData = TableExVideosAlbumsDrawCellData
+          ItemIndex = -1
+          OnItemColClick = TableExVideosAlbumsItemColClick
+          GetData = TableExVideosAlbumsGetData
+          Columns = <
+            item
+              Caption = 'Selected'
+              Width = 30
+              MinWidth = 30
+              AsButton = True
+            end
+            item
+              Caption = 'Name'
+              Width = 279
+            end>
+          ItemCount = 1
+          LineColor = 15856113
+          LineColorXor = 15856113
+          LineHotColor = 15066597
+          LineSelColor = 14079702
+          ColumnsColor = 15856113
+          FontHotLine.Charset = DEFAULT_CHARSET
+          FontHotLine.Color = 7558185
+          FontHotLine.Height = -13
+          FontHotLine.Name = 'Roboto'
+          FontHotLine.Style = []
+          FontLine.Charset = DEFAULT_CHARSET
+          FontLine.Color = 7558185
+          FontLine.Height = -13
+          FontLine.Name = 'Roboto'
+          FontLine.Style = []
+          FontSelLine.Charset = DEFAULT_CHARSET
+          FontSelLine.Color = 6572324
+          FontSelLine.Height = -13
+          FontSelLine.Name = 'Roboto'
+          FontSelLine.Style = []
+          ShowColumns = False
+          ColumnsFont.Charset = DEFAULT_CHARSET
+          ColumnsFont.Color = 2631720
+          ColumnsFont.Height = -11
+          ColumnsFont.Name = 'Tahoma'
+          ColumnsFont.Style = []
+          CanClickToUnfocused = True
+        end
+      end
+      object DrawPanelVideosClean: TDrawPanel
+        Left = 10
+        Top = 30
+        Width = 495
+        Height = 303
+        DefaultPaint = False
+        OnPaint = DrawPanelPostsCleanPaint
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
         TabOrder = 0
-        object Panel3: TPanel
+        object LabelVideosCaption: TLabel
+          Left = 20
+          Top = 15
+          Width = 119
+          Height = 23
+          Caption = #1042#1080#1076#1077#1086#1079#1072#1087#1080#1089#1080
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 5721926
+          Font.Height = -19
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqAntialiased
+          ParentFont = False
+          Transparent = True
+        end
+        object Label23: TLabel
+          Left = 192
+          Top = 160
+          Width = 7
+          Height = 15
+          Caption = #1089
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          Transparent = True
+        end
+        object Label26: TLabel
+          Left = 333
+          Top = 160
+          Width = 14
+          Height = 15
+          Caption = #1087#1086
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          Transparent = True
+        end
+        object Shape11: TShape
+          AlignWithMargins = True
+          Left = 20
+          Top = 50
+          Width = 455
+          Height = 1
+          Margins.Left = 20
+          Margins.Top = 50
+          Margins.Right = 20
+          Margins.Bottom = 6
+          Align = alTop
+          Brush.Color = 15526633
+          Pen.Color = 15526633
+          ExplicitLeft = 10
+          ExplicitTop = 36
+          ExplicitWidth = 140
+        end
+        object Shape12: TShape
           AlignWithMargins = True
           Left = 0
-          Top = 15
-          Width = 163
-          Height = 486
+          Top = 232
+          Width = 495
+          Height = 1
           Margins.Left = 0
-          Margins.Top = 15
-          Margins.Right = 10
-          Align = alLeft
-          BevelOuter = bvNone
-          TabOrder = 0
-          object hLink2: ThLink
-            AlignWithMargins = True
-            Left = 10
-            Top = 231
-            Width = 143
-            Height = 13
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Right = 10
-            Align = alTop
-            Caption = #1041#1083#1086#1075
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 10591643
-            Font.Height = -11
-            Font.Name = 'Roboto'
-            Font.Style = []
-            ParentFont = False
-            OnClick = LinkBlogClick
-            ExplicitWidth = 24
-          end
-          object hLink3: ThLink
-            AlignWithMargins = True
-            Left = 10
-            Top = 250
-            Width = 143
-            Height = 13
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Right = 10
-            Align = alTop
-            Caption = #1056#1072#1079#1088#1072#1073#1086#1090#1095#1080#1082' [HemulGM]'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 10591643
-            Font.Height = -11
-            Font.Name = 'Roboto'
-            Font.Style = []
-            ParentFont = False
-            OnClick = LinkAutorClick
-            ExplicitWidth = 126
-          end
-          object Shape1: TShape
-            AlignWithMargins = True
-            Left = 30
-            Top = 66
-            Width = 123
-            Height = 1
-            Margins.Left = 30
-            Margins.Top = 10
-            Margins.Right = 10
-            Margins.Bottom = 10
-            Align = alTop
-            Brush.Color = 15262431
-            Pen.Color = 15262431
-            ExplicitTop = 87
-          end
-          object Shape8: TShape
-            AlignWithMargins = True
-            Left = 30
-            Top = 143
-            Width = 123
-            Height = 1
-            Margins.Left = 30
-            Margins.Top = 10
-            Margins.Right = 10
-            Margins.Bottom = 10
-            Align = alTop
-            Brush.Color = 15262431
-            Pen.Color = 15262431
-            ExplicitLeft = 37
-            ExplicitTop = 152
-          end
-          object ButtonFlatGroupUsers: TButtonFlat
-            AlignWithMargins = True
-            Left = 3
-            Top = 28
-            Width = 157
-            Height = 28
-            Margins.Top = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = #1055#1086#1076#1087#1080#1089#1095#1080#1082#1080
-            ColorNormal = 15789805
-            ColorOver = 15459809
-            ColorPressed = 15789805
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 7558185
-            Font.Height = -13
-            Font.Name = 'Roboto'
-            Font.Style = []
-            Font.Quality = fqClearType
-            FontOver.Charset = DEFAULT_CHARSET
-            FontOver.Color = 7558185
-            FontOver.Height = -13
-            FontOver.Name = 'Roboto'
-            FontOver.Style = []
-            FontOver.Quality = fqClearType
-            FontDown.Charset = DEFAULT_CHARSET
-            FontDown.Color = 7558185
-            FontDown.Height = -13
-            FontDown.Name = 'Roboto'
-            FontDown.Style = []
-            FontDown.Quality = fqClearType
-            IgnorBounds = True
-            ImageIndentRight = 5
-            ImageIndex = 5
-            Images = ImageList16
-            OnClick = ButtonFlatGroupUsersClick
-            RoundRectParam = 6
-            Shape = stRoundRect
-            ShowFocusRect = False
-            TabOrder = 0
-            TabStop = True
-            TextFormat = [tfSingleLine, tfVerticalCenter]
-            SubTextFont.Charset = DEFAULT_CHARSET
-            SubTextFont.Color = clWhite
-            SubTextFont.Height = -13
-            SubTextFont.Name = 'Tahoma'
-            SubTextFont.Style = []
-          end
-          object ButtonFlatGroupWall: TButtonFlat
-            AlignWithMargins = True
-            Left = 3
-            Top = 0
-            Width = 157
-            Height = 28
-            Margins.Top = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = #1057#1090#1077#1085#1072' '#1089#1086#1086#1073#1097#1077#1089#1090#1074#1072
-            ColorNormal = 15789805
-            ColorOver = 15459809
-            ColorPressed = 15789805
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 7558185
-            Font.Height = -13
-            Font.Name = 'Roboto'
-            Font.Style = []
-            Font.Quality = fqClearType
-            FontOver.Charset = DEFAULT_CHARSET
-            FontOver.Color = 7558185
-            FontOver.Height = -13
-            FontOver.Name = 'Roboto'
-            FontOver.Style = []
-            FontOver.Quality = fqClearType
-            FontDown.Charset = DEFAULT_CHARSET
-            FontDown.Color = 7558185
-            FontDown.Height = -13
-            FontDown.Name = 'Roboto'
-            FontDown.Style = []
-            FontDown.Quality = fqClearType
-            IgnorBounds = True
-            ImageIndentRight = 5
-            ImageIndex = 7
-            Images = ImageList16
-            OnClick = ButtonFlatGroupWallClick
-            RoundRectParam = 6
-            Shape = stRoundRect
-            ShowFocusRect = False
-            TabOrder = 1
-            TabStop = True
-            TextFormat = [tfSingleLine, tfVerticalCenter]
-            SubTextFont.Charset = DEFAULT_CHARSET
-            SubTextFont.Color = clWhite
-            SubTextFont.Height = -13
-            SubTextFont.Name = 'Tahoma'
-            SubTextFont.Style = []
-          end
-          object ButtonFlatGroupVideos: TButtonFlat
-            AlignWithMargins = True
-            Left = 3
-            Top = 105
-            Width = 157
-            Height = 28
-            Margins.Top = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = #1042#1080#1076#1077#1086
-            ColorNormal = 15789805
-            ColorOver = 15459809
-            ColorPressed = 15789805
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 7558185
-            Font.Height = -13
-            Font.Name = 'Roboto'
-            Font.Style = []
-            Font.Quality = fqClearType
-            FontOver.Charset = DEFAULT_CHARSET
-            FontOver.Color = 7558185
-            FontOver.Height = -13
-            FontOver.Name = 'Roboto'
-            FontOver.Style = []
-            FontOver.Quality = fqClearType
-            FontDown.Charset = DEFAULT_CHARSET
-            FontDown.Color = 7558185
-            FontDown.Height = -13
-            FontDown.Name = 'Roboto'
-            FontDown.Style = []
-            FontDown.Quality = fqClearType
-            IgnorBounds = True
-            ImageIndentRight = 5
-            ImageIndex = 13
-            Images = ImageList16
-            OnClick = ButtonFlat4Click
-            RoundRectParam = 6
-            Shape = stRoundRect
-            ShowFocusRect = False
-            TabOrder = 2
-            TabStop = True
-            TextFormat = [tfSingleLine, tfVerticalCenter]
-            SubTextFont.Charset = DEFAULT_CHARSET
-            SubTextFont.Color = clWhite
-            SubTextFont.Height = -13
-            SubTextFont.Name = 'Tahoma'
-            SubTextFont.Style = []
-          end
-          object ButtonFlatGroupPhotos: TButtonFlat
-            AlignWithMargins = True
-            Left = 3
-            Top = 77
-            Width = 157
-            Height = 28
-            Margins.Top = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = #1060#1086#1090#1086#1075#1088#1072#1092#1080#1080
-            ColorNormal = 15789805
-            ColorOver = 15459809
-            ColorPressed = 15789805
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 7558185
-            Font.Height = -13
-            Font.Name = 'Roboto'
-            Font.Style = []
-            Font.Quality = fqClearType
-            FontOver.Charset = DEFAULT_CHARSET
-            FontOver.Color = 7558185
-            FontOver.Height = -13
-            FontOver.Name = 'Roboto'
-            FontOver.Style = []
-            FontOver.Quality = fqClearType
-            FontDown.Charset = DEFAULT_CHARSET
-            FontDown.Color = 7558185
-            FontDown.Height = -13
-            FontDown.Name = 'Roboto'
-            FontDown.Style = []
-            FontDown.Quality = fqClearType
-            IgnorBounds = True
-            ImageIndentRight = 5
-            ImageIndex = 12
-            Images = ImageList16
-            OnClick = ButtonFlatGroupPhotosClick
-            RoundRectParam = 6
-            Shape = stRoundRect
-            ShowFocusRect = False
-            TabOrder = 3
-            TabStop = True
-            TextFormat = [tfSingleLine, tfVerticalCenter]
-            SubTextFont.Charset = DEFAULT_CHARSET
-            SubTextFont.Color = clWhite
-            SubTextFont.Height = -13
-            SubTextFont.Name = 'Tahoma'
-            SubTextFont.Style = []
-          end
-          object Panel8: TPanel
-            AlignWithMargins = True
-            Left = 0
-            Top = 187
-            Width = 163
-            Height = 21
-            Margins.Left = 0
-            Margins.Top = 5
-            Margins.Right = 0
-            Margins.Bottom = 20
-            Align = alTop
-            AutoSize = True
-            BevelOuter = bvNone
-            Constraints.MinHeight = 5
-            TabOrder = 4
-          end
-          object ButtonFlatGroupMessage: TButtonFlat
-            AlignWithMargins = True
-            Left = 3
-            Top = 154
-            Width = 157
-            Height = 28
-            Margins.Top = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = #1054#1073#1089#1091#1078#1076#1077#1085#1080#1103
-            ColorNormal = 15789805
-            ColorOver = 15459809
-            ColorPressed = 15789805
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 7558185
-            Font.Height = -13
-            Font.Name = 'Roboto'
-            Font.Style = []
-            Font.Quality = fqClearType
-            FontOver.Charset = DEFAULT_CHARSET
-            FontOver.Color = 7558185
-            FontOver.Height = -13
-            FontOver.Name = 'Roboto'
-            FontOver.Style = []
-            FontOver.Quality = fqClearType
-            FontDown.Charset = DEFAULT_CHARSET
-            FontDown.Color = 7558185
-            FontDown.Height = -13
-            FontDown.Name = 'Roboto'
-            FontDown.Style = []
-            FontDown.Quality = fqClearType
-            IgnorBounds = True
-            ImageIndentRight = 5
-            ImageIndex = 19
-            Images = ImageList16
-            OnClick = ButtonFlat4Click
-            RoundRectParam = 6
-            Shape = stRoundRect
-            ShowFocusRect = False
-            TabOrder = 5
-            TabStop = True
-            TextFormat = [tfSingleLine, tfVerticalCenter]
-            SubTextFont.Charset = DEFAULT_CHARSET
-            SubTextFont.Color = clWhite
-            SubTextFont.Height = -13
-            SubTextFont.Name = 'Tahoma'
-            SubTextFont.Style = []
-          end
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 70
+          Align = alBottom
+          Brush.Color = 15526633
+          Pen.Color = 15526633
+          ExplicitLeft = 10
+          ExplicitTop = 36
+          ExplicitWidth = 140
         end
-        object ScrollBox2: TScrollBox
-          Left = 173
-          Top = 0
-          Width = 748
-          Height = 504
-          VertScrollBar.Smooth = True
-          VertScrollBar.Style = ssFlat
-          VertScrollBar.Tracking = True
-          Align = alLeft
-          BorderStyle = bsNone
-          Color = 15789805
-          ParentColor = False
+        object ButtonFlatVideosCalc: TButtonFlat
+          Left = 20
+          Top = 249
+          Width = 149
+          Height = 35
+          Caption = #1055#1086#1076#1089#1095#1105#1090
+          ColorNormal = 15854565
+          ColorOver = 15591135
+          ColorPressed = 15393498
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8218453
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 8218453
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 8218453
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          IgnorBounds = True
+          OnClick = ButtonFlatVideosCalcClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 0
+          TabStop = True
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+        object CheckBoxVideoLikes: TCheckBoxFlat
+          Left = 20
+          Top = 66
+          Width = 285
+          Height = 24
+          Caption = #1058#1086#1083#1100#1082#1086' '#1090#1077' '#1074#1080#1076#1077#1086', '#1075#1076#1077' '#1083#1072#1081#1082#1086#1074' '#1084#1077#1085#1100#1096#1077' '#1095#1077#1084': '
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
           TabOrder = 1
-          object Panel9: TPanel
-            Left = 0
-            Top = 233
-            Width = 748
-            Height = 12
-            Align = alTop
-            BevelOuter = bvNone
-            TabOrder = 0
-          end
-          object DrawPanel5: TDrawPanel
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object SpinEditVideoLikes: TlkSpinEdit
+          Left = 350
+          Top = 65
+          Width = 125
+          Height = 26
+          BorderStyle = bsNone
+          BevelInner = bvSpace
+          BevelKind = bkTile
+          BevelOuter = bvNone
+          BevelWidth = 3
+          Color = 15854565
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8218453
+          Font.Height = -16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          MaxValue = 0
+          MinValue = 0
+          ParentFont = False
+          TabOrder = 2
+          Value = 100
+        end
+        object CheckBoxVideoFromOnly: TCheckBoxFlat
+          Left = 20
+          Top = 126
+          Width = 421
+          Height = 24
+          Caption = #1058#1086#1083#1100#1082#1086' '#1074#1080#1076#1077#1086', '#1076#1086#1073#1072#1074#1083#1077#1085#1085#1099#1077' '#1076#1088#1091#1075#1080#1084#1080' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1103#1084#1080' ('#1076#1083#1103' '#1075#1088#1091#1087#1087')'
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 3
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxVideoDate: TCheckBoxFlat
+          Left = 20
+          Top = 156
+          Width = 149
+          Height = 24
+          Caption = #1058#1086#1083#1100#1082#1086' '#1079#1072' '#1087#1077#1088#1080#1086#1076
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 4
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CalendarPickerVideoDateS: TCalendarPicker
+          Left = 204
+          Top = 155
+          Width = 125
+          Height = 26
+          CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
+          CalendarHeaderInfo.DaysOfWeekFont.Height = -13
+          CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+          CalendarHeaderInfo.DaysOfWeekFont.Style = []
+          CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.Font.Color = clWindowText
+          CalendarHeaderInfo.Font.Height = -20
+          CalendarHeaderInfo.Font.Name = 'Segoe UI'
+          CalendarHeaderInfo.Font.Style = []
+          Color = clWindow
+          Date = 43671.605503344910000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          IsEmpty = False
+          ParentFont = False
+          TabOrder = 5
+          TextHint = #1076#1072#1090#1072
+        end
+        object CalendarPickerVideoDateE: TCalendarPicker
+          Left = 350
+          Top = 155
+          Width = 125
+          Height = 26
+          CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
+          CalendarHeaderInfo.DaysOfWeekFont.Height = -13
+          CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+          CalendarHeaderInfo.DaysOfWeekFont.Style = []
+          CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.Font.Color = clWindowText
+          CalendarHeaderInfo.Font.Height = -20
+          CalendarHeaderInfo.Font.Name = 'Segoe UI'
+          CalendarHeaderInfo.Font.Style = []
+          Color = clWindow
+          Date = 43671.605687500000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          IsEmpty = False
+          ParentFont = False
+          TabOrder = 6
+          TextHint = #1076#1072#1090#1072
+        end
+        object ButtonFlatVideosDelete: TButtonFlat
+          Left = 175
+          Top = 249
+          Width = 300
+          Height = 35
+          Caption = #1059#1076#1072#1083#1080#1090#1100' '#1074#1080#1076#1077#1086
+          ColorNormal = 15854565
+          ColorOver = 15591135
+          ColorPressed = 15393498
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8218453
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 8218453
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 8218453
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          IgnorBounds = True
+          OnClick = ButtonFlatVideosDeleteClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 7
+          TabStop = True
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+        object CheckBoxVideoReply: TCheckBoxFlat
+          Left = 20
+          Top = 96
+          Width = 285
+          Height = 24
+          Caption = #1058#1086#1083#1100#1082#1086' '#1090#1077' '#1074#1080#1076#1077#1086', '#1075#1076#1077' '#1088#1077#1087#1086#1089#1090#1086#1074' '#1084#1077#1085#1100#1096#1077' '#1095#1077#1084': '
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 8
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object SpinEditVideoReply: TlkSpinEdit
+          Left = 350
+          Top = 95
+          Width = 125
+          Height = 26
+          BorderStyle = bsNone
+          BevelInner = bvSpace
+          BevelKind = bkTile
+          BevelOuter = bvNone
+          BevelWidth = 3
+          Color = 15854565
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8218453
+          Font.Height = -16
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          MaxValue = 0
+          MinValue = 0
+          ParentFont = False
+          TabOrder = 9
+          Value = 100
+        end
+        object CheckBoxVideoAlbums: TCheckBoxFlat
+          Left = 20
+          Top = 186
+          Width = 157
+          Height = 24
+          Caption = #1042#1099#1073#1088#1072#1085#1085#1099#1077' '#1072#1083#1100#1073#1086#1084#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 10
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object ButtonFlatVideoAlbumsSelect: TButtonFlat
+          AlignWithMargins = True
+          Left = 175
+          Top = 186
+          Width = 20
+          Height = 24
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
+          Caption = ''
+          ColorNormal = clWhite
+          ColorOver = 15788772
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 7558185
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontOver.Quality = fqClearType
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 7558185
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          FontDown.Quality = fqClearType
+          IgnorBounds = True
+          ImageIndentLeft = -3
+          ImageIndex = 1
+          Images = ImageList16
+          OnClick = ButtonFlatVideoAlbumsSelectClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 11
+          TabStop = True
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+      end
+    end
+    object TabSheetDocs: TTabSheet
+      Caption = 'Docs'
+      ImageIndex = 11
+      object DrawPanelDocClean: TDrawPanel
+        Left = 10
+        Top = 30
+        Width = 495
+        Height = 331
+        DefaultPaint = False
+        OnPaint = DrawPanelPostsCleanPaint
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        DesignSize = (
+          495
+          331)
+        object LabelDocsCaption: TLabel
+          Left = 20
+          Top = 15
+          Width = 158
+          Height = 23
+          Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099' - 200'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 5721926
+          Font.Height = -19
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqAntialiased
+          ParentFont = False
+          Transparent = True
+        end
+        object Label29: TLabel
+          Left = 192
+          Top = 70
+          Width = 7
+          Height = 15
+          Caption = #1089
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          Transparent = True
+        end
+        object Label30: TLabel
+          Left = 333
+          Top = 70
+          Width = 14
+          Height = 15
+          Caption = #1087#1086
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          Transparent = True
+        end
+        object Shape15: TShape
+          AlignWithMargins = True
+          Left = 20
+          Top = 50
+          Width = 455
+          Height = 1
+          Margins.Left = 20
+          Margins.Top = 50
+          Margins.Right = 20
+          Margins.Bottom = 6
+          Align = alTop
+          Brush.Color = 15526633
+          Pen.Color = 15526633
+          ExplicitLeft = 10
+          ExplicitTop = 36
+          ExplicitWidth = 140
+        end
+        object Shape16: TShape
+          AlignWithMargins = True
+          Left = 0
+          Top = 260
+          Width = 495
+          Height = 1
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 70
+          Align = alBottom
+          Brush.Color = 15526633
+          Pen.Color = 15526633
+          ExplicitLeft = 10
+          ExplicitTop = 36
+          ExplicitWidth = 140
+        end
+        object ButtonFlatDocsCalc: TButtonFlat
+          Left = 20
+          Top = 277
+          Width = 149
+          Height = 35
+          Anchors = [akLeft, akBottom]
+          Caption = #1055#1086#1076#1089#1095#1105#1090
+          ColorNormal = 15854565
+          ColorOver = 15591135
+          ColorPressed = 15393498
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8218453
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 8218453
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 8218453
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          IgnorBounds = True
+          OnClick = ButtonFlatDocsCalcClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 0
+          TabStop = True
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+        object CheckBoxDocsDate: TCheckBoxFlat
+          Left = 20
+          Top = 66
+          Width = 149
+          Height = 24
+          Caption = #1058#1086#1083#1100#1082#1086' '#1079#1072' '#1087#1077#1088#1080#1086#1076
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 1
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CalendarPickerDocsDateS: TCalendarPicker
+          Left = 204
+          Top = 65
+          Width = 125
+          Height = 26
+          CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
+          CalendarHeaderInfo.DaysOfWeekFont.Height = -13
+          CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+          CalendarHeaderInfo.DaysOfWeekFont.Style = []
+          CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.Font.Color = clWindowText
+          CalendarHeaderInfo.Font.Height = -20
+          CalendarHeaderInfo.Font.Name = 'Segoe UI'
+          CalendarHeaderInfo.Font.Style = []
+          Color = clWindow
+          Date = 43671.605503344910000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          IsEmpty = False
+          ParentFont = False
+          TabOrder = 2
+          TextHint = #1076#1072#1090#1072
+        end
+        object CalendarPickerDocsDateE: TCalendarPicker
+          Left = 350
+          Top = 65
+          Width = 125
+          Height = 26
+          CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
+          CalendarHeaderInfo.DaysOfWeekFont.Height = -13
+          CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+          CalendarHeaderInfo.DaysOfWeekFont.Style = []
+          CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.Font.Color = clWindowText
+          CalendarHeaderInfo.Font.Height = -20
+          CalendarHeaderInfo.Font.Name = 'Segoe UI'
+          CalendarHeaderInfo.Font.Style = []
+          Color = clWindow
+          Date = 43671.605687500000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          IsEmpty = False
+          ParentFont = False
+          TabOrder = 3
+          TextHint = #1076#1072#1090#1072
+        end
+        object ButtonFlatDocsDel: TButtonFlat
+          Left = 175
+          Top = 277
+          Width = 300
+          Height = 35
+          Anchors = [akLeft, akBottom]
+          Caption = #1059#1076#1072#1083#1080#1090#1100' '#1076#1086#1082#1091#1084#1077#1085#1090#1099
+          ColorNormal = 15854565
+          ColorOver = 15591135
+          ColorPressed = 15393498
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8218453
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 8218453
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 8218453
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          IgnorBounds = True
+          OnClick = ButtonFlatDocsDelClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 4
+          TabStop = True
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+        object CheckBoxDocTypes: TCheckBoxFlat
+          Left = 20
+          Top = 96
+          Width = 158
+          Height = 24
+          Caption = #1042#1099#1073#1088#1072#1085#1085#1099#1077' '#1074#1080#1076#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 5
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object ButtonFlatDocTypes: TButtonFlat
+          AlignWithMargins = True
+          Left = 175
+          Top = 96
+          Width = 20
+          Height = 24
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
+          Caption = ''
+          ColorNormal = clWhite
+          ColorOver = 15788772
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 7558185
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontOver.Quality = fqClearType
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 7558185
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          FontDown.Quality = fqClearType
+          IgnorBounds = True
+          ImageIndentLeft = -3
+          ImageIndex = 1
+          Images = ImageList16
+          OnClick = ButtonFlatDocTypesClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 6
+          TabStop = True
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+      end
+      object Panel11: TPanel
+        Left = 0
+        Top = 0
+        Width = 941
+        Height = 24
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+        object ButtonFlatDocsGetInfo: TButtonFlat
+          Left = 0
+          Top = 0
+          Width = 105
+          Height = 24
+          Align = alLeft
+          Caption = #1054#1073#1085#1086#1074#1080#1090#1100
+          ColorNormal = 15789805
+          ColorOver = 15459809
+          ColorPressed = 15789805
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 7558185
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontOver.Quality = fqClearType
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 7558185
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          FontDown.Quality = fqClearType
+          IgnorBounds = True
+          ImageIndentLeft = 5
+          ImageIndentRight = 5
+          ImageIndex = 4
+          Images = ImageList16
+          OnClick = ButtonFlatDocsGetInfoClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 0
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+      end
+      object PanelDocTypes: TPanel
+        Left = 542
+        Top = 46
+        Width = 309
+        Height = 83
+        BevelOuter = bvNone
+        TabOrder = 2
+        Visible = False
+        object TableExDocTypes: TTableEx
+          Left = 0
+          Top = 0
+          Width = 309
+          Height = 83
+          Align = alClient
+          BorderStyle = bsNone
+          Color = 15856113
+          DefaultRowHeight = 25
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          TabOrder = 0
+          OnDrawCellData = TableExDocTypesDrawCellData
+          ItemIndex = -1
+          OnItemColClick = TableExDocTypesItemColClick
+          GetData = TableExDocTypesGetData
+          Columns = <
+            item
+              Caption = 'Selected'
+              Width = 30
+              MinWidth = 30
+              AsButton = True
+            end
+            item
+              Caption = 'Name'
+              Width = 279
+            end>
+          ItemCount = 1
+          LineColor = 15856113
+          LineColorXor = 15856113
+          LineHotColor = 15066597
+          LineSelColor = 14079702
+          ColumnsColor = 15856113
+          FontHotLine.Charset = DEFAULT_CHARSET
+          FontHotLine.Color = 7558185
+          FontHotLine.Height = -13
+          FontHotLine.Name = 'Roboto'
+          FontHotLine.Style = []
+          FontLine.Charset = DEFAULT_CHARSET
+          FontLine.Color = 7558185
+          FontLine.Height = -13
+          FontLine.Name = 'Roboto'
+          FontLine.Style = []
+          FontSelLine.Charset = DEFAULT_CHARSET
+          FontSelLine.Color = 6572324
+          FontSelLine.Height = -13
+          FontSelLine.Name = 'Roboto'
+          FontSelLine.Style = []
+          ShowColumns = False
+          ColumnsFont.Charset = DEFAULT_CHARSET
+          ColumnsFont.Color = 2631720
+          ColumnsFont.Height = -11
+          ColumnsFont.Name = 'Tahoma'
+          ColumnsFont.Style = []
+          CanClickToUnfocused = True
+        end
+      end
+    end
+    object TabSheetAutoClean: TTabSheet
+      Caption = 'AutoClean'
+      ImageIndex = 10
+      object DrawPanelFullClean: TDrawPanel
+        Left = 10
+        Top = 30
+        Width = 495
+        Height = 419
+        DefaultPaint = False
+        OnPaint = DrawPanelPostsCleanPaint
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        DesignSize = (
+          495
+          419)
+        object Label22: TLabel
+          Left = 20
+          Top = 15
+          Width = 144
+          Height = 23
+          Caption = #1055#1086#1083#1085#1072#1103' '#1086#1095#1080#1089#1090#1082#1072
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 5721926
+          Font.Height = -19
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqAntialiased
+          ParentFont = False
+          Transparent = True
+        end
+        object Shape13: TShape
+          AlignWithMargins = True
+          Left = 20
+          Top = 50
+          Width = 455
+          Height = 1
+          Margins.Left = 20
+          Margins.Top = 50
+          Margins.Right = 20
+          Margins.Bottom = 6
+          Align = alTop
+          Brush.Color = 15526633
+          Pen.Color = 15526633
+          ExplicitLeft = 10
+          ExplicitTop = 36
+          ExplicitWidth = 140
+        end
+        object Shape14: TShape
+          AlignWithMargins = True
+          Left = 0
+          Top = 348
+          Width = 495
+          Height = 1
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 70
+          Align = alBottom
+          Brush.Color = 15526633
+          Pen.Color = 15526633
+          ExplicitLeft = 10
+          ExplicitTop = 36
+          ExplicitWidth = 140
+        end
+        object CheckBoxFlat1: TCheckBoxFlat
+          Left = 20
+          Top = 66
+          Width = 149
+          Height = 24
+          Caption = #1047#1072#1087#1080#1089#1080' '#1089#1086' '#1089#1090#1077#1085#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 0
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object ButtonFlat4: TButtonFlat
+          Left = 20
+          Top = 365
+          Width = 455
+          Height = 35
+          Anchors = [akLeft, akBottom]
+          Caption = #1055#1086#1083#1085#1072#1103' '#1086#1095#1080#1089#1090#1082#1072
+          ColorNormal = 15854565
+          ColorOver = 15591135
+          ColorPressed = 15393498
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8218453
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 8218453
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 8218453
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          IgnorBounds = True
+          OnClick = ButtonFlatPhotosDelClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 1
+          TabStop = True
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+        object CheckBoxFlat2: TCheckBoxFlat
+          Left = 20
+          Top = 96
+          Width = 149
+          Height = 24
+          Caption = #1044#1088#1091#1079#1100#1103
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 2
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat3: TCheckBoxFlat
+          Left = 20
+          Top = 126
+          Width = 149
+          Height = 24
+          Caption = #1043#1088#1091#1087#1087#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 3
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat4: TCheckBoxFlat
+          Left = 20
+          Top = 156
+          Width = 149
+          Height = 24
+          Caption = #1060#1086#1090#1086#1075#1088#1072#1092#1080#1080
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 4
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat5: TCheckBoxFlat
+          Left = 20
+          Top = 216
+          Width = 149
+          Height = 24
+          Caption = #1042#1080#1076#1077#1086
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 5
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat6: TCheckBoxFlat
+          Left = 20
+          Top = 186
+          Width = 149
+          Height = 24
+          Caption = #1052#1091#1079#1099#1082#1072
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 6
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat7: TCheckBoxFlat
+          Left = 20
+          Top = 246
+          Width = 149
+          Height = 24
+          Caption = #1058#1086#1074#1072#1088#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 7
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat8: TCheckBoxFlat
+          Left = 20
+          Top = 276
+          Width = 149
+          Height = 24
+          Caption = #1047#1072#1082#1083#1072#1076#1082#1080
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 8
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat9: TCheckBoxFlat
+          Left = 20
+          Top = 306
+          Width = 149
+          Height = 24
+          Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 9
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object DrawPanel6: TDrawPanel
+          Left = 186
+          Top = 60
+          Width = 289
+          Height = 109
+          Margins.Top = 7
+          Margins.Right = 175
+          Margins.Bottom = 7
+          DefaultPaint = False
+          OnPaint = DrawPanelPostsCleanPaint
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 10
+          object Label27: TLabel
             AlignWithMargins = True
-            Left = 3
+            Left = 16
             Top = 7
-            Width = 570
-            Height = 219
-            Margins.Top = 7
-            Margins.Right = 175
-            Margins.Bottom = 7
-            DefaultPaint = False
-            OnPaint = DrawPanelPostsPaint
-            Align = alTop
-            BevelOuter = bvNone
-            Color = clWhite
-            ParentBackground = False
+            Width = 184
+            Height = 23
+            Alignment = taCenter
+            Caption = #1043#1088#1091#1087#1087#1072'/'#1057#1086#1086#1073#1097#1077#1089#1090#1074#1086
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 5721926
+            Font.Height = -19
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqAntialiased
+            ParentFont = False
+            WordWrap = True
+          end
+          object CheckBoxFlat10: TCheckBoxFlat
+            Left = 16
+            Top = 36
+            Width = 149
+            Height = 24
+            Caption = #1055#1086#1076#1087#1080#1089#1095#1080#1082#1080
+            ColorNormal = clWhite
+            ColorOver = clWhite
+            ColorPressed = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = clWindowText
+            FontOver.Height = -13
+            FontOver.Name = 'Tahoma'
+            FontOver.Style = []
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = clWindowText
+            FontDown.Height = -13
+            FontDown.Name = 'Tahoma'
+            FontDown.Style = []
+            IgnorBounds = True
+            ImageIndex = 9
+            Images = ImageList16
+            RoundRectParam = 0
+            ShowFocusRect = False
+            TabOrder = 0
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+            ImageCheck = 8
+            ImageUncheck = 9
+          end
+          object CheckBoxFlat11: TCheckBoxFlat
+            Left = 16
+            Top = 66
+            Width = 149
+            Height = 24
+            Caption = #1054#1073#1089#1091#1078#1076#1077#1085#1080#1103
+            ColorNormal = clWhite
+            ColorOver = clWhite
+            ColorPressed = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = clWindowText
+            FontOver.Height = -13
+            FontOver.Name = 'Tahoma'
+            FontOver.Style = []
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = clWindowText
+            FontDown.Height = -13
+            FontDown.Name = 'Tahoma'
+            FontDown.Style = []
+            IgnorBounds = True
+            ImageIndex = 9
+            Images = ImageList16
+            RoundRectParam = 0
+            ShowFocusRect = False
             TabOrder = 1
-            object Label24: TLabel
-              Left = 11
-              Top = 6
-              Width = 178
-              Height = 23
-              Caption = #1044#1086#1073#1088#1086' '#1087#1086#1078#1072#1083#1086#1074#1072#1090#1100'!'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 5721926
-              Font.Height = -19
-              Font.Name = 'Roboto'
-              Font.Style = []
-              Font.Quality = fqAntialiased
-              ParentFont = False
-            end
-            object Label25: TLabel
-              AlignWithMargins = True
-              Left = 54
-              Top = 40
-              Width = 483
-              Height = 81
-              Margins.Left = 20
-              Margins.Top = 40
-              Margins.Right = 20
-              Margins.Bottom = 20
-              AutoSize = False
-              Caption = 
-                #1057#1077#1081#1095#1072#1089' '#1074#1099' '#1091#1087#1088#1072#1074#1083#1103#1077#1090#1077' '#1075#1088#1091#1087#1087#1086#1081'. '#1042#1099#1073#1077#1088#1080#1090#1077' '#1101#1083#1077#1084#1077#1085#1090' '#1086#1095#1080#1089#1090#1082#1080' '#1075#1088#1091#1087#1087#1099' '#1074' ' +
-                #1084#1077#1085#1102' '#1089#1083#1077#1074#1072'.'#13#10#13#10#1041#1091#1076#1100#1090#1077' '#1086#1089#1090#1086#1088#1086#1078#1085#1099', '#1091#1076#1072#1083#1077#1085#1080#1077' '#1085#1077#1083#1100#1079#1103' '#1086#1090#1084#1077#1085#1080#1090#1100'! '#1055#1088#1077#1088#1099 +
-                #1074#1072#1085#1080#1077' '#1086#1087#1077#1088#1072#1094#1080#1080' '#1087#1086#1079#1074#1086#1083#1080#1090' '#1089#1086#1093#1088#1072#1085#1080#1090#1100' '#1090#1086#1083#1100#1082#1086' '#1095#1072#1089#1090#1100' '#1076#1072#1085#1085#1099#1093', '#1082#1086#1090#1086#1088#1091#1102' '#1077 +
-                #1097#1105' '#1085#1077' '#1091#1089#1087#1077#1083#1080' '#1086#1073#1088#1072#1073#1086#1090#1072#1090#1100
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 3881787
-              Font.Height = -13
-              Font.Name = 'Roboto'
-              Font.Style = []
-              Font.Quality = fqClearType
-              ParentFont = False
-              WordWrap = True
-            end
-            object LinkOpenCurrentGroup: ThLink
-              Left = 53
-              Top = 188
-              Width = 183
-              Height = 15
-              Cursor = crHandPoint
-              Caption = 'https://hemulgm.ru/vk-cleaner/'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 8738858
-              Font.Height = -13
-              Font.Name = 'Roboto'
-              Font.Style = []
-              ParentFont = False
-              OnClick = LinkOpenCurrentGroupClick
-            end
-            object ButtonFlat20: TButtonFlat
-              Left = 19
-              Top = 40
-              Width = 28
-              Height = 28
-              Margins.Top = 0
-              Margins.Bottom = 0
-              Caption = ''
-              ColorNormal = clWhite
-              ColorOver = clWhite
-              ColorPressed = clWhite
-              Enabled = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 7558185
-              Font.Height = -13
-              Font.Name = 'Roboto'
-              Font.Style = []
-              Font.Quality = fqClearType
-              FontOver.Charset = DEFAULT_CHARSET
-              FontOver.Color = 7558185
-              FontOver.Height = -13
-              FontOver.Name = 'Roboto'
-              FontOver.Style = []
-              FontOver.Quality = fqClearType
-              FontDown.Charset = DEFAULT_CHARSET
-              FontDown.Color = 7558185
-              FontDown.Height = -13
-              FontDown.Name = 'Roboto'
-              FontDown.Style = []
-              FontDown.Quality = fqClearType
-              IgnorBounds = True
-              ImageIndentLeft = 1
-              ImageIndentRight = 3
-              ImageIndex = 16
-              Images = ImageList16
-              RoundRectParam = 6
-              Shape = stRoundRect
-              ShowFocusRect = False
-              TabOrder = 0
-              TabStop = True
-              TextFormat = [tfSingleLine, tfVerticalCenter]
-              SubTextFont.Charset = DEFAULT_CHARSET
-              SubTextFont.Color = clWhite
-              SubTextFont.Height = -13
-              SubTextFont.Name = 'Tahoma'
-              SubTextFont.Style = []
-            end
-            object ButtonFlat22: TButtonFlat
-              Left = 19
-              Top = 180
-              Width = 28
-              Height = 28
-              Margins.Top = 0
-              Margins.Bottom = 0
-              Caption = ''
-              ColorNormal = clWhite
-              ColorOver = clWhite
-              ColorPressed = clWhite
-              Enabled = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = 7558185
-              Font.Height = -13
-              Font.Name = 'Roboto'
-              Font.Style = []
-              Font.Quality = fqClearType
-              FontOver.Charset = DEFAULT_CHARSET
-              FontOver.Color = 7558185
-              FontOver.Height = -13
-              FontOver.Name = 'Roboto'
-              FontOver.Style = []
-              FontOver.Quality = fqClearType
-              FontDown.Charset = DEFAULT_CHARSET
-              FontDown.Color = 7558185
-              FontDown.Height = -13
-              FontDown.Name = 'Roboto'
-              FontDown.Style = []
-              FontDown.Quality = fqClearType
-              IgnorBounds = True
-              ImageIndentLeft = 1
-              ImageIndentRight = 3
-              ImageIndex = 18
-              Images = ImageList16
-              RoundRectParam = 6
-              Shape = stRoundRect
-              ShowFocusRect = False
-              TabOrder = 1
-              TabStop = True
-              TextFormat = [tfSingleLine, tfVerticalCenter]
-              SubTextFont.Charset = DEFAULT_CHARSET
-              SubTextFont.Color = clWhite
-              SubTextFont.Height = -13
-              SubTextFont.Name = 'Tahoma'
-              SubTextFont.Style = []
-            end
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+            ImageCheck = 8
+            ImageUncheck = 9
           end
         end
       end
@@ -5107,7 +7056,7 @@ object FormMain: TFormMain
     AlignWithMargins = True
     Left = 3
     Top = 44
-    Width = 1051
+    Width = 943
     Height = 24
     Align = alTop
     BevelOuter = bvNone
@@ -5160,7 +7109,7 @@ object FormMain: TFormMain
       SubTextFont.Style = []
     end
     object ButtonFlatCancelOp: TButtonFlat
-      Left = 949
+      Left = 841
       Top = 0
       Width = 102
       Height = 24
@@ -5208,7 +7157,7 @@ object FormMain: TFormMain
     end
     object DrawPanelProgress: TDrawPanel
       AlignWithMargins = True
-      Left = 465
+      Left = 357
       Top = 3
       Width = 481
       Height = 18
@@ -5222,8 +7171,8 @@ object FormMain: TFormMain
   end
   object PanelLog: TPanel
     Left = 0
-    Top = 612
-    Width = 1057
+    Top = 495
+    Width = 949
     Height = 117
     Align = alBottom
     BevelOuter = bvNone
@@ -5232,7 +7181,7 @@ object FormMain: TFormMain
     object Shape5: TShape
       Left = 0
       Top = 0
-      Width = 1057
+      Width = 949
       Height = 1
       Margins.Left = 30
       Margins.Right = 10
@@ -5246,7 +7195,7 @@ object FormMain: TFormMain
     object Panel7: TPanel
       Left = 0
       Top = 1
-      Width = 1057
+      Width = 949
       Height = 24
       Align = alTop
       BevelOuter = bvNone
@@ -5271,7 +7220,7 @@ object FormMain: TFormMain
         ExplicitHeight = 19
       end
       object ButtonFlatCloseLog: TButtonFlat
-        Left = 1033
+        Left = 925
         Top = 0
         Width = 24
         Height = 24
@@ -5318,7 +7267,7 @@ object FormMain: TFormMain
     object TableExLog: TTableEx
       Left = 0
       Top = 25
-      Width = 1057
+      Width = 949
       Height = 92
       Align = alClient
       BorderStyle = bsNone
@@ -5342,7 +7291,7 @@ object FormMain: TFormMain
         end
         item
           Caption = #1058#1077#1082#1089#1090
-          Width = 937
+          Width = 829
           MinWidth = 70
         end>
       ItemCount = 1
@@ -5377,7 +7326,7 @@ object FormMain: TFormMain
     end
   end
   object PanelProfileMenu: TPanel
-    Left = 898
+    Left = 789
     Top = 41
     Width = 160
     Height = 73
@@ -5511,93 +7460,26 @@ object FormMain: TFormMain
         Value = '1'
       end>
     HandleRedirects = True
-    Left = 251
-    Top = 219
-  end
-  object RESTRequestGetGroups: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'extended'
-        Value = '1'
-      end
-      item
-        name = 'fields'
-        Value = 'name,id'
-      end
-      item
-        name = 'count'
-        Value = '1000'
-      end
-      item
-        name = 'offset'
-        Value = '0'
-      end>
-    Resource = 'groups.get'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 355
-    Top = 219
+    Left = 267
+    Top = 531
   end
   object RESTResponse: TRESTResponse
-    Left = 467
-    Top = 219
+    Left = 363
+    Top = 531
   end
   object OAuth2Authenticator: TOAuth2Authenticator
-    Scope = 'groups,friends,wall,photos'
-    Left = 155
-    Top = 219
-  end
-  object RESTRequestGetWall: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'owner_id'
-      end
-      item
-        name = 'offset'
-        Value = '0'
-      end
-      item
-        name = 'count'
-        Value = '2'
-      end>
-    Resource = 'wall.get'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 355
-    Top = 267
-  end
-  object RESTRequestLogout: TRESTRequest
-    Client = RESTClient
-    Params = <>
-    Resource = 'auth.logout'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 355
-    Top = 331
-  end
-  object RESTRequestGroupLeave: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'group_id'
-        Value = '-0'
-      end>
-    Resource = 'groups.leave'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 355
-    Top = 387
+    Scope = 'groups,friends,wall,photos,video,docs'
+    Left = 171
+    Top = 531
   end
   object ImageList16: TImageList
     ColorDepth = cd32Bit
     Height = 24
     Width = 24
-    Left = 556
-    Top = 220
+    Left = 468
+    Top = 532
     Bitmap = {
-      494C010114008800B80018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010115008800D00018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000006000000090000000010020000000000000D8
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5660,6 +7542,7 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000003D362F4F948572BF948572BF7064579201010102000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5671,6 +7554,7 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FF7C6F60A0060605080000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5682,6 +7566,8 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004E463B65C5B098FEC6B199FFC6B199FFC4AF98FD7A6D5E9D0606
+      0508000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5692,6 +7578,8 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000D0D0B129C8B78C8C5B098FEC6B199FFC6B199FFC4AF98FD7C6F
+      60A0010101020000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5702,6 +7590,8 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000D0D0B12968673C1C6B199FFC6B199FFC6B199FFC6B1
+      99FF7C6F60A00606050800000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5712,6 +7602,8 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000110F0D16968673C1C5B098FEC6B199FFC6B1
+      99FFC4AF98FD7A6D5E9D06060508000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5722,6 +7614,8 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000D0D0B129C8B78C8C5B098FEC6B1
+      99FFC6B199FFC4AF98FD7C6F60A0010101020000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5732,6 +7626,8 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000D0D0B12968673C1C6B1
+      99FFC6B199FFC6B199FFC6B199FF7C6F60A00606050800000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5742,6 +7638,8 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000110F0D169686
+      73C1C5B098FEC6B199FFC6B199FFBDA992F4302C263F00000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5752,6 +7650,8 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000D0D
+      0B129C8B78C8C5B098FEC3AF97FC453E365A27211E326C61538B010101020000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5763,6 +7663,8 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000D0D0B128F7F6DB8453E365A28241F35B29F8AE6C6B199FF74685A960201
+      0102000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5773,6 +7675,8 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000000000060605081D191726B29F8AE6C6B199FFC5B098FE695F52890101
+      0102000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5783,6 +7687,7 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000D0D0B129C8B78C8C5B098FE75685A96020101020000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5794,30 +7699,7 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000D0C0B123E372F4F02010102000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7329,16 +9211,16 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000424D3E000000000000003E000000
       2800000060000000900000000100010000000000C00600000000000000000000
-      000000000000000000000000FFFFFF0000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      000000000000000000000000FFFFFF00FFFFFF000000000000000000FFFFFF00
+      0000000000000000FFFFFF000000000000000000FFFFFF000000000000000000
+      FFFFFF000000000000000000F83FFF000000000000000000F81FFF0000000000
+      00000000F80FFF000000000000000000F807FF000000000000000000FC03FF00
+      0000000000000000FE01FF000000000000000000FF00FF000000000000000000
+      FF807F000000000000000000FFC07F000000000000000000FFE01F0000000000
+      00000000FFF00F000000000000000000FFF80F000000000000000000FFFC1F00
+      0000000000000000FFFE3F000000000000000000FFFFFF000000000000000000
+      FFFFFF000000000000000000FFFFFF000000000000000000FFFFFF0000000000
+      00000000FFFFFF000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE007FFFFFFF
       FFFFFFF0000FFC001FF3FFFFF001FFF0000FF8000FF1FFFFF001FFF0000FF040
       0FF0FFFFF001FFF0FF0FF08007F0000FFFFFFFF03C0FE18047F0000FF0000FFC
@@ -7386,243 +9268,17 @@ object FormMain: TFormMain
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000000000000
       000000000000}
   end
-  object RESTRequestProfile: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'fields'
-        Value = 'photo_50,nickname'
-      end>
-    Resource = 'users.get'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 355
-    Top = 443
-  end
-  object RESTRequestFriends: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'count'
-        Value = '5000'
-      end
-      item
-        name = 'fields'
-        Value = 'deactivated,last_seen'
-      end
-      item
-        name = 'order'
-        Value = 'name'
-      end>
-    Resource = 'friends.get'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 355
-    Top = 499
-  end
   object ImageListProfile: TImageList
     ColorDepth = cd32Bit
     Height = 28
     Width = 28
-    Left = 556
-    Top = 276
-  end
-  object RESTRequestFriendDel: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'user_id'
-        Value = '0'
-      end>
-    Resource = 'friends.delete'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 355
-    Top = 555
+    Left = 564
+    Top = 532
   end
   object TimerAnimate: TTimer
     Interval = 30
     OnTimer = TimerAnimateTimer
-    Left = 644
-    Top = 220
-  end
-  object RESTRequestGetPosts: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'offset'
-        Value = '0'
-      end
-      item
-        name = 'count'
-        Value = '100'
-      end>
-    Resource = 'wall.get'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 467
-    Top = 275
-  end
-  object RESTRequestDelPosts: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'owner_id'
-        Value = '0'
-      end
-      item
-        name = 'post_id'
-        Value = '0'
-      end>
-    Resource = 'wall.delete'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 467
-    Top = 331
-  end
-  object RESTRequestOwnerGroups: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'filter'
-        Value = 'admin, editor, moder'
-      end
-      item
-        name = 'fields'
-        Value = 'name,id'
-      end
-      item
-        name = 'extended'
-        Value = '1'
-      end>
-    Resource = 'groups.get'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 467
-    Top = 387
-  end
-  object RESTRequestGetPhotos: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'offset'
-        Value = '0'
-      end
-      item
-        name = 'count'
-        Value = '200'
-      end
-      item
-        name = 'extended'
-        Value = '1'
-      end
-      item
-        name = 'no_service_albums'
-        Value = '0'
-      end>
-    Resource = 'photos.getAll'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 467
-    Top = 443
-  end
-  object RESTRequestDelPhotos: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'owner_id'
-        Value = '0'
-      end
-      item
-        name = 'photo_id'
-        Value = '0'
-      end>
-    Resource = 'photos.delete'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 467
-    Top = 499
-  end
-  object RESTRequestGetAlbums: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'offset'
-        Value = '0'
-      end
-      item
-        name = 'count'
-        Value = '200'
-      end
-      item
-        name = 'need_system'
-        Value = '1'
-      end>
-    Resource = 'photos.getAlbums'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 467
-    Top = 555
-  end
-  object RESTRequestGetSavedPhotos: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'offset'
-        Value = '0'
-      end
-      item
-        name = 'count'
-        Value = '200'
-      end
-      item
-        name = 'extended'
-        Value = '1'
-      end
-      item
-        name = 'album_id'
-        Value = 'saved'
-      end>
-    Resource = 'photos.get'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 555
-    Top = 387
-  end
-  object RESTRequestGetGroupSub: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'group_id'
-      end
-      item
-        name = 'count'
-        Value = '1000'
-      end
-      item
-        name = 'fields'
-        Value = 'deactivated,last_seen'
-      end>
-    Resource = 'groups.getMembers'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 555
-    Top = 331
-  end
-  object RESTRequestGroupRemoveUser: TRESTRequest
-    Client = RESTClient
-    Params = <
-      item
-        name = 'user_id'
-        Value = '0'
-      end
-      item
-        name = 'group_id'
-      end>
-    Resource = 'groups.removeUser'
-    Response = RESTResponse
-    SynchronizedEvents = False
-    Left = 555
-    Top = 443
+    Left = 660
+    Top = 532
   end
 end
