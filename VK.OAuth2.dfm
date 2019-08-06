@@ -39,6 +39,7 @@ object FormOAuth2: TFormOAuth2
     OnTitleChange = BrowserTitleChange
     OnBeforeNavigate2 = BrowserBeforeNavigate2
     OnNavigateComplete2 = BrowserNavigateComplete2
+    OnNavigateError = BrowserNavigateError
     ExplicitLeft = 8
     ExplicitTop = 8
     ExplicitWidth = 619

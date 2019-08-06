@@ -12,6 +12,8 @@ type
 
   TOAuth2WebFormTitleChangedEvent = procedure(const ATitle: string; var DoCloseWebView: boolean) of object;
 
+  TOAuth2WebFormErrorEvent = procedure(const AURL: string; AStatusCode: Integer; var Cancel: WordBool) of object;
+
   TFormOAuth2 = class(TForm)
     Browser: TWebBrowser;
     EditAddr: TEdit;
@@ -22,10 +24,13 @@ type
     procedure BrowserNavigateComplete2(ASender: TObject; const pDisp: IDispatch; const URL: OleVariant);
     procedure BrowserBeforeNavigate2(ASender: TObject; const pDisp: IDispatch; const URL, Flags, TargetFrameName, PostData, Headers: OleVariant; var Cancel: WordBool);
     procedure EditAddrChange(Sender: TObject);
+    procedure BrowserNavigateError(ASender: TObject; const pDisp: IDispatch;
+      const URL, Frame, StatusCode: OleVariant; var Cancel: WordBool);
   private
     FOnBeforeRedirect: TOAuth2WebFormRedirectEvent;
     FOnAfterRedirect: TOAuth2WebFormRedirectEvent;
     FOnBrowserTitleChanged: TOAuth2WebFormTitleChangedEvent;
+    FOnError: TOAuth2WebFormErrorEvent;
     FLastTitle: string;
     FLastURL: string;
     FNeedShow: Boolean;
@@ -38,6 +43,7 @@ type
     property OnAfterRedirect: TOAuth2WebFormRedirectEvent read FOnAfterRedirect write FOnAfterRedirect;
     property OnBeforeRedirect: TOAuth2WebFormRedirectEvent read FOnBeforeRedirect write FOnBeforeRedirect;
     property OnTitleChanged: TOAuth2WebFormTitleChangedEvent read FOnBrowserTitleChanged write FOnBrowserTitleChanged;
+    property OnError: TOAuth2WebFormErrorEvent read FOnError write FOnError;
   end;
 
 var
@@ -125,6 +131,15 @@ begin
         Close;
     end;
   end;
+end;
+
+procedure TFormOAuth2.BrowserNavigateError(ASender: TObject;
+  const pDisp: IDispatch; const URL, Frame, StatusCode: OleVariant;
+  var Cancel: WordBool);
+begin
+  if Assigned(FOnError) then
+    FOnError(URL, StatusCode, Cancel);
+  Cancel := True;
 end;
 
 procedure TFormOAuth2.BrowserTitleChange(ASender: TObject; const Text: WideString);

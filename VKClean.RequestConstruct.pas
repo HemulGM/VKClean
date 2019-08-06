@@ -36,7 +36,9 @@ function VkOwner(Value: Integer): TParam; overload;
 
 function VkOwner(Value: Integer; Ignore: Boolean): TParam; overload;
 
-function VkGroup(Value: Integer): TParam;
+function VkGroup(Value: Integer): TParam; overload;
+
+function VkGroup(Value: Integer; Ignore: Boolean): TParam;  overload;
 
 function VkAlbum(Value: Integer): TParam; overload;
 
@@ -58,7 +60,31 @@ function VkFields(Value: string): TParam;
 
 function VkOrder(Value: string): TParam;
 
+function VkArticle(Value: Integer): TParam;
+
+function VkLink(Value: Integer): TParam;
+
+function VkID(Value: Integer): TParam;
+
 implementation
+
+function VkID(Value: Integer): TParam;
+begin
+  Result[0] := 'id';
+  Result[1] := Value.ToString;
+end;
+
+function VkLink(Value: Integer): TParam;
+begin
+  Result[0] := 'link_id';
+  Result[1] := Value.ToString;
+end;
+
+function VkArticle(Value: Integer): TParam;
+begin
+  Result[0] := 'article_id';
+  Result[1] := Value.ToString;
+end;
 
 function VkDoc(Value: Integer): TParam;
 begin
@@ -94,6 +120,16 @@ function VkPost(Value: Integer): TParam;
 begin
   Result[0] := 'post_id';
   Result[1] := Value.ToString;
+end;
+
+function VkGroup(Value: Integer; Ignore: Boolean): TParam;
+begin
+  if not Ignore then
+  begin
+    Result[0] := 'group_id';
+    Result[1] := Value.ToString;
+  end
+  else Result[0] := '';
 end;
 
 function VkGroup(Value: Integer): TParam;

@@ -2,8 +2,8 @@ object FormMain: TFormMain
   Left = 0
   Top = 0
   Caption = 'VK Cleaner'
-  ClientHeight = 612
-  ClientWidth = 949
+  ClientHeight = 708
+  ClientWidth = 1029
   Color = 15789805
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -23,7 +23,7 @@ object FormMain: TFormMain
   object PanelHead: TPanel
     Left = 0
     Top = 0
-    Width = 949
+    Width = 1029
     Height = 41
     Align = alTop
     BevelOuter = bvNone
@@ -164,7 +164,7 @@ object FormMain: TFormMain
     end
     object DrawPanelLogin: TDrawPanel
       AlignWithMargins = True
-      Left = 790
+      Left = 870
       Top = 0
       Width = 149
       Height = 41
@@ -255,9 +255,9 @@ object FormMain: TFormMain
   object PageControlMain: TPageControl
     Left = 0
     Top = 71
-    Width = 949
-    Height = 424
-    ActivePage = TabSheetMenu
+    Width = 1029
+    Height = 490
+    ActivePage = TabSheetFave
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
@@ -271,14 +271,15 @@ object FormMain: TFormMain
     object TabSheetWelcome: TTabSheet
       Caption = 'Welcome'
       ImageIndex = 2
+      ExplicitHeight = 489
       DesignSize = (
-        941
-        393)
+        1021
+        459)
       object LabelPS: TLabel
         AlignWithMargins = True
         Left = 3
-        Top = 360
-        Width = 935
+        Top = 426
+        Width = 1015
         Height = 30
         Align = alBottom
         Caption = 
@@ -294,10 +295,11 @@ object FormMain: TFormMain
         Font.Quality = fqClearType
         ParentFont = False
         WordWrap = True
-        ExplicitWidth = 898
+        ExplicitTop = 456
+        ExplicitWidth = 979
       end
       object PanelMainHead: TPanel
-        Left = 50
+        Left = 90
         Top = 0
         Width = 833
         Height = 210
@@ -469,12 +471,13 @@ object FormMain: TFormMain
         Left = 18
         Top = 169
         Width = 479
-        Height = 180
+        Height = 246
         VertScrollBar.Smooth = True
         VertScrollBar.Tracking = True
         Anchors = [akLeft, akTop, akBottom]
         BorderStyle = bsNone
         TabOrder = 1
+        ExplicitHeight = 276
         object DrawPanel2: TDrawPanel
           Left = 0
           Top = 120
@@ -686,12 +689,13 @@ object FormMain: TFormMain
     object TabSheetLicense: TTabSheet
       Caption = 'License'
       ImageIndex = 7
+      ExplicitHeight = 489
       object RichEditLicense: TRichEdit
         AlignWithMargins = True
         Left = 30
         Top = 20
-        Width = 881
-        Height = 353
+        Width = 961
+        Height = 419
         Margins.Left = 30
         Margins.Top = 20
         Margins.Right = 30
@@ -711,26 +715,29 @@ object FormMain: TFormMain
         ScrollBars = ssVertical
         TabOrder = 0
         Zoom = 100
+        ExplicitHeight = 449
       end
     end
     object TabSheetAuth: TTabSheet
       Caption = 'Auth'
+      ExplicitHeight = 489
       object PanelLogin: TPanel
         Left = 0
         Top = 0
-        Width = 941
-        Height = 393
+        Width = 1021
+        Height = 459
         Align = alClient
         BevelOuter = bvNone
         Color = 15789805
         ParentBackground = False
         TabOrder = 0
+        ExplicitHeight = 489
         DesignSize = (
-          941
-          393)
+          1021
+          459)
         object LabelAuthState: TLabel
-          Left = 103
-          Top = 170
+          Left = 142
+          Top = 200
           Width = 721
           Height = 23
           Alignment = taCenter
@@ -752,75 +759,36 @@ object FormMain: TFormMain
     object TabSheetMenu: TTabSheet
       Caption = 'Menu'
       ImageIndex = 3
+      ExplicitHeight = 489
       DesignSize = (
-        941
-        393)
+        1021
+        459)
       object PanelMenuClient: TPanel
-        Left = 0
+        Left = 40
         Top = 0
-        Width = 945
-        Height = 393
+        Width = 942
+        Height = 459
         Anchors = [akTop, akBottom]
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitHeight = 489
         object PanelMenuLeft: TPanel
           AlignWithMargins = True
           Left = 0
           Top = 15
           Width = 163
-          Height = 375
+          Height = 441
           Margins.Left = 0
           Margins.Top = 15
           Margins.Right = 10
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
-          object LinkBlog: ThLink
-            AlignWithMargins = True
-            Left = 10
-            Top = 317
-            Width = 143
-            Height = 13
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Right = 10
-            Align = alTop
-            Caption = #1041#1083#1086#1075
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 10591643
-            Font.Height = -11
-            Font.Name = 'Roboto'
-            Font.Style = []
-            ParentFont = False
-            OnClick = LinkBlogClick
-            ExplicitTop = 289
-            ExplicitWidth = 24
-          end
-          object LinkAutor: ThLink
-            AlignWithMargins = True
-            Left = 10
-            Top = 336
-            Width = 143
-            Height = 13
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Right = 10
-            Align = alTop
-            Caption = #1056#1072#1079#1088#1072#1073#1086#1090#1095#1080#1082' [HemulGM]'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 10591643
-            Font.Height = -11
-            Font.Name = 'Roboto'
-            Font.Style = []
-            ParentFont = False
-            OnClick = LinkAutorClick
-            ExplicitTop = 308
-            ExplicitWidth = 126
-          end
+          ExplicitHeight = 471
           object Shape3: TShape
             AlignWithMargins = True
             Left = 30
-            Top = 150
+            Top = 206
             Width = 123
             Height = 1
             Margins.Left = 30
@@ -837,7 +805,7 @@ object FormMain: TFormMain
           object Shape6: TShape
             AlignWithMargins = True
             Left = 10
-            Top = 255
+            Top = 339
             Width = 143
             Height = 1
             Margins.Left = 10
@@ -854,7 +822,7 @@ object FormMain: TFormMain
           object ButtonFlatCleanFriends: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 28
+            Top = 56
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -902,7 +870,7 @@ object FormMain: TFormMain
           object ButtonFlatCleanGroups: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 56
+            Top = 84
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -995,10 +963,10 @@ object FormMain: TFormMain
             SubTextFont.Name = 'Tahoma'
             SubTextFont.Style = []
           end
-          object ButtonFlat1: TButtonFlat
+          object ButtonFlatDocs: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 189
+            Top = 273
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -1030,7 +998,7 @@ object FormMain: TFormMain
             ImageIndentRight = 5
             ImageIndex = 11
             Images = ImageList16
-            OnClick = ButtonFlat1Click
+            OnClick = ButtonFlatDocsClick
             RoundRectParam = 6
             Shape = stRoundRect
             ShowFocusRect = False
@@ -1043,13 +1011,11 @@ object FormMain: TFormMain
             SubTextFont.Height = -13
             SubTextFont.Name = 'Tahoma'
             SubTextFont.Style = []
-            ExplicitLeft = 10
-            ExplicitTop = 180
           end
           object ButtonFlatFave: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 161
+            Top = 245
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -1097,7 +1063,7 @@ object FormMain: TFormMain
           object ButtonFlatVideos: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 112
+            Top = 168
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -1145,7 +1111,7 @@ object FormMain: TFormMain
           object ButtonFlatPhotos: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 84
+            Top = 112
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -1193,7 +1159,7 @@ object FormMain: TFormMain
           object PanelOwnerGroups: TPanel
             AlignWithMargins = True
             Left = 0
-            Top = 266
+            Top = 350
             Width = 163
             Height = 28
             Margins.Left = 0
@@ -1205,7 +1171,6 @@ object FormMain: TFormMain
             BevelOuter = bvNone
             Constraints.MinHeight = 5
             TabOrder = 7
-            ExplicitTop = 238
             object ButtonFlatGroupID_Num: TButtonFlat
               AlignWithMargins = True
               Left = 3
@@ -1258,7 +1223,7 @@ object FormMain: TFormMain
           object ButtonFlatNotes: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 217
+            Top = 301
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -1290,7 +1255,7 @@ object FormMain: TFormMain
             ImageIndentRight = 5
             ImageIndex = 20
             Images = ImageList16
-            OnClick = ButtonFlatFaveClick
+            OnClick = ButtonFlatNotesClick
             RoundRectParam = 6
             Shape = stRoundRect
             ShowFocusRect = False
@@ -1302,14 +1267,228 @@ object FormMain: TFormMain
             SubTextFont.Height = -13
             SubTextFont.Name = 'Tahoma'
             SubTextFont.Style = []
-            ExplicitLeft = 2
+          end
+          object ButtonFlatMarket: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 217
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1058#1086#1074#1072#1088#1099
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 30
+            Images = ImageList16
+            OnClick = ButtonFlatMarketClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 9
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+          end
+          object ButtonFlatMusic: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 140
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1052#1091#1079#1099#1082#1072
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 22
+            Images = ImageList16
+            OnClick = ButtonFlatMusicClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 10
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+          end
+          object ButtonFlatMessages: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 28
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1057#1086#1086#1073#1097#1077#1085#1080#1103
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 29
+            Images = ImageList16
+            OnClick = ButtonFlatMessagesClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 11
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+            ExplicitLeft = 10
+          end
+          object Panel12: TPanel
+            AlignWithMargins = True
+            Left = 0
+            Top = 403
+            Width = 163
+            Height = 35
+            Margins.Left = 0
+            Margins.Top = 5
+            Margins.Right = 0
+            Margins.Bottom = 20
+            Align = alTop
+            AutoSize = True
+            BevelOuter = bvNone
+            Constraints.MinHeight = 5
+            TabOrder = 12
+            object LinkBlog: ThLink
+              AlignWithMargins = True
+              Left = 10
+              Top = 3
+              Width = 24
+              Height = 13
+              Cursor = crHandPoint
+              Margins.Left = 10
+              Margins.Right = 10
+              Caption = #1041#1083#1086#1075
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 10591643
+              Font.Height = -11
+              Font.Name = 'Roboto'
+              Font.Style = []
+              ParentFont = False
+              OnClick = LinkBlogClick
+            end
+            object LinkAutor: ThLink
+              AlignWithMargins = True
+              Left = 10
+              Top = 19
+              Width = 126
+              Height = 13
+              Cursor = crHandPoint
+              Margins.Left = 10
+              Margins.Right = 10
+              Caption = #1056#1072#1079#1088#1072#1073#1086#1090#1095#1080#1082' [HemulGM]'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 10591643
+              Font.Height = -11
+              Font.Name = 'Roboto'
+              Font.Style = []
+              ParentFont = False
+              OnClick = LinkAutorClick
+            end
+            object LinkLog: ThLink
+              AlignWithMargins = True
+              Left = 42
+              Top = 3
+              Width = 19
+              Height = 13
+              Cursor = crHandPoint
+              Margins.Left = 10
+              Margins.Right = 10
+              Caption = #1051#1086#1075
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = 10591643
+              Font.Height = -11
+              Font.Name = 'Roboto'
+              Font.Style = []
+              ParentFont = False
+              OnClick = LinkLogClick
+            end
           end
         end
         object ScrollBoxMenuWall: TScrollBox
           Left = 173
           Top = 0
           Width = 556
-          Height = 393
+          Height = 459
           VertScrollBar.Smooth = True
           VertScrollBar.Tracking = True
           Align = alLeft
@@ -1319,6 +1498,7 @@ object FormMain: TFormMain
           TabOrder = 1
           OnMouseWheelDown = ScrollBoxMenuWallMouseWheelDown
           OnMouseWheelUp = ScrollBoxMenuWallMouseWheelUp
+          ExplicitHeight = 489
           object DrawPanelMenuWallDelApp: TDrawPanel
             AlignWithMargins = True
             Left = 3
@@ -3153,33 +3333,36 @@ object FormMain: TFormMain
     object TabSheetGroupMenu: TTabSheet
       Caption = 'GroupMenu'
       ImageIndex = 8
+      ExplicitHeight = 489
       DesignSize = (
-        941
-        393)
+        1021
+        459)
       object Panel1: TPanel
-        Left = 0
+        Left = 40
         Top = 0
-        Width = 941
-        Height = 393
+        Width = 942
+        Height = 459
         Anchors = [akTop, akBottom]
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitHeight = 489
         object Panel3: TPanel
           AlignWithMargins = True
           Left = 0
           Top = 15
           Width = 163
-          Height = 375
+          Height = 441
           Margins.Left = 0
           Margins.Top = 15
           Margins.Right = 10
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
+          ExplicitHeight = 471
           object hLink2: ThLink
             AlignWithMargins = True
             Left = 10
-            Top = 259
+            Top = 266
             Width = 143
             Height = 13
             Cursor = crHandPoint
@@ -3199,7 +3382,7 @@ object FormMain: TFormMain
           object hLink3: ThLink
             AlignWithMargins = True
             Left = 10
-            Top = 278
+            Top = 285
             Width = 143
             Height = 13
             Cursor = crHandPoint
@@ -3216,25 +3399,10 @@ object FormMain: TFormMain
             OnClick = LinkAutorClick
             ExplicitWidth = 126
           end
-          object Shape1: TShape
-            AlignWithMargins = True
-            Left = 30
-            Top = 66
-            Width = 123
-            Height = 1
-            Margins.Left = 30
-            Margins.Top = 10
-            Margins.Right = 10
-            Margins.Bottom = 10
-            Align = alTop
-            Brush.Color = 15262431
-            Pen.Color = 15262431
-            ExplicitTop = 87
-          end
           object Shape8: TShape
             AlignWithMargins = True
             Left = 30
-            Top = 143
+            Top = 150
             Width = 123
             Height = 1
             Margins.Left = 30
@@ -3346,7 +3514,7 @@ object FormMain: TFormMain
           object ButtonFlatGroupVideos: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 105
+            Top = 112
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -3394,7 +3562,7 @@ object FormMain: TFormMain
           object ButtonFlatGroupPhotos: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 77
+            Top = 56
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -3442,7 +3610,7 @@ object FormMain: TFormMain
           object Panel8: TPanel
             AlignWithMargins = True
             Left = 0
-            Top = 215
+            Top = 222
             Width = 163
             Height = 21
             Margins.Left = 0
@@ -3458,7 +3626,7 @@ object FormMain: TFormMain
           object ButtonFlatGroupMessage: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 182
+            Top = 189
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -3506,7 +3674,7 @@ object FormMain: TFormMain
           object ButtonFlatGroupDocs: TButtonFlat
             AlignWithMargins = True
             Left = 3
-            Top = 154
+            Top = 161
             Width = 157
             Height = 28
             Margins.Top = 0
@@ -3551,12 +3719,60 @@ object FormMain: TFormMain
             SubTextFont.Name = 'Tahoma'
             SubTextFont.Style = []
           end
+          object ButtonFlat5: TButtonFlat
+            AlignWithMargins = True
+            Left = 3
+            Top = 84
+            Width = 157
+            Height = 28
+            Margins.Top = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = #1052#1091#1079#1099#1082#1072
+            ColorNormal = 15789805
+            ColorOver = 15459809
+            ColorPressed = 15789805
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 7558185
+            Font.Height = -13
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqClearType
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = 7558185
+            FontOver.Height = -13
+            FontOver.Name = 'Roboto'
+            FontOver.Style = []
+            FontOver.Quality = fqClearType
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = 7558185
+            FontDown.Height = -13
+            FontDown.Name = 'Roboto'
+            FontDown.Style = []
+            FontDown.Quality = fqClearType
+            IgnorBounds = True
+            ImageIndentRight = 5
+            ImageIndex = 22
+            Images = ImageList16
+            OnClick = ButtonFlatMusicClick
+            RoundRectParam = 6
+            Shape = stRoundRect
+            ShowFocusRect = False
+            TabOrder = 7
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+          end
         end
         object ScrollBoxGroupMenu: TScrollBox
           Left = 173
           Top = 0
           Width = 556
-          Height = 393
+          Height = 459
           VertScrollBar.Smooth = True
           VertScrollBar.Style = ssFlat
           VertScrollBar.Tracking = True
@@ -3565,6 +3781,7 @@ object FormMain: TFormMain
           Color = 15789805
           ParentColor = False
           TabOrder = 1
+          ExplicitHeight = 489
           object Panel9: TPanel
             Left = 0
             Top = 312
@@ -3808,15 +4025,599 @@ object FormMain: TFormMain
         end
       end
     end
+    object TabSheetAutoClean: TTabSheet
+      Caption = 'AutoClean'
+      ImageIndex = 10
+      ExplicitHeight = 489
+      object DrawPanelFullClean: TDrawPanel
+        Left = 10
+        Top = 30
+        Width = 495
+        Height = 419
+        DefaultPaint = False
+        OnPaint = DrawPanelPostsCleanPaint
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        DesignSize = (
+          495
+          419)
+        object Label22: TLabel
+          Left = 20
+          Top = 15
+          Width = 144
+          Height = 23
+          Caption = #1055#1086#1083#1085#1072#1103' '#1086#1095#1080#1089#1090#1082#1072
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 5721926
+          Font.Height = -19
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqAntialiased
+          ParentFont = False
+          Transparent = True
+        end
+        object Shape13: TShape
+          AlignWithMargins = True
+          Left = 20
+          Top = 50
+          Width = 455
+          Height = 1
+          Margins.Left = 20
+          Margins.Top = 50
+          Margins.Right = 20
+          Margins.Bottom = 6
+          Align = alTop
+          Brush.Color = 15526633
+          Pen.Color = 15526633
+          ExplicitLeft = 10
+          ExplicitTop = 36
+          ExplicitWidth = 140
+        end
+        object Shape14: TShape
+          AlignWithMargins = True
+          Left = 0
+          Top = 348
+          Width = 495
+          Height = 1
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 70
+          Align = alBottom
+          Brush.Color = 15526633
+          Pen.Color = 15526633
+          ExplicitLeft = 10
+          ExplicitTop = 36
+          ExplicitWidth = 140
+        end
+        object CheckBoxFlat1: TCheckBoxFlat
+          Left = 20
+          Top = 66
+          Width = 149
+          Height = 24
+          Caption = #1047#1072#1087#1080#1089#1080' '#1089#1086' '#1089#1090#1077#1085#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 0
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object ButtonFlat4: TButtonFlat
+          Left = 20
+          Top = 365
+          Width = 455
+          Height = 35
+          Anchors = [akLeft, akBottom]
+          Caption = #1055#1086#1083#1085#1072#1103' '#1086#1095#1080#1089#1090#1082#1072
+          ColorNormal = 15854565
+          ColorOver = 15591135
+          ColorPressed = 15393498
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8218453
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 8218453
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 8218453
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          IgnorBounds = True
+          OnClick = ButtonFlatPhotosDelClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 1
+          TabStop = True
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+        object CheckBoxFlat2: TCheckBoxFlat
+          Left = 20
+          Top = 96
+          Width = 149
+          Height = 24
+          Caption = #1044#1088#1091#1079#1100#1103
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 2
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat3: TCheckBoxFlat
+          Left = 20
+          Top = 126
+          Width = 149
+          Height = 24
+          Caption = #1043#1088#1091#1087#1087#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 3
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat4: TCheckBoxFlat
+          Left = 20
+          Top = 156
+          Width = 149
+          Height = 24
+          Caption = #1060#1086#1090#1086#1075#1088#1072#1092#1080#1080
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 4
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat5: TCheckBoxFlat
+          Left = 20
+          Top = 216
+          Width = 149
+          Height = 24
+          Caption = #1042#1080#1076#1077#1086
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 5
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat6: TCheckBoxFlat
+          Left = 20
+          Top = 186
+          Width = 149
+          Height = 24
+          Cursor = crDefault
+          Caption = #1052#1091#1079#1099#1082#1072
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 6
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat7: TCheckBoxFlat
+          Left = 20
+          Top = 246
+          Width = 149
+          Height = 24
+          Caption = #1058#1086#1074#1072#1088#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 7
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat8: TCheckBoxFlat
+          Left = 20
+          Top = 276
+          Width = 149
+          Height = 24
+          Caption = #1047#1072#1082#1083#1072#1076#1082#1080
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 8
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CheckBoxFlat9: TCheckBoxFlat
+          Left = 20
+          Top = 306
+          Width = 149
+          Height = 24
+          Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 9
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object DrawPanel6: TDrawPanel
+          Left = 186
+          Top = 60
+          Width = 289
+          Height = 109
+          Margins.Top = 7
+          Margins.Right = 175
+          Margins.Bottom = 7
+          DefaultPaint = False
+          OnPaint = DrawPanelPostsCleanPaint
+          BevelOuter = bvNone
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 10
+          object Label27: TLabel
+            AlignWithMargins = True
+            Left = 16
+            Top = 7
+            Width = 184
+            Height = 23
+            Alignment = taCenter
+            Caption = #1043#1088#1091#1087#1087#1072'/'#1057#1086#1086#1073#1097#1077#1089#1090#1074#1086
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 5721926
+            Font.Height = -19
+            Font.Name = 'Roboto'
+            Font.Style = []
+            Font.Quality = fqAntialiased
+            ParentFont = False
+            WordWrap = True
+          end
+          object CheckBoxFlat10: TCheckBoxFlat
+            Left = 16
+            Top = 36
+            Width = 149
+            Height = 24
+            Caption = #1055#1086#1076#1087#1080#1089#1095#1080#1082#1080
+            ColorNormal = clWhite
+            ColorOver = clWhite
+            ColorPressed = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = clWindowText
+            FontOver.Height = -13
+            FontOver.Name = 'Tahoma'
+            FontOver.Style = []
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = clWindowText
+            FontDown.Height = -13
+            FontDown.Name = 'Tahoma'
+            FontDown.Style = []
+            IgnorBounds = True
+            ImageIndex = 9
+            Images = ImageList16
+            RoundRectParam = 0
+            ShowFocusRect = False
+            TabOrder = 0
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+            ImageCheck = 8
+            ImageUncheck = 9
+          end
+          object CheckBoxFlat11: TCheckBoxFlat
+            Left = 16
+            Top = 66
+            Width = 149
+            Height = 24
+            Caption = #1054#1073#1089#1091#1078#1076#1077#1085#1080#1103
+            ColorNormal = clWhite
+            ColorOver = clWhite
+            ColorPressed = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            FontOver.Charset = DEFAULT_CHARSET
+            FontOver.Color = clWindowText
+            FontOver.Height = -13
+            FontOver.Name = 'Tahoma'
+            FontOver.Style = []
+            FontDown.Charset = DEFAULT_CHARSET
+            FontDown.Color = clWindowText
+            FontDown.Height = -13
+            FontDown.Name = 'Tahoma'
+            FontDown.Style = []
+            IgnorBounds = True
+            ImageIndex = 9
+            Images = ImageList16
+            RoundRectParam = 0
+            ShowFocusRect = False
+            TabOrder = 1
+            TabStop = True
+            TextFormat = [tfSingleLine, tfVerticalCenter]
+            SubTextFont.Charset = DEFAULT_CHARSET
+            SubTextFont.Color = clWhite
+            SubTextFont.Height = -13
+            SubTextFont.Name = 'Tahoma'
+            SubTextFont.Style = []
+            ImageCheck = 8
+            ImageUncheck = 9
+          end
+        end
+      end
+    end
     object TabSheetGroups: TTabSheet
       Caption = 'Groups'
       ImageIndex = 1
+      ExplicitHeight = 489
       object TableExGroupClean: TTableEx
         AlignWithMargins = True
         Left = 3
         Top = 27
-        Width = 935
-        Height = 363
+        Width = 1015
+        Height = 429
         Align = alClient
         BevelKind = bkFlat
         BevelOuter = bvRaised
@@ -3851,7 +4652,7 @@ object FormMain: TFormMain
           end
           item
             Caption = #1058#1077#1082#1089#1090' '#1087#1086#1089#1090#1072
-            Width = 531
+            Width = 611
           end>
         ItemCount = 1
         LineColor = 15856113
@@ -3885,7 +4686,7 @@ object FormMain: TFormMain
       object PanelGroupCleanTools: TPanel
         Left = 0
         Top = 0
-        Width = 941
+        Width = 1021
         Height = 24
         Align = alTop
         BevelOuter = bvNone
@@ -4031,12 +4832,13 @@ object FormMain: TFormMain
     object TabSheetFriends: TTabSheet
       Caption = 'Friends'
       ImageIndex = 4
+      ExplicitHeight = 489
       object TableExFriendClean: TTableEx
         AlignWithMargins = True
         Left = 3
         Top = 27
-        Width = 935
-        Height = 363
+        Width = 1015
+        Height = 429
         Align = alClient
         BevelKind = bkFlat
         BevelOuter = bvRaised
@@ -4071,7 +4873,7 @@ object FormMain: TFormMain
           end
           item
             Caption = #1057#1090#1072#1090#1091#1089' '#1072#1082#1082#1072#1091#1085#1090#1072
-            Width = 421
+            Width = 501
           end>
         ItemCount = 1
         LineColor = 15856113
@@ -4105,7 +4907,7 @@ object FormMain: TFormMain
       object Panel4: TPanel
         Left = 0
         Top = 0
-        Width = 941
+        Width = 1021
         Height = 24
         Align = alTop
         BevelOuter = bvNone
@@ -4206,10 +5008,11 @@ object FormMain: TFormMain
     object TabSheetWall: TTabSheet
       Caption = 'Wall'
       ImageIndex = 5
+      ExplicitHeight = 489
       object Panel6: TPanel
         Left = 0
         Top = 0
-        Width = 941
+        Width = 1021
         Height = 24
         Align = alTop
         BevelOuter = bvNone
@@ -4265,19 +5068,22 @@ object FormMain: TFormMain
         Left = 10
         Top = 30
         Width = 495
-        Height = 271
+        Height = 303
         DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
         TabOrder = 1
+        DesignSize = (
+          495
+          303)
         object LabelWallCaption: TLabel
           Left = 20
           Top = 15
-          Width = 118
+          Width = 66
           Height = 23
-          Caption = #1047#1072#1087#1080#1089#1080' - 200'
+          Caption = #1047#1072#1087#1080#1089#1080
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 5721926
           Font.Height = -19
@@ -4337,7 +5143,7 @@ object FormMain: TFormMain
         object Shape7: TShape
           AlignWithMargins = True
           Left = 0
-          Top = 200
+          Top = 232
           Width = 495
           Height = 1
           Margins.Left = 0
@@ -4353,9 +5159,10 @@ object FormMain: TFormMain
         end
         object ButtonFlatWallClean: TButtonFlat
           Left = 20
-          Top = 217
+          Top = 249
           Width = 149
           Height = 35
+          Anchors = [akLeft, akBottom]
           Caption = #1055#1086#1076#1089#1095#1105#1090
           ColorNormal = 15854565
           ColorOver = 15591135
@@ -4589,10 +5396,11 @@ object FormMain: TFormMain
         end
         object ButtonFlatPostDel: TButtonFlat
           Left = 175
-          Top = 217
+          Top = 249
           Width = 300
           Height = 35
-          Caption = #1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1089#1090#1099
+          Anchors = [akLeft, akBottom]
+          Caption = #1059#1076#1072#1083#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
           ColorNormal = 15854565
           ColorOver = 15591135
           ColorPressed = 15393498
@@ -4694,6 +5502,7 @@ object FormMain: TFormMain
     object TabSheetPhotos: TTabSheet
       Caption = 'Photos'
       ImageIndex = 6
+      ExplicitHeight = 489
       object DrawPanelPhotosClean: TDrawPanel
         Left = 10
         Top = 30
@@ -5215,7 +6024,7 @@ object FormMain: TFormMain
       object Panel5: TPanel
         Left = 0
         Top = 0
-        Width = 941
+        Width = 1021
         Height = 24
         Align = alTop
         BevelOuter = bvNone
@@ -5268,7 +6077,7 @@ object FormMain: TFormMain
         end
       end
       object PanelPhotosAlbums: TPanel
-        Left = 526
+        Left = 511
         Top = 30
         Width = 309
         Height = 83
@@ -5341,10 +6150,11 @@ object FormMain: TFormMain
     object TabSheetVideo: TTabSheet
       Caption = 'Videos'
       ImageIndex = 9
+      ExplicitHeight = 489
       object Panel10: TPanel
         Left = 0
         Top = 0
-        Width = 941
+        Width = 1021
         Height = 24
         Align = alTop
         BevelOuter = bvNone
@@ -5397,8 +6207,8 @@ object FormMain: TFormMain
         end
       end
       object PanelVideoAlbums: TPanel
-        Left = 534
-        Top = 38
+        Left = 511
+        Top = 30
         Width = 309
         Height = 83
         BevelOuter = bvNone
@@ -5988,11 +6798,12 @@ object FormMain: TFormMain
     object TabSheetDocs: TTabSheet
       Caption = 'Docs'
       ImageIndex = 11
+      ExplicitHeight = 489
       object DrawPanelDocClean: TDrawPanel
         Left = 10
         Top = 30
         Width = 495
-        Height = 331
+        Height = 303
         DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
         BevelOuter = bvNone
@@ -6001,13 +6812,13 @@ object FormMain: TFormMain
         TabOrder = 0
         DesignSize = (
           495
-          331)
+          303)
         object LabelDocsCaption: TLabel
           Left = 20
           Top = 15
-          Width = 158
+          Width = 106
           Height = 23
-          Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099' - 200'
+          Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 5721926
           Font.Height = -19
@@ -6067,7 +6878,7 @@ object FormMain: TFormMain
         object Shape16: TShape
           AlignWithMargins = True
           Left = 0
-          Top = 260
+          Top = 232
           Width = 495
           Height = 1
           Margins.Left = 0
@@ -6083,7 +6894,7 @@ object FormMain: TFormMain
         end
         object ButtonFlatDocsCalc: TButtonFlat
           Left = 20
-          Top = 277
+          Top = 249
           Width = 149
           Height = 35
           Anchors = [akLeft, akBottom]
@@ -6217,7 +7028,7 @@ object FormMain: TFormMain
         end
         object ButtonFlatDocsDel: TButtonFlat
           Left = 175
-          Top = 277
+          Top = 249
           Width = 300
           Height = 35
           Anchors = [akLeft, akBottom]
@@ -6345,10 +7156,10 @@ object FormMain: TFormMain
           SubTextFont.Style = []
         end
       end
-      object Panel11: TPanel
+      object PanelDocsTools: TPanel
         Left = 0
         Top = 0
-        Width = 941
+        Width = 1021
         Height = 24
         Align = alTop
         BevelOuter = bvNone
@@ -6401,8 +7212,8 @@ object FormMain: TFormMain
         end
       end
       object PanelDocTypes: TPanel
-        Left = 542
-        Top = 46
+        Left = 511
+        Top = 30
         Width = 309
         Height = 83
         BevelOuter = bvNone
@@ -6471,14 +7282,15 @@ object FormMain: TFormMain
         end
       end
     end
-    object TabSheetAutoClean: TTabSheet
-      Caption = 'AutoClean'
-      ImageIndex = 10
-      object DrawPanelFullClean: TDrawPanel
+    object TabSheetMessages: TTabSheet
+      Caption = 'Messages'
+      ImageIndex = 12
+      ExplicitHeight = 489
+      object DrawPanel1: TDrawPanel
         Left = 10
         Top = 30
         Width = 495
-        Height = 419
+        Height = 303
         DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
         BevelOuter = bvNone
@@ -6487,13 +7299,13 @@ object FormMain: TFormMain
         TabOrder = 0
         DesignSize = (
           495
-          419)
-        object Label22: TLabel
+          303)
+        object LabelMessagesCaption: TLabel
           Left = 20
           Top = 15
-          Width = 144
+          Width = 77
           Height = 23
-          Caption = #1055#1086#1083#1085#1072#1103' '#1086#1095#1080#1089#1090#1082#1072
+          Caption = #1044#1080#1072#1083#1086#1075#1080
           Font.Charset = DEFAULT_CHARSET
           Font.Color = 5721926
           Font.Height = -19
@@ -6503,7 +7315,37 @@ object FormMain: TFormMain
           ParentFont = False
           Transparent = True
         end
-        object Shape13: TShape
+        object Label31: TLabel
+          Left = 192
+          Top = 70
+          Width = 7
+          Height = 15
+          Caption = #1089
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          Transparent = True
+        end
+        object Label32: TLabel
+          Left = 333
+          Top = 70
+          Width = 14
+          Height = 15
+          Caption = #1087#1086
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          Transparent = True
+        end
+        object Shape1: TShape
           AlignWithMargins = True
           Left = 20
           Top = 50
@@ -6520,10 +7362,10 @@ object FormMain: TFormMain
           ExplicitTop = 36
           ExplicitWidth = 140
         end
-        object Shape14: TShape
+        object Shape17: TShape
           AlignWithMargins = True
           Left = 0
-          Top = 348
+          Top = 232
           Width = 495
           Height = 1
           Margins.Left = 0
@@ -6537,53 +7379,13 @@ object FormMain: TFormMain
           ExplicitTop = 36
           ExplicitWidth = 140
         end
-        object CheckBoxFlat1: TCheckBoxFlat
+        object ButtonFlat11: TButtonFlat
           Left = 20
-          Top = 66
+          Top = 249
           Width = 149
-          Height = 24
-          Caption = #1047#1072#1087#1080#1089#1080' '#1089#1086' '#1089#1090#1077#1085#1099
-          ColorNormal = clWhite
-          ColorOver = clWhite
-          ColorPressed = clWhite
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          FontOver.Charset = DEFAULT_CHARSET
-          FontOver.Color = clWindowText
-          FontOver.Height = -13
-          FontOver.Name = 'Tahoma'
-          FontOver.Style = []
-          FontDown.Charset = DEFAULT_CHARSET
-          FontDown.Color = clWindowText
-          FontDown.Height = -13
-          FontDown.Name = 'Tahoma'
-          FontDown.Style = []
-          IgnorBounds = True
-          ImageIndex = 9
-          Images = ImageList16
-          RoundRectParam = 0
-          ShowFocusRect = False
-          TabOrder = 0
-          TabStop = True
-          TextFormat = [tfSingleLine, tfVerticalCenter]
-          SubTextFont.Charset = DEFAULT_CHARSET
-          SubTextFont.Color = clWhite
-          SubTextFont.Height = -13
-          SubTextFont.Name = 'Tahoma'
-          SubTextFont.Style = []
-          ImageCheck = 8
-          ImageUncheck = 9
-        end
-        object ButtonFlat4: TButtonFlat
-          Left = 20
-          Top = 365
-          Width = 455
           Height = 35
           Anchors = [akLeft, akBottom]
-          Caption = #1055#1086#1083#1085#1072#1103' '#1086#1095#1080#1089#1090#1082#1072
+          Caption = #1055#1086#1076#1089#1095#1105#1090
           ColorNormal = 15854565
           ColorOver = 15591135
           ColorPressed = 15393498
@@ -6604,11 +7406,11 @@ object FormMain: TFormMain
           FontDown.Name = 'Roboto'
           FontDown.Style = []
           IgnorBounds = True
-          OnClick = ButtonFlatPhotosDelClick
+          OnClick = ButtonFlatDocsCalcClick
           RoundRectParam = 6
           Shape = stRoundRect
           ShowFocusRect = False
-          TabOrder = 1
+          TabOrder = 0
           TabStop = True
           TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
           SubTextFont.Charset = DEFAULT_CHARSET
@@ -6617,12 +7419,12 @@ object FormMain: TFormMain
           SubTextFont.Name = 'Tahoma'
           SubTextFont.Style = []
         end
-        object CheckBoxFlat2: TCheckBoxFlat
+        object CheckBoxFlat12: TCheckBoxFlat
           Left = 20
-          Top = 96
+          Top = 66
           Width = 149
           Height = 24
-          Caption = #1044#1088#1091#1079#1100#1103
+          Caption = #1058#1086#1083#1100#1082#1086' '#1079#1072' '#1087#1077#1088#1080#1086#1076
           ColorNormal = clWhite
           ColorOver = clWhite
           ColorPressed = clWhite
@@ -6646,103 +7448,117 @@ object FormMain: TFormMain
           Images = ImageList16
           RoundRectParam = 0
           ShowFocusRect = False
+          TabOrder = 1
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object CalendarPicker1: TCalendarPicker
+          Left = 204
+          Top = 65
+          Width = 125
+          Height = 26
+          CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
+          CalendarHeaderInfo.DaysOfWeekFont.Height = -13
+          CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+          CalendarHeaderInfo.DaysOfWeekFont.Style = []
+          CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.Font.Color = clWindowText
+          CalendarHeaderInfo.Font.Height = -20
+          CalendarHeaderInfo.Font.Name = 'Segoe UI'
+          CalendarHeaderInfo.Font.Style = []
+          Color = clWindow
+          Date = 43671.605503344910000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          IsEmpty = False
+          ParentFont = False
           TabOrder = 2
-          TabStop = True
-          TextFormat = [tfSingleLine, tfVerticalCenter]
-          SubTextFont.Charset = DEFAULT_CHARSET
-          SubTextFont.Color = clWhite
-          SubTextFont.Height = -13
-          SubTextFont.Name = 'Tahoma'
-          SubTextFont.Style = []
-          ImageCheck = 8
-          ImageUncheck = 9
+          TextHint = #1076#1072#1090#1072
         end
-        object CheckBoxFlat3: TCheckBoxFlat
-          Left = 20
-          Top = 126
-          Width = 149
-          Height = 24
-          Caption = #1043#1088#1091#1087#1087#1099
-          ColorNormal = clWhite
-          ColorOver = clWhite
-          ColorPressed = clWhite
+        object CalendarPicker2: TCalendarPicker
+          Left = 350
+          Top = 65
+          Width = 125
+          Height = 26
+          CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
+          CalendarHeaderInfo.DaysOfWeekFont.Height = -13
+          CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+          CalendarHeaderInfo.DaysOfWeekFont.Style = []
+          CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.Font.Color = clWindowText
+          CalendarHeaderInfo.Font.Height = -20
+          CalendarHeaderInfo.Font.Name = 'Segoe UI'
+          CalendarHeaderInfo.Font.Style = []
+          Color = clWindow
+          Date = 43671.605687500000000000
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Tahoma'
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
           Font.Style = []
-          FontOver.Charset = DEFAULT_CHARSET
-          FontOver.Color = clWindowText
-          FontOver.Height = -13
-          FontOver.Name = 'Tahoma'
-          FontOver.Style = []
-          FontDown.Charset = DEFAULT_CHARSET
-          FontDown.Color = clWindowText
-          FontDown.Height = -13
-          FontDown.Name = 'Tahoma'
-          FontDown.Style = []
-          IgnorBounds = True
-          ImageIndex = 9
-          Images = ImageList16
-          RoundRectParam = 0
-          ShowFocusRect = False
+          IsEmpty = False
+          ParentFont = False
           TabOrder = 3
-          TabStop = True
-          TextFormat = [tfSingleLine, tfVerticalCenter]
-          SubTextFont.Charset = DEFAULT_CHARSET
-          SubTextFont.Color = clWhite
-          SubTextFont.Height = -13
-          SubTextFont.Name = 'Tahoma'
-          SubTextFont.Style = []
-          ImageCheck = 8
-          ImageUncheck = 9
+          TextHint = #1076#1072#1090#1072
         end
-        object CheckBoxFlat4: TCheckBoxFlat
-          Left = 20
-          Top = 156
-          Width = 149
-          Height = 24
-          Caption = #1060#1086#1090#1086#1075#1088#1072#1092#1080#1080
-          ColorNormal = clWhite
-          ColorOver = clWhite
-          ColorPressed = clWhite
+        object ButtonFlatMessagesDel: TButtonFlat
+          Left = 175
+          Top = 249
+          Width = 300
+          Height = 35
+          Anchors = [akLeft, akBottom]
+          Caption = #1059#1076#1072#1083#1080#1090#1100' '#1076#1080#1072#1083#1086#1075#1080
+          ColorNormal = 15854565
+          ColorOver = 15591135
+          ColorPressed = 15393498
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 8218453
           Font.Height = -13
-          Font.Name = 'Tahoma'
+          Font.Name = 'Roboto'
           Font.Style = []
+          Font.Quality = fqClearType
           FontOver.Charset = DEFAULT_CHARSET
-          FontOver.Color = clWindowText
+          FontOver.Color = 8218453
           FontOver.Height = -13
-          FontOver.Name = 'Tahoma'
+          FontOver.Name = 'Roboto'
           FontOver.Style = []
           FontDown.Charset = DEFAULT_CHARSET
-          FontDown.Color = clWindowText
+          FontDown.Color = 8218453
           FontDown.Height = -13
-          FontDown.Name = 'Tahoma'
+          FontDown.Name = 'Roboto'
           FontDown.Style = []
           IgnorBounds = True
-          ImageIndex = 9
-          Images = ImageList16
-          RoundRectParam = 0
+          OnClick = ButtonFlatDocsDelClick
+          RoundRectParam = 6
+          Shape = stRoundRect
           ShowFocusRect = False
           TabOrder = 4
           TabStop = True
-          TextFormat = [tfSingleLine, tfVerticalCenter]
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
           SubTextFont.Charset = DEFAULT_CHARSET
           SubTextFont.Color = clWhite
           SubTextFont.Height = -13
           SubTextFont.Name = 'Tahoma'
           SubTextFont.Style = []
-          ImageCheck = 8
-          ImageUncheck = 9
         end
-        object CheckBoxFlat5: TCheckBoxFlat
+        object CheckBoxFlat13: TCheckBoxFlat
           Left = 20
-          Top = 216
-          Width = 149
+          Top = 96
+          Width = 311
           Height = 24
-          Caption = #1042#1080#1076#1077#1086
+          Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1076#1080#1072#1083#1086#1075#1080' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1077#1081
           ColorNormal = clWhite
           ColorOver = clWhite
           ColorPressed = clWhite
@@ -6777,52 +7593,61 @@ object FormMain: TFormMain
           ImageCheck = 8
           ImageUncheck = 9
         end
-        object CheckBoxFlat6: TCheckBoxFlat
-          Left = 20
-          Top = 186
-          Width = 149
+        object ButtonFlat13: TButtonFlat
+          AlignWithMargins = True
+          Left = 334
+          Top = 96
+          Width = 20
           Height = 24
-          Caption = #1052#1091#1079#1099#1082#1072
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
+          Caption = ''
           ColorNormal = clWhite
-          ColorOver = clWhite
+          ColorOver = 15788772
           ColorPressed = clWhite
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = 7558185
           Font.Height = -13
-          Font.Name = 'Tahoma'
+          Font.Name = 'Roboto'
           Font.Style = []
+          Font.Quality = fqClearType
           FontOver.Charset = DEFAULT_CHARSET
-          FontOver.Color = clWindowText
+          FontOver.Color = 7558185
           FontOver.Height = -13
-          FontOver.Name = 'Tahoma'
+          FontOver.Name = 'Roboto'
           FontOver.Style = []
+          FontOver.Quality = fqClearType
           FontDown.Charset = DEFAULT_CHARSET
-          FontDown.Color = clWindowText
+          FontDown.Color = 7558185
           FontDown.Height = -13
-          FontDown.Name = 'Tahoma'
+          FontDown.Name = 'Roboto'
           FontDown.Style = []
+          FontDown.Quality = fqClearType
           IgnorBounds = True
-          ImageIndex = 9
+          ImageIndentLeft = -3
+          ImageIndex = 1
           Images = ImageList16
-          RoundRectParam = 0
+          OnClick = ButtonFlatDocTypesClick
+          RoundRectParam = 6
+          Shape = stRoundRect
           ShowFocusRect = False
           TabOrder = 6
           TabStop = True
-          TextFormat = [tfSingleLine, tfVerticalCenter]
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
           SubTextFont.Charset = DEFAULT_CHARSET
           SubTextFont.Color = clWhite
           SubTextFont.Height = -13
           SubTextFont.Name = 'Tahoma'
           SubTextFont.Style = []
-          ImageCheck = 8
-          ImageUncheck = 9
         end
-        object CheckBoxFlat7: TCheckBoxFlat
+        object CheckBoxFlat14: TCheckBoxFlat
           Left = 20
-          Top = 246
-          Width = 149
+          Top = 126
+          Width = 269
           Height = 24
-          Caption = #1058#1086#1074#1072#1088#1099
+          Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1073#1077#1089#1077#1076#1099' ('#1075#1088#1091#1087#1087#1086#1074#1099#1077' '#1076#1080#1072#1083#1086#1075#1080')'
           ColorNormal = clWhite
           ColorOver = clWhite
           ColorPressed = clWhite
@@ -6857,52 +7682,296 @@ object FormMain: TFormMain
           ImageCheck = 8
           ImageUncheck = 9
         end
-        object CheckBoxFlat8: TCheckBoxFlat
-          Left = 20
-          Top = 276
-          Width = 149
+      end
+      object Panel11: TPanel
+        Left = 0
+        Top = 0
+        Width = 1021
+        Height = 24
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+        object ButtonFlatGetMessageInfo: TButtonFlat
+          Left = 0
+          Top = 0
+          Width = 105
           Height = 24
+          Align = alLeft
+          Caption = #1054#1073#1085#1086#1074#1080#1090#1100
+          ColorNormal = 15789805
+          ColorOver = 15459809
+          ColorPressed = 15789805
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 7558185
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontOver.Quality = fqClearType
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 7558185
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          FontDown.Quality = fqClearType
+          IgnorBounds = True
+          ImageIndentLeft = 5
+          ImageIndentRight = 5
+          ImageIndex = 4
+          Images = ImageList16
+          OnClick = ButtonFlatGetMessageInfoClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 0
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+      end
+      object Panel13: TPanel
+        Left = 511
+        Top = 30
+        Width = 339
+        Height = 287
+        BevelOuter = bvNone
+        TabOrder = 2
+        Visible = False
+        object TableExUsers: TTableEx
+          Left = 0
+          Top = 21
+          Width = 339
+          Height = 266
+          Align = alClient
+          BorderStyle = bsNone
+          Color = 15856113
+          DefaultRowHeight = 25
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          TabOrder = 0
+          OnDrawCellData = TableExDocTypesDrawCellData
+          ItemIndex = -1
+          OnItemColClick = TableExDocTypesItemColClick
+          GetData = TableExDocTypesGetData
+          Columns = <
+            item
+              Caption = 'Selected'
+              Width = 30
+              MinWidth = 30
+              AsButton = True
+            end
+            item
+              Caption = 'Name'
+              Width = 309
+            end>
+          ItemCount = 1
+          LineColor = 15856113
+          LineColorXor = 15856113
+          LineHotColor = 15066597
+          LineSelColor = 14079702
+          ColumnsColor = 15856113
+          FontHotLine.Charset = DEFAULT_CHARSET
+          FontHotLine.Color = 7558185
+          FontHotLine.Height = -13
+          FontHotLine.Name = 'Roboto'
+          FontHotLine.Style = []
+          FontLine.Charset = DEFAULT_CHARSET
+          FontLine.Color = 7558185
+          FontLine.Height = -13
+          FontLine.Name = 'Roboto'
+          FontLine.Style = []
+          FontSelLine.Charset = DEFAULT_CHARSET
+          FontSelLine.Color = 6572324
+          FontSelLine.Height = -13
+          FontSelLine.Name = 'Roboto'
+          FontSelLine.Style = []
+          ShowColumns = False
+          ColumnsFont.Charset = DEFAULT_CHARSET
+          ColumnsFont.Color = 2631720
+          ColumnsFont.Height = -11
+          ColumnsFont.Name = 'Tahoma'
+          ColumnsFont.Style = []
+          CanClickToUnfocused = True
+        end
+        object EditUserSelect: TEdit
+          Left = 0
+          Top = 0
+          Width = 339
+          Height = 21
+          Align = alTop
+          BevelInner = bvSpace
+          BevelKind = bkSoft
+          BevelOuter = bvSpace
+          BorderStyle = bsNone
+          Color = 15856113
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          TabOrder = 1
+          TextHint = #1055#1086#1080#1089#1082
+        end
+      end
+    end
+    object TabSheetFave: TTabSheet
+      Caption = 'Fave'
+      ImageIndex = 13
+      object DrawPanel3: TDrawPanel
+        Left = 10
+        Top = 30
+        Width = 495
+        Height = 303
+        DefaultPaint = False
+        OnPaint = DrawPanelPostsCleanPaint
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 0
+        DesignSize = (
+          495
+          303)
+        object LabelFaveCaption: TLabel
+          Left = 20
+          Top = 15
+          Width = 87
+          Height = 23
           Caption = #1047#1072#1082#1083#1072#1076#1082#1080
-          ColorNormal = clWhite
-          ColorOver = clWhite
-          ColorPressed = clWhite
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Tahoma'
+          Font.Color = 5721926
+          Font.Height = -19
+          Font.Name = 'Roboto'
           Font.Style = []
+          Font.Quality = fqAntialiased
+          ParentFont = False
+          Transparent = True
+        end
+        object Label33: TLabel
+          Left = 192
+          Top = 70
+          Width = 7
+          Height = 15
+          Caption = #1089
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          Transparent = True
+        end
+        object Label34: TLabel
+          Left = 333
+          Top = 70
+          Width = 14
+          Height = 15
+          Caption = #1087#1086
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          Transparent = True
+        end
+        object Shape18: TShape
+          AlignWithMargins = True
+          Left = 20
+          Top = 50
+          Width = 455
+          Height = 1
+          Margins.Left = 20
+          Margins.Top = 50
+          Margins.Right = 20
+          Margins.Bottom = 6
+          Align = alTop
+          Brush.Color = 15526633
+          Pen.Color = 15526633
+          ExplicitLeft = 10
+          ExplicitTop = 36
+          ExplicitWidth = 140
+        end
+        object Shape19: TShape
+          AlignWithMargins = True
+          Left = 0
+          Top = 232
+          Width = 495
+          Height = 1
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 70
+          Align = alBottom
+          Brush.Color = 15526633
+          Pen.Color = 15526633
+          ExplicitLeft = 10
+          ExplicitTop = 36
+          ExplicitWidth = 140
+        end
+        object ButtonFlatFaveCalc: TButtonFlat
+          Left = 20
+          Top = 249
+          Width = 149
+          Height = 35
+          Anchors = [akLeft, akBottom]
+          Caption = #1055#1086#1076#1089#1095#1105#1090
+          ColorNormal = 15854565
+          ColorOver = 15591135
+          ColorPressed = 15393498
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8218453
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
           FontOver.Charset = DEFAULT_CHARSET
-          FontOver.Color = clWindowText
+          FontOver.Color = 8218453
           FontOver.Height = -13
-          FontOver.Name = 'Tahoma'
+          FontOver.Name = 'Roboto'
           FontOver.Style = []
           FontDown.Charset = DEFAULT_CHARSET
-          FontDown.Color = clWindowText
+          FontDown.Color = 8218453
           FontDown.Height = -13
-          FontDown.Name = 'Tahoma'
+          FontDown.Name = 'Roboto'
           FontDown.Style = []
           IgnorBounds = True
-          ImageIndex = 9
-          Images = ImageList16
-          RoundRectParam = 0
+          OnClick = ButtonFlatFaveCalcClick
+          RoundRectParam = 6
+          Shape = stRoundRect
           ShowFocusRect = False
-          TabOrder = 8
+          TabOrder = 0
           TabStop = True
-          TextFormat = [tfSingleLine, tfVerticalCenter]
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
           SubTextFont.Charset = DEFAULT_CHARSET
           SubTextFont.Color = clWhite
           SubTextFont.Height = -13
           SubTextFont.Name = 'Tahoma'
           SubTextFont.Style = []
-          ImageCheck = 8
-          ImageUncheck = 9
         end
-        object CheckBoxFlat9: TCheckBoxFlat
+        object CheckBoxFaveDate: TCheckBoxFlat
           Left = 20
-          Top = 306
+          Top = 66
           Width = 149
           Height = 24
-          Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+          Caption = #1058#1086#1083#1100#1082#1086' '#1079#1072' '#1087#1077#1088#1080#1086#1076
           ColorNormal = clWhite
           ColorOver = clWhite
           ColorPressed = clWhite
@@ -6926,7 +7995,7 @@ object FormMain: TFormMain
           Images = ImageList16
           RoundRectParam = 0
           ShowFocusRect = False
-          TabOrder = 9
+          TabOrder = 1
           TabStop = True
           TextFormat = [tfSingleLine, tfVerticalCenter]
           SubTextFont.Charset = DEFAULT_CHARSET
@@ -6937,117 +8006,314 @@ object FormMain: TFormMain
           ImageCheck = 8
           ImageUncheck = 9
         end
-        object DrawPanel6: TDrawPanel
-          Left = 186
-          Top = 60
-          Width = 289
-          Height = 109
-          Margins.Top = 7
-          Margins.Right = 175
-          Margins.Bottom = 7
-          DefaultPaint = False
-          OnPaint = DrawPanelPostsCleanPaint
-          BevelOuter = bvNone
-          Color = clWhite
-          ParentBackground = False
-          TabOrder = 10
-          object Label27: TLabel
-            AlignWithMargins = True
-            Left = 16
-            Top = 7
-            Width = 184
-            Height = 23
-            Alignment = taCenter
-            Caption = #1043#1088#1091#1087#1087#1072'/'#1057#1086#1086#1073#1097#1077#1089#1090#1074#1086
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = 5721926
-            Font.Height = -19
-            Font.Name = 'Roboto'
-            Font.Style = []
-            Font.Quality = fqAntialiased
-            ParentFont = False
-            WordWrap = True
-          end
-          object CheckBoxFlat10: TCheckBoxFlat
-            Left = 16
-            Top = 36
-            Width = 149
-            Height = 24
-            Caption = #1055#1086#1076#1087#1080#1089#1095#1080#1082#1080
-            ColorNormal = clWhite
-            ColorOver = clWhite
-            ColorPressed = clWhite
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            FontOver.Charset = DEFAULT_CHARSET
-            FontOver.Color = clWindowText
-            FontOver.Height = -13
-            FontOver.Name = 'Tahoma'
-            FontOver.Style = []
-            FontDown.Charset = DEFAULT_CHARSET
-            FontDown.Color = clWindowText
-            FontDown.Height = -13
-            FontDown.Name = 'Tahoma'
-            FontDown.Style = []
-            IgnorBounds = True
-            ImageIndex = 9
-            Images = ImageList16
-            RoundRectParam = 0
-            ShowFocusRect = False
-            TabOrder = 0
-            TabStop = True
-            TextFormat = [tfSingleLine, tfVerticalCenter]
-            SubTextFont.Charset = DEFAULT_CHARSET
-            SubTextFont.Color = clWhite
-            SubTextFont.Height = -13
-            SubTextFont.Name = 'Tahoma'
-            SubTextFont.Style = []
-            ImageCheck = 8
-            ImageUncheck = 9
-          end
-          object CheckBoxFlat11: TCheckBoxFlat
-            Left = 16
-            Top = 66
-            Width = 149
-            Height = 24
-            Caption = #1054#1073#1089#1091#1078#1076#1077#1085#1080#1103
-            ColorNormal = clWhite
-            ColorOver = clWhite
-            ColorPressed = clWhite
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            FontOver.Charset = DEFAULT_CHARSET
-            FontOver.Color = clWindowText
-            FontOver.Height = -13
-            FontOver.Name = 'Tahoma'
-            FontOver.Style = []
-            FontDown.Charset = DEFAULT_CHARSET
-            FontDown.Color = clWindowText
-            FontDown.Height = -13
-            FontDown.Name = 'Tahoma'
-            FontDown.Style = []
-            IgnorBounds = True
-            ImageIndex = 9
-            Images = ImageList16
-            RoundRectParam = 0
-            ShowFocusRect = False
-            TabOrder = 1
-            TabStop = True
-            TextFormat = [tfSingleLine, tfVerticalCenter]
-            SubTextFont.Charset = DEFAULT_CHARSET
-            SubTextFont.Color = clWhite
-            SubTextFont.Height = -13
-            SubTextFont.Name = 'Tahoma'
-            SubTextFont.Style = []
-            ImageCheck = 8
-            ImageUncheck = 9
-          end
+        object CalendarPickerFaveDateS: TCalendarPicker
+          Left = 204
+          Top = 65
+          Width = 125
+          Height = 26
+          CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
+          CalendarHeaderInfo.DaysOfWeekFont.Height = -13
+          CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+          CalendarHeaderInfo.DaysOfWeekFont.Style = []
+          CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.Font.Color = clWindowText
+          CalendarHeaderInfo.Font.Height = -20
+          CalendarHeaderInfo.Font.Name = 'Segoe UI'
+          CalendarHeaderInfo.Font.Style = []
+          Color = clWindow
+          Date = 43671.605503344910000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          IsEmpty = False
+          ParentFont = False
+          TabOrder = 2
+          TextHint = #1076#1072#1090#1072
+        end
+        object CalendarPickerFaveDateE: TCalendarPicker
+          Left = 350
+          Top = 65
+          Width = 125
+          Height = 26
+          CalendarHeaderInfo.DaysOfWeekFont.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.DaysOfWeekFont.Color = clWindowText
+          CalendarHeaderInfo.DaysOfWeekFont.Height = -13
+          CalendarHeaderInfo.DaysOfWeekFont.Name = 'Segoe UI'
+          CalendarHeaderInfo.DaysOfWeekFont.Style = []
+          CalendarHeaderInfo.Font.Charset = DEFAULT_CHARSET
+          CalendarHeaderInfo.Font.Color = clWindowText
+          CalendarHeaderInfo.Font.Height = -20
+          CalendarHeaderInfo.Font.Name = 'Segoe UI'
+          CalendarHeaderInfo.Font.Style = []
+          Color = clWindow
+          Date = 43671.605687500000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          IsEmpty = False
+          ParentFont = False
+          TabOrder = 3
+          TextHint = #1076#1072#1090#1072
+        end
+        object ButtonFlatFaveDel: TButtonFlat
+          Left = 175
+          Top = 249
+          Width = 300
+          Height = 35
+          Anchors = [akLeft, akBottom]
+          Caption = #1059#1076#1072#1083#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1080
+          ColorNormal = 15854565
+          ColorOver = 15591135
+          ColorPressed = 15393498
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 8218453
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 8218453
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 8218453
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          IgnorBounds = True
+          OnClick = ButtonFlatFaveDelClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 4
+          TabStop = True
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+        object CheckBoxFaveTypes: TCheckBoxFlat
+          Left = 20
+          Top = 96
+          Width = 158
+          Height = 24
+          Caption = #1042#1099#1073#1088#1072#1085#1085#1099#1077' '#1074#1080#1076#1099
+          ColorNormal = clWhite
+          ColorOver = clWhite
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = clWindowText
+          FontOver.Height = -13
+          FontOver.Name = 'Tahoma'
+          FontOver.Style = []
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = clWindowText
+          FontDown.Height = -13
+          FontDown.Name = 'Tahoma'
+          FontDown.Style = []
+          IgnorBounds = True
+          ImageIndex = 9
+          Images = ImageList16
+          RoundRectParam = 0
+          ShowFocusRect = False
+          TabOrder = 5
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+          ImageCheck = 8
+          ImageUncheck = 9
+        end
+        object ButtonFlatFaveTypes: TButtonFlat
+          AlignWithMargins = True
+          Left = 175
+          Top = 96
+          Width = 20
+          Height = 24
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
+          Caption = ''
+          ColorNormal = clWhite
+          ColorOver = 15788772
+          ColorPressed = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 7558185
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontOver.Quality = fqClearType
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 7558185
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          FontDown.Quality = fqClearType
+          IgnorBounds = True
+          ImageIndentLeft = -3
+          ImageIndex = 1
+          Images = ImageList16
+          OnClick = ButtonFlatFaveTypesClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 6
+          TabStop = True
+          TextFormat = [tfCenter, tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+      end
+      object Panel14: TPanel
+        Left = 0
+        Top = 0
+        Width = 1021
+        Height = 24
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+        ExplicitTop = 8
+        object ButtonFlatFaveGetInfo: TButtonFlat
+          Left = 0
+          Top = 0
+          Width = 105
+          Height = 24
+          Align = alLeft
+          Caption = #1054#1073#1085#1086#1074#1080#1090#1100
+          ColorNormal = 15789805
+          ColorOver = 15459809
+          ColorPressed = 15789805
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          FontOver.Charset = DEFAULT_CHARSET
+          FontOver.Color = 7558185
+          FontOver.Height = -13
+          FontOver.Name = 'Roboto'
+          FontOver.Style = []
+          FontOver.Quality = fqClearType
+          FontDown.Charset = DEFAULT_CHARSET
+          FontDown.Color = 7558185
+          FontDown.Height = -13
+          FontDown.Name = 'Roboto'
+          FontDown.Style = []
+          FontDown.Quality = fqClearType
+          IgnorBounds = True
+          ImageIndentLeft = 5
+          ImageIndentRight = 5
+          ImageIndex = 4
+          Images = ImageList16
+          OnClick = ButtonFlatFaveGetInfoClick
+          RoundRectParam = 6
+          Shape = stRoundRect
+          ShowFocusRect = False
+          TabOrder = 0
+          TabStop = True
+          TextFormat = [tfSingleLine, tfVerticalCenter]
+          SubTextFont.Charset = DEFAULT_CHARSET
+          SubTextFont.Color = clWhite
+          SubTextFont.Height = -13
+          SubTextFont.Name = 'Tahoma'
+          SubTextFont.Style = []
+        end
+      end
+      object PanelFaveTypes: TPanel
+        Left = 511
+        Top = 30
+        Width = 309
+        Height = 83
+        BevelOuter = bvNone
+        TabOrder = 2
+        Visible = False
+        object TableExFaves: TTableEx
+          Left = 0
+          Top = 0
+          Width = 309
+          Height = 83
+          Align = alClient
+          BorderStyle = bsNone
+          Color = 15856113
+          DefaultRowHeight = 25
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7558185
+          Font.Height = -13
+          Font.Name = 'Roboto'
+          Font.Style = []
+          Font.Quality = fqClearType
+          ParentFont = False
+          TabOrder = 0
+          OnDrawCellData = TableExFavesDrawCellData
+          ItemIndex = -1
+          OnItemColClick = TableExFavesItemColClick
+          GetData = TableExFavesGetData
+          Columns = <
+            item
+              Caption = 'Selected'
+              Width = 30
+              MinWidth = 30
+              AsButton = True
+            end
+            item
+              Caption = 'Name'
+              Width = 279
+            end>
+          ItemCount = 1
+          LineColor = 15856113
+          LineColorXor = 15856113
+          LineHotColor = 15066597
+          LineSelColor = 14079702
+          ColumnsColor = 15856113
+          FontHotLine.Charset = DEFAULT_CHARSET
+          FontHotLine.Color = 7558185
+          FontHotLine.Height = -13
+          FontHotLine.Name = 'Roboto'
+          FontHotLine.Style = []
+          FontLine.Charset = DEFAULT_CHARSET
+          FontLine.Color = 7558185
+          FontLine.Height = -13
+          FontLine.Name = 'Roboto'
+          FontLine.Style = []
+          FontSelLine.Charset = DEFAULT_CHARSET
+          FontSelLine.Color = 6572324
+          FontSelLine.Height = -13
+          FontSelLine.Name = 'Roboto'
+          FontSelLine.Style = []
+          ShowColumns = False
+          ColumnsFont.Charset = DEFAULT_CHARSET
+          ColumnsFont.Color = 2631720
+          ColumnsFont.Height = -11
+          ColumnsFont.Name = 'Tahoma'
+          ColumnsFont.Style = []
+          CanClickToUnfocused = True
         end
       end
     end
@@ -7056,7 +8322,7 @@ object FormMain: TFormMain
     AlignWithMargins = True
     Left = 3
     Top = 44
-    Width = 943
+    Width = 1023
     Height = 24
     Align = alTop
     BevelOuter = bvNone
@@ -7109,7 +8375,7 @@ object FormMain: TFormMain
       SubTextFont.Style = []
     end
     object ButtonFlatCancelOp: TButtonFlat
-      Left = 841
+      Left = 921
       Top = 0
       Width = 102
       Height = 24
@@ -7157,7 +8423,7 @@ object FormMain: TFormMain
     end
     object DrawPanelProgress: TDrawPanel
       AlignWithMargins = True
-      Left = 357
+      Left = 437
       Top = 3
       Width = 481
       Height = 18
@@ -7171,17 +8437,19 @@ object FormMain: TFormMain
   end
   object PanelLog: TPanel
     Left = 0
-    Top = 495
-    Width = 949
-    Height = 117
+    Top = 561
+    Width = 1029
+    Height = 147
     Align = alBottom
     BevelOuter = bvNone
+    Constraints.MaxHeight = 500
+    Constraints.MinHeight = 117
     TabOrder = 4
     Visible = False
     object Shape5: TShape
       Left = 0
       Top = 0
-      Width = 949
+      Width = 1029
       Height = 1
       Margins.Left = 30
       Margins.Right = 10
@@ -7195,13 +8463,14 @@ object FormMain: TFormMain
     object Panel7: TPanel
       Left = 0
       Top = 1
-      Width = 949
+      Width = 1029
       Height = 24
       Align = alTop
       BevelOuter = bvNone
       Color = 15328996
       ParentBackground = False
       TabOrder = 0
+      ExplicitTop = 3
       object Label9: TLabel
         AlignWithMargins = True
         Left = 3
@@ -7220,7 +8489,7 @@ object FormMain: TFormMain
         ExplicitHeight = 19
       end
       object ButtonFlatCloseLog: TButtonFlat
-        Left = 925
+        Left = 1005
         Top = 0
         Width = 24
         Height = 24
@@ -7267,8 +8536,8 @@ object FormMain: TFormMain
     object TableExLog: TTableEx
       Left = 0
       Top = 25
-      Width = 949
-      Height = 92
+      Width = 1029
+      Height = 122
       Align = alClient
       BorderStyle = bsNone
       Color = 15856113
@@ -7281,6 +8550,7 @@ object FormMain: TFormMain
       Font.Quality = fqClearType
       ParentFont = False
       TabOrder = 1
+      OnMouseUp = TableExLogMouseUp
       ItemIndex = -1
       GetData = TableExLogGetData
       Columns = <
@@ -7291,7 +8561,7 @@ object FormMain: TFormMain
         end
         item
           Caption = #1058#1077#1082#1089#1090
-          Width = 829
+          Width = 909
           MinWidth = 70
         end>
       ItemCount = 1
@@ -7326,8 +8596,8 @@ object FormMain: TFormMain
     end
   end
   object PanelProfileMenu: TPanel
-    Left = 789
-    Top = 41
+    Left = 645
+    Top = -87
     Width = 160
     Height = 73
     AutoSize = True
@@ -7454,33 +8724,266 @@ object FormMain: TFormMain
       item
         name = 'v'
         Value = '5.101'
-      end
-      item
-        name = 'test_mode'
-        Value = '1'
       end>
     HandleRedirects = True
-    Left = 267
-    Top = 531
+    Left = 331
+    Top = 635
   end
   object RESTResponse: TRESTResponse
-    Left = 363
-    Top = 531
+    Left = 427
+    Top = 635
   end
   object OAuth2Authenticator: TOAuth2Authenticator
     Scope = 'groups,friends,wall,photos,video,docs'
-    Left = 171
-    Top = 531
+    Left = 235
+    Top = 635
   end
   object ImageList16: TImageList
     ColorDepth = cd32Bit
     Height = 24
     Width = 24
-    Left = 468
-    Top = 532
+    Left = 532
+    Top = 636
     Bitmap = {
-      494C010115008800D00018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
-      00000000000036000000280000006000000090000000010020000000000000D8
+      494C01011F008800040118001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      000000000000360000002800000060000000C000000001002000000000000020
+      0100000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000050505070000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000010101011514101D5F55497B483F
+      365C000000000000000000000000000000000000000000000000000000000000
+      000000000000020200034A42395F63584C7F63584C7F63584C7F63584C7F6358
+      4C7F63584C7F63584C7F63584C7F63584C7F63584C7F61574C7E14120F1A0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000010101014D49
+      476B7F7874B10B0B0A1000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00003A342D4B4A4239604A4239604A423960796C5E9CBFAA93F6B9A68FEF2F2B
+      253E000000000000000000000000000000000000000000000000000000000000
+      00000000000039322C49C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF887B6AB10202
+      0203000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000030202045F595784B5AB
+      A7FDB8ADA8FF948B87CD1615141F000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000707060B100E0C14000000000000000000000000020202034A42395FAC9A
+      85DEC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF786B5C9A0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000050404076F68659AB3A8A3F86861
+      5F91332F2F47A69C98E79A918DD61C1A18270000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000026211D30A99783DA968775C3443D34580505040700000000000000000D0B
+      0A101715121F4942395F928372BEC2AC96FAC6B199FFC6B199FFC0AB94F75F56
+      4A7C020200030000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000005040407726B689EB5AAA7FD5851507A0202
+      020400000000211F1E2EA19893E0A09692DE21201F2F00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004E453C64C5B098FEC4AF98FDB7A48DECB29F8AE6B5A38EEBB5A3
+      8EEB776A5B983A332C4A000000003E383151B09D88E3C6B199FFC6B199FFC2AD
+      95F9453D35580000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000004040406746D6AA2B5AAA5FB4C464569000000010000
+      00000000000000000000181716229B928DD7A09692DE1B191926000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000303020451483E68C2AC96FAC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFBBA690F0A79581D72A2621371F1C1828AD9B86DFC6B199FFC6B1
+      99FFA08F7CCF0101000100000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000056524E79B3A8A3F856514F7800000000000000000000
+      00000000000000000000000000001D1B1B28A09792DF998F8CD50E0D0D140000
+      0000000000000000000000000000000000000000000000000000000000000101
+      010263594D80B9A68FEFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC1AD96F9C0AB94F72E29233B36302A46C4AE98FDC6B1
+      99FFBFAC95F80807060A00000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000001F1D1C2BB1A6A1F56B6663970202020400000000000000000000
+      0000000000000000000000000000000000002B29273CAEA29EF1736C69A00202
+      0203000000000000000000000000000000000000000000000000000000002B27
+      2138BAA590F0C6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC1AD96F99E8D7ACC0907070B998A76C7C6B1
+      99FFB4A08AE70303020400000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFBFAC94F8C6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000010101027C7471AC978E89D10A0A090F0000000000000000000000000000
+      00000000000000000000000000000000000000000000544F4C74B2A7A3F72422
+      213300000000000000000000000000000000000000000000000000000000685D
+      5086BDA993F4C6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFB7A38DEB26211D326B5F538AC5B0
+      98FE685E51870000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC4AF98FDC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000F0E0E15A79D99E855514E77000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000D0C0C12B2A6A2F7534E
+      4C73000000000000000000000000000000000000000000000000000000006E62
+      558EBCA893F3C6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFB4A18BE82C262239655A4E828F81
+      6FBA0A0A080E0000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC3AF97FCC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F73D3A3855000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000001010102A59B97E5605A
+      578500000000000000000000000000000000000000000000000000000000473F
+      365CB19F8AE6C6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFB29F8AE6120F0E17342E28430A09
+      080D000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFBFAC94F8C6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000D0C0C12A49A94E36D66639701010102000000000000000002020203504C
+      49707069669B1716162100000000000000000000000021201F2FB6ABA6FC4743
+      4063000000000000000000000000000000000000000000000000000000000807
+      060A968674C19D8D7ACBC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFBEA992F45D54497A00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000211D192BBBA790F1C6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF695E51880100
+      0001000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000001605A5785B2A6A3F7544F4C74171515201918172368625F90B3A9
+      A4F9AFA5A0F3948B87CE2E2B2A40171515202B28273C978E89D19E9390DB100F
+      0F17000000000000000000000000000000000000000000000000000000000000
+      00001412101B948472BEB7A48DECC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFBBA790F1645A4E810504030600000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000013110E181715121F685E5187BDA992F42C2622391715
+      121F1715121F18161320887868AFAA9883DB1F1D192A1715121F050404060000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000706060A77716CA6B7ACA7FEB8ADA8FFB8ADA8FFB5AAA5FB655F
+      5D8D2D2B293FA39995E2B7ACA7FEB8ADA8FFB7ACA7FEA39995E2282625390000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000050403064F473D66998876C6C5B098FEC5B098FEC5B098FEC5B0
+      98FEC2AD96FA7F7162A32D28213A000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000302B253FC5AF98FD5A5046740000
+      0000000000001B181523B09D88E3817465A80201010200000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000002522213344403D5F44403D5F171515200000
+      000000000000030303053B37355144403D5F3D3A385504040406000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000221F1B2D453E365A0A09
+      080D000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000007D7061A2C3AF97FC8B7E
+      6CB57C6F60A0B5A28CE9B5A28CEA1B1915240000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000006060509584F4573A796
+      81D8AD9A85DE887869AF221E1A2C000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7538,6 +9041,345 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000707070B1110101800000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000A09090E514D
+      4B723E3A38560201010200000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000171615208E8582C50E0D0D14000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000005B56537EB7AC
+      A7FEB3A9A4F92A26263A00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000606060977706CA58A827EBF8A827EBF8A827EBF8A827EBF8A82
+      7EBF8A827EBF8A827EBF8A827EBF8A827EBF8A827EBF89817DBE2B28273B0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000001C1A182735322F4A00000000000000000000
+      00000000000000000000000000000F0F0F173D39375400000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F7938B87CD1413121C0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000001211111A2E2B2A3F2E2B2A3F2E2B2A3F2E2B2A3F2E2B2A3F2E2B
+      2A3F2E2B2A3F2E2B2A3F2E2B2A3F2E2B2A3F2E2B2A3F2D2A293F040404060000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000433F3D5DB6ABA6FC8F8783C789817DBF89817DBF89817DBF8981
+      7DBF89817DBF89817DBF89817DBF89817DBF8A817EBFA89E98E98C847FC30403
+      0305000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000012101019AAA09CEC7A7470AB1B1919260000
+      000000000000050505084D48466BADA39EF0534E4B7300000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F799908BD4938A86CC5C56547F5C56547F5C56547F5C56
+      547F5C56547F5C56547F5C56547F5C56547F5C56547F5C56547F514C4A710909
+      080D000000000000000000000000000000000000000000000000000000000000
+      0000000000002C2A283EB0A6A2F6B8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8AD
+      A8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FF9E9591DC0808080C0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004C464569B0A5A1F4171515200000000000000000000000000000
+      0000000000000000000000000000000000000000000078716EA7948B87CD0505
+      0508000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000040303058C847FC3A89E9AE9A69D98E75753
+      517B2E2C2B41908784C8A69C96E6B4A8A4FA2826243800000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F7423E3C5C6B656295B7ACA7FEB7ACA7FEB7ACA7FEB7AC
+      A7FEB7ACA7FEB7ACA7FEB7ACA7FEB7ACA7FEB7ACA7FEB7ACA7FEB7ACA7FE504B
+      496F000000000000000000000000000000000000000000000000000000000000
+      000000000000000000003E3A3855B0A7A2F6756F6AA32D2A293F2D2A293F2D2A
+      293F2D2A293F2D2A293F2D2A293FA39994E2A09692DE1E1C1C2A000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004C464569B0A5A1F4171515200000000000000000000000000000
+      0000000000000000000000000000000000000000000078716EA7948B87CD0505
+      0508000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000068625F90756F6AA33632314B9C91
+      8ED8B3A8A3F8605A588534313049A69C98E70F0E0E1500000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F73D3A3855000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000001010102A59B97E5605A
+      5785000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000706060AA09692DE5F5A578500000000000000000000
+      00000000000000000000000000009C918ED877706CA500000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004C464569B0A5A1F4171515201514131E2E2B2A3F2E2B2A3F2E2B
+      2A3F0909080D0000000000000000000000000000000078716EA7948B87CD0505
+      0508000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000003A3735519B918DD60808080C0101
+      01011717162100000000554F4E77847D7AB90202020300000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F73D3A3855000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000001010102A59B97E5605A
+      5785000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000706060AA09692DE5F5A578500000000000000000000
+      00000000000000000000000000009C918ED877706CA500000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004C464569B0A5A1F41715152056524E79B8ADA8FFB8ADA8FFB8AD
+      A8FF252423360000000000000000000000000000000078716EA7948B87CD0505
+      0508000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000101010145403F5FADA29EEF1614141E0000
+      00000000000000000000746D6AA187807DBD0B0A0A0F00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F73D3A3855000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000001010102A59B97E5605A
+      5785000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000706060AA09692DE5F5A578500000000000000000000
+      00000000000000000000000000009C918ED877706CA500000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004C464569B0A5A1F41715152056524E79B8ADA8FFB8ADA8FFB8AD
+      A8FF252423360000000000000000000000000000000078716EA7948B87CD0505
+      0508000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000504B496FB0A5A0F3433F3D5D010101020000
+      000000000000000000001412121B988F8BD387807CBD0F0F0E16000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F73D3A3855000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000001010102A59B97E5605A
+      5785000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000706060AA09692DE5F5A578500000000000000000000
+      00000000000000000000000000009C918ED8746D6AA100000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004C464569B0A5A1F41715152056524E79B8ADA8FFB8ADA8FFB8AD
+      A8FF252423360000000000000000000000000000000078716EA7948B87CD0505
+      0508000000000000000000000000000000000000000000000000000000000000
+      000000000000040404066C656295B1A6A1F53935344F00000000000000000000
+      00000000000000000000000000000D0C0C12908783C89E9591DC1E1C1C2A0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F73D3A3855000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000001010102A59B97E5605A
+      5785000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000040404069B918ED868615F9100000000000000000000
+      0000000000000000000003030304A89F9BEB69615F9100000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004C464569B0A5A1F4171515200A0A090F1615141F1615141F1615
+      141F040404060000000000000000000000000000000078716EA7948B87CD0505
+      0508000000000000000000000000000000000000000000000000000000000000
+      000003030305625C5A88A09692DEABA19CEDA39995E2A19793DF9A918DD61E1C
+      1B2A000000016F69659AA19793DFA19793DFACA29DEFA19893E08E8582C51C19
+      1926000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F73D3A3855000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000001010102A59B97E5605A
+      5785000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000756F6CA4A29894E106060609000000000000
+      00000000000000000000332F2E47B6ABA6FC3F3B3A5800000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004C464569B3A8A3F8524D4C7445413F6045413F6045413F604541
+      3F6045413F6045413F6045413F6045413F6045413F60908784C8948B87CD0505
+      0508000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000181716222D2A293F2E2B2A3F8C847FC3605A
+      58851C1B1A27A89E98E9474240622D2A293F2926243802020204000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F73D3A3855000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000001010102A59B97E5605A
+      5785000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000021201F2FADA39EF0817875B2171615200000
+      000000000000312E2D44A69D98E78C847FC30706060A00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004C464569B7ACA7FEB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8AD
+      A8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FF948B87CD0505
+      0508000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000003C393754A79D
+      99E86A646294877F7CBC01010102000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F73D3A3855000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000001010102A59B97E5605A
+      5785000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000013A373551ADA29EEFABA19CEDA197
+      93DFA19793DFB2A6A3F7968D89D01A1918240000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000004C464569B7ACA7FEB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8AD
+      A8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FF948B87CD0505
+      0508000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000B0A0A109C91
+      8ED8B3A9A4F93E3A395600000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000017161520B2A6A2F76B65629545413F6045413F6045413F6045413F604541
+      3F6045413F6045413F6045413F6045413F6045413F6046424061ACA29DEF605A
+      5785000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000017161621736C69A0B8AD
+      A8FFB0A4A1F44D48456A0A09090E000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000002D2A293FB7ACA7FEB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8AD
+      A8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB7ACA7FE79726EA80101
+      0102000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000005B55
+      537E9D948FDA0B0A0A1000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000908080C8B837FC1B7ACA7FEB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8AD
+      A8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFAEA49FF23430
+      2E48000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000001F1E1E2DABA2
+      9DEE847C78B70404040600000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000312E2D455E595583B8ADA8FF635D5B8B44403D5F4440
+      3D5F44403D5F44403D5F44403D5FA69C98E78F8683C643403E5E060606090000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000F0E
+      0E15504B496F0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000908080D1615141F1615141F1615141F1615141F1615141F1615
+      141F1615141F1615141F1615141F1615141F1615141F1615141F121010190000
+      0001000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000001110
+      0F180A09090E0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000024212032A09692DE2B29283C000000000000
+      000000000000000000000000000087807CBD68625F9000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000020202030000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000001E1B17274A42396027211E3200000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000221F1B2DC2AC96FAC6B199FFC6B199FF857667AC0D0B0A110000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000020200034A42395F63584C7F63584C7F63584C7F63584C7F6358
+      4C7F63584C7F63584C7F63584C7F63584C7F63584C7F61574C7E14120F1A0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000544A416DC5B098FEC6B199FFC6B199FFC5B098FE685E51870000
+      0000000000000606050951493F6963584C7F4C453C640908070C000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7545,162 +9387,167 @@ object FormMain: TFormMain
       0000000000003D362F4F948572BF948572BF7064579201010102000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000039322C49C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF887B6AB10202
+      0203000000000000000000000000000000000000000000000000000000000000
+      000000000000302B253FC5B098FEC6B199FFC6B199FFC6B199FF968573C10000
+      00000000000051483F69C6B199FFC6B199FFC6B199FF9C8A78C90A09080E0000
+      0000000000000000000000000000000000000000000000000000000000000404
+      0406191717230000000000000000000000000000000000000000000000000000
+      0000000000001413121C01000001000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000051493F69C5B098FEC6B199FFC6B199FF7C6F60A0060605080000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000050473D67AE9C86E0C6B199FFC6B199FF998876C50000
+      00000000000073675995C6B199FFC6B199FFC6B199FFC6B199FF61564B7D0000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000554F4D751615141F00000000000000000000000000000000000000000000
+      00000000000056514F786D666397020101020000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000004E463B65C5B098FEC6B199FFC6B199FFC4AF98FD7A6D5E9D0606
       0508000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000D0B0A101715121FAB9984DD998876C50000
+      000000000000342F2844BFAA93F6C6B199FFC6B199FFC6B199FF746759950000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      000022201F308F8783C719171723000000000000000000000000000000000000
+      00000000000056524F78B7ACA7FE6F68659A0707070B00000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000D0D0B129C8B78C8C5B098FEC6B199FFC6B199FFC4AF98FD7C6F
       60A0010101020000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000A79681D8998876C50000
+      0000000000000000000136302A46867867ADBCA891F2C2AC96FA746759950000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000020202047D7673AEA79D99E85C5654801B19192600000000000000000000
+      00000000000056524F78B8ADA8FFB8ADA8FF79726EA806060609000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000D0D0B12968673C1C6B199FFC6B199FFC6B199FFC6B1
       99FF7C6F60A00606050800000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000A79681D8998876C50000
+      00000000000000000000000000000000000014100F19B9A58EEE746759950000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000001A191725B0A6A1F5B8ADA8FFB8ADA8FFB8ADA8FF8A827EBF726C
+      689F726C689F938A86CCB8ADA8FFB8ADA8FFB8ADA8FF877F7BBB0C0B0B110000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000110F0D16968673C1C5B098FEC6B199FFC6B1
       99FFC4AF98FD7A6D5E9D06060508000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000A79681D8998876C50000
+      00000000000000000000000000000000000014100F19B9A58EEE746759950000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000004D48466BB4A8A4FAB8ADA8FFB8ADA8FFB8ADA8FFB8AD
+      A8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FF8A827EBF0F0F
+      0F17000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000D0D0B129C8B78C8C5B098FEC6B1
       99FFC6B199FFC4AF98FD7C6F60A0010101020000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC6B199FFBFAC94F8685C5086302B
+      263F302B263F3E373050A79581D7C5B098FEC6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000A79681D8998876C50000
+      00000000000000000000000000000000000014100F19B9A58EEE746759950000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000101010255504E76B5ABA6FCB8ADA8FFB8ADA8FFB8AD
+      A8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB7ACA7FE756E
+      6AA2010101020000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000000000000D0D0B12968673C1C6B1
       99FFC6B199FFC6B199FFC6B199FF7C6F60A00606050800000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FFC4AF98FD423A3255050403063A34
+      2D4B5C5347771514101D0C0A090FA69580D6C6B199FFC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000A79681D8998876C50000
+      00000000000000000000000000000000000014100F19B9A58EEE746759950000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000002D2A293F9B918DD7B8ADA8FFB8AD
+      A8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FFB8ADA8FF817875B20B0A
+      0A10000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000110F0D169686
       73C1C5B098FEC6B199FFC6B199FFBDA992F4302C263F00000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FF948472BF0201010271655791C3AF
+      97FCC6B199FFAC9A85DE1715121F3E383051C3AF97FCC6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000A79681D89D8D7ACB0404
+      03050000000000000000000000000000000014100F19B9A58EEE746759950000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000908080D3A3836526F68
+      659AA09692DEABA19CEEB8ADA8FFB8ADA8FFB5AAA6FD77706CA5060505080000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000D0D
       0B129C8B78C8C5B098FEC3AF97FC453E365A27211E326C61538B010101020000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000051493F69C5B098FEC6B199FF8E7F6DB751483E68B8A58EEEC6B1
+      99FFC6B199FFC5B098FE776B5D9B5F55497ABFAC94F8C6B199FF9F8E7BCD0605
+      0408000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000A79681D8C3AF97FC9D8C
+      79CB817465A84B4339611D1917260000000014100F19B9A58EEE746759950000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000056524F78B8ADA8FFB7ACA7FE6A64619406060508000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       00000D0D0B128F7F6DB8453E365A28241F35B29F8AE6C6B199FF74685A960201
       0102000000000000000000000000000000000000000000000000000000000000
+      000000000000211D192BBBA790F1C6B199FFC6B199FFC6B199FFC6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF695E51880100
+      0001000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000A79681D8C6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFBFAC95F88A7B6AB1C0AC95F8746759950000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000056524F78B6ABA7FD554F4D750202020300000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000060605081D191726B29F8AE6C6B199FFC5B098FE695F52890101
       0102000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000013110E181715121F685E5187BDA992F42C2622391715
+      121F1715121F18161320887868AFAA9883DB1F1D192A1715121F050404060000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000A79681D8C6B199FFC6B1
+      99FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF746759950000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000504B496F4E48476C010000010000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000D0D0B129C8B78C8C5B098FE75685A96020101020000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000302B253FC5AF98FD5A5046740000
+      0000000000001B181523B09D88E3817465A80201010200000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000685D50878B7D6CB4C5B0
+      98FEC5B098FEC6B199FFC6B199FFC6B199FFC6B199FFC6B199FF746759950000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000B0A0A0F00000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000000000000000000000D0C0B123E372F4F02010102000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000007D7061A2C3AF97FC8B7E
+      6CB57C6F60A0B5A28CE9B5A28CEA1B1915240000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000221F1B2D4B433961837565A8998876C6C2AC96FAC6B199FF746759950000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7708,16 +9555,11 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000006060509584F4573A796
+      81D8AD9A85DE887869AF221E1A2C000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000020202031514101D2D28233A38332C4A0000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -9210,17 +11052,35 @@ object FormMain: TFormMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000424D3E000000000000003E000000
-      2800000060000000900000000100010000000000C00600000000000000000000
-      000000000000000000000000FFFFFF00FFFFFF000000000000000000FFFFFF00
-      0000000000000000FFFFFF000000000000000000FFFFFF000000000000000000
-      FFFFFF000000000000000000F83FFF000000000000000000F81FFF0000000000
-      00000000F80FFF000000000000000000F807FF000000000000000000FC03FF00
-      0000000000000000FE01FF000000000000000000FF00FF000000000000000000
-      FF807F000000000000000000FFC07F000000000000000000FFE01F0000000000
-      00000000FFF00F000000000000000000FFF80F000000000000000000FFFC1F00
-      0000000000000000FFFE3F000000000000000000FFFFFF000000000000000000
-      FFFFFF000000000000000000FFFFFF000000000000000000FFFFFF0000000000
-      00000000FFFFFF000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      2800000060000000C00000000100010000000000000900000000000000000000
+      000000000000000000000000FFFFFF00FFFFFFFFFFFFFFFFFF000000FFFFFFFF
+      FFFFFFFFFF000000FFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF000000
+      FFF7FFFFFF0FF8001F000000FFC3FFFFF00FF8000F000000FF81FFF3801FF800
+      0F000000FF00FFF06007F8000F000000FE087FF80207F8000F000000FC1C3FF0
+      0003F8000F000000FC7E1FE00003F8000F000000F87F0FE00003F8000F000000
+      F0FF8FE00007F8000F000000F1FF8FE00007F8000F000000F1FF8FE0000FF800
+      0F000000F0C38FE0007FF8000F000000F0000FF0007FFC001F000000F8001FF8
+      01FFFF187F000000FE183FFF8FFFFF80FF000000FFFFFFFFFFFFFF81FF000000
+      FFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFF
+      FF000000FFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      F3FFFFFFC3FFFFFFFFFFFFFFF1FFFFFFC3FFF8001FFE7E7FF0FFFFF8001FF800
+      0FFE187FF0000FF8001FF8FF8FFE007FF0000FFC003FF8FF8FFF007FF1FF8FFC
+      7E7FF8078FFF047FF1FF8FFC7E7FF8078FFE1C7FF1FF8FFC7E7FF8078FFE1C3F
+      F1FF8FFC7E7FF8078FF87E1FF1FF8FFC7C7FF8078FF0000FF1FF8FFE3C7FF800
+      0FFE003FF1FF8FFE187FF8000FFFC1FFF1FF8FFE00FFF8000FFFC3FFF0000FFF
+      81FFF8000FFFE3FFF0000FFFC3FFFC001FFFE7FFF8000FFFE7FFFE3E7FFFF7FF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFC7FFFFFFFFFFFFFFFFFFFFFF81FFFFFFFFF
+      FFFFFFF8001FF8183FFFFFFFF83FFFF8000FF8181FE7F9FFF81FFFF8000FFC18
+      1FF3F8FFF80FFFF8000FFE181FF1F87FF807FFF8000FFF981FF0783FFC03FFF8
+      000FFF9F1FF8001FFE01FFF8000FFF9F1FFC000FFF00FFF8000FFF9F1FFC0007
+      FF807FF8000FFF9F1FFF000FFFC07FF8000FFF8F1FFF801FFFE01FF8000FFF81
+      1FFFF83FFFF00FF8000FFF801FFFF87FFFF80FFC001FFF801FFFF8FFFFFC1FFF
+      187FFF801FFFFBFFFFFE3FFF80FFFFF01FFFFFFFFFFFFFFF81FFFFFE1FFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE007FFFFFFF
       FFFFFFF0000FFC001FF3FFFFF001FFF0000FF8000FF1FFFFF001FFF0000FF040
       0FF0FFFFF001FFF0FF0FF08007F0000FFFFFFFF03C0FE18047F0000FF0000FFC
@@ -9272,13 +11132,21 @@ object FormMain: TFormMain
     ColorDepth = cd32Bit
     Height = 28
     Width = 28
-    Left = 564
-    Top = 532
+    Left = 628
+    Top = 636
   end
   object TimerAnimate: TTimer
     Interval = 30
     OnTimer = TimerAnimateTimer
-    Left = 660
-    Top = 532
+    Left = 724
+    Top = 636
+  end
+  object PopupMenuLog: TPopupMenu
+    Left = 128
+    Top = 633
+    object MenuItemLogCopy: TMenuItem
+      Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100
+      OnClick = MenuItemLogCopyClick
+    end
   end
 end

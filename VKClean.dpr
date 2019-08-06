@@ -17,7 +17,8 @@ uses
   VKClean.DocTypes in 'VKClean.DocTypes.pas',
   VKClean.Docs in 'VKClean.Docs.pas',
   VKClean.RequestConstruct in 'VKClean.RequestConstruct.pas',
-  VKClean.Profile in 'VKClean.Profile.pas';
+  VKClean.Profile in 'VKClean.Profile.pas',
+  VKClean.Fave in 'VKClean.Fave.pas';
 
 {$R *.res}
 
