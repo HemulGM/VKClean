@@ -1261,6 +1261,15 @@ begin
   try
     IsDone := False;
     Log('Запрос: ' + Request.GetFullRequestURL);
+
+    FRequests := FRequests + 1;
+    //Если уже 3 запроса было, то ждём до конца секунды FStartRequest
+    if FRequests > RequestLimit then
+    begin
+      WaitTime(1200 - Int64(GetTickCount - FStartRequest));
+      FRequests := 0;
+    end;
+
     Request.ExecuteAsync(
       procedure
       begin
@@ -1268,20 +1277,11 @@ begin
       end);
     while not IsDone do
       Application.ProcessMessages;
-    FRequests := FRequests + 1;
+
     //Если это первый запрос, то сохраняем метку
     if FRequests = 1 then
-      FStartRequest := GetTickCount
-    else //Если не первый, то
-    begin //Если уже 3 запроса, то ждём до конца секунды FStartRequest
-      if FRequests >= RequestLimit then
-      begin
-        FLastRequest := GetTickCount;
-        WaitTime(1000 - Int64(FLastRequest - FStartRequest));
-        FRequests := 0;
-      end;
-    end;
-    //FLastRequest := GetTickCount;
+      FStartRequest := GetTickCount;
+
     if RESTResponse.JSONValue.TryGetValue<TJSONValue>('error', JS) then
     begin
       ErrorCode := JS.GetValue<Integer>('error_code', -1);
