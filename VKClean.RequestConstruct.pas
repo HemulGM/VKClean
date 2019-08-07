@@ -32,6 +32,8 @@ function VkCount(Value: Integer): TParam;
      
 function VkOffset(Value: Integer): TParam;
 
+function VkTopic(Value: Integer): TParam;
+
 function VkOwner(Value: Integer): TParam; overload;
 
 function VkOwner(Value: Integer; Ignore: Boolean): TParam; overload;
@@ -66,7 +68,21 @@ function VkLink(Value: Integer): TParam;
 
 function VkID(Value: Integer): TParam;
 
+function VkNote(Value: Integer): TParam;
+
 implementation
+
+function VkTopic(Value: Integer): TParam;
+begin
+  Result[0] := 'topic_id';
+  Result[1] := Value.ToString;
+end;
+
+function VkNote(Value: Integer): TParam;
+begin
+  Result[0] := 'note_id';
+  Result[1] := Value.ToString;
+end;
 
 function VkID(Value: Integer): TParam;
 begin

@@ -14,7 +14,8 @@ uses
   HGM.Common.Utils, VK.OAuth2, VKClean.Groups, VKClean.Friends, VKClean.InnerLog,
   VKClean.Posts, VKClean.RequestConstruct, VKClean.Photos, VKClean.Albums,
   VKClean.Videos, VKClean.DocTypes, VKClean.Docs, VKClean.Profile, Vcl.Menus,
-  VKClean.Fave;
+  VKClean.Fave, VKClean.Notes, VKClean.Board, VKClean.Market,
+  VKClean.MarketTypes;
 
 type
   TBackToElements = (beMenu = 0, beWelcome, beGroupMenu);
@@ -183,7 +184,7 @@ type
     ButtonFlat20: TButtonFlat;
     ButtonFlat22: TButtonFlat;
     Panel8: TPanel;
-    ButtonFlatGroupMessage: TButtonFlat;
+    ButtonFlatGroupBoard: TButtonFlat;
     Shape8: TShape;
     TabSheetVideo: TTabSheet;
     DrawPanelVideosClean: TDrawPanel;
@@ -213,20 +214,20 @@ type
     Label22: TLabel;
     Shape13: TShape;
     Shape14: TShape;
-    CheckBoxFlat1: TCheckBoxFlat;
+    CheckBoxCleanWall: TCheckBoxFlat;
     ButtonFlat4: TButtonFlat;
-    CheckBoxFlat2: TCheckBoxFlat;
-    CheckBoxFlat3: TCheckBoxFlat;
-    CheckBoxFlat4: TCheckBoxFlat;
-    CheckBoxFlat5: TCheckBoxFlat;
-    CheckBoxFlat6: TCheckBoxFlat;
-    CheckBoxFlat7: TCheckBoxFlat;
-    CheckBoxFlat8: TCheckBoxFlat;
-    CheckBoxFlat9: TCheckBoxFlat;
+    CheckBoxCleanFriends: TCheckBoxFlat;
+    CheckBoxCleanGroups: TCheckBoxFlat;
+    CheckBoxCleanPhotos: TCheckBoxFlat;
+    CheckBoxCleanVideos: TCheckBoxFlat;
+    CheckBoxCleanAudios: TCheckBoxFlat;
+    CheckBoxCleanMarket: TCheckBoxFlat;
+    CheckBoxCleanFaves: TCheckBoxFlat;
+    CheckBoxCleanDocs: TCheckBoxFlat;
     DrawPanel6: TDrawPanel;
     Label27: TLabel;
-    CheckBoxFlat10: TCheckBoxFlat;
-    CheckBoxFlat11: TCheckBoxFlat;
+    CheckBoxCleanSubs: TCheckBoxFlat;
+    CheckBoxCleanBoards: TCheckBoxFlat;
     DrawPanel7: TDrawPanel;
     ButtonFlatAutoClean: TButtonFlat;
     DrawPanel8: TDrawPanel;
@@ -254,13 +255,13 @@ type
     ButtonFlatMarket: TButtonFlat;
     ButtonFlatMusic: TButtonFlat;
     ButtonFlatMessages: TButtonFlat;
-    ButtonFlat5: TButtonFlat;
+    ButtonFlatGroupAudio: TButtonFlat;
     Panel12: TPanel;
     LinkBlog: ThLink;
     LinkAutor: ThLink;
     LinkLog: ThLink;
     TabSheetMessages: TTabSheet;
-    DrawPanel1: TDrawPanel;
+    DrawPanelMessagesClean: TDrawPanel;
     LabelMessagesCaption: TLabel;
     Label31: TLabel;
     Label32: TLabel;
@@ -282,7 +283,7 @@ type
     PopupMenuLog: TPopupMenu;
     MenuItemLogCopy: TMenuItem;
     TabSheetFave: TTabSheet;
-    DrawPanel3: TDrawPanel;
+    DrawPanelFaveClean: TDrawPanel;
     LabelFaveCaption: TLabel;
     Label33: TLabel;
     Label34: TLabel;
@@ -299,6 +300,65 @@ type
     ButtonFlatFaveGetInfo: TButtonFlat;
     PanelFaveTypes: TPanel;
     TableExFaves: TTableEx;
+    TabSheetNotes: TTabSheet;
+    TabSheetBoard: TTabSheet;
+    TabSheetMarket: TTabSheet;
+    DrawPanelNotesClean: TDrawPanel;
+    LabelNotesCaption: TLabel;
+    Label35: TLabel;
+    Label36: TLabel;
+    Shape20: TShape;
+    Shape21: TShape;
+    ButtonFlatNotesCalc: TButtonFlat;
+    CheckBoxNotesDate: TCheckBoxFlat;
+    CalendarPickerNotesDateS: TCalendarPicker;
+    CalendarPickerNotesDateE: TCalendarPicker;
+    ButtonFlatNotesDel: TButtonFlat;
+    Panel15: TPanel;
+    ButtonFlatGetNotesInfo: TButtonFlat;
+    DrawPanelBoardClean: TDrawPanel;
+    LabelBoardCaption: TLabel;
+    Label37: TLabel;
+    Label38: TLabel;
+    Shape22: TShape;
+    Shape23: TShape;
+    ButtonFlatBoardCalc: TButtonFlat;
+    CheckBoxBoardDateCreate: TCheckBoxFlat;
+    CalendarPickerBoardDateS: TCalendarPicker;
+    CalendarPickerBoardDateE: TCalendarPicker;
+    ButtonFlatBoardDel: TButtonFlat;
+    Panel16: TPanel;
+    ButtonFlatGetBoardInfo: TButtonFlat;
+    TabSheetGroupMes: TTabSheet;
+    Label39: TLabel;
+    CheckBoxBoardOlded: TCheckBoxFlat;
+    CalendarPickerBoardDateLast: TCalendarPicker;
+    ButtonFlatGroupMessages: TButtonFlat;
+    CheckBoxBoardClosed: TCheckBoxFlat;
+    CheckBoxBoardComments: TCheckBoxFlat;
+    SpinEditBoardComments: TlkSpinEdit;
+    DrawPanelMarketClean: TDrawPanel;
+    LabelMarketCaption: TLabel;
+    Label40: TLabel;
+    Label41: TLabel;
+    Shape24: TShape;
+    Shape25: TShape;
+    ButtonFlatMarketCalc: TButtonFlat;
+    CheckBoxProductDate: TCheckBoxFlat;
+    CalendarPickerProductDateS: TCalendarPicker;
+    CalendarPickerProductDateE: TCalendarPicker;
+    ButtonFlatMarketDel: TButtonFlat;
+    CheckBoxProductTypes: TCheckBoxFlat;
+    ButtonFlatProductTypes: TButtonFlat;
+    Panel17: TPanel;
+    ButtonFlatGetMarketInfo: TButtonFlat;
+    PanelProductTypes: TPanel;
+    TableExProductTypes: TTableEx;
+    ButtonFlatGroupMarket: TButtonFlat;
+    CheckBoxProductAmount: TCheckBoxFlat;
+    SpinEditProductAmount: TlkSpinEdit;
+    ComboBoxProductAmountType: TComboBox;
+    ButtonFlat1: TButtonFlat;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure LinkRestorePassClick(Sender: TObject);
@@ -377,7 +437,7 @@ type
     procedure ButtonFlatDocsCalcClick(Sender: TObject);
     procedure ButtonFlatDocsDelClick(Sender: TObject);
     procedure ButtonFlatGroupVideosClick(Sender: TObject);
-    procedure ButtonFlatGroupMessageClick(Sender: TObject);
+    procedure ButtonFlatGroupBoardClick(Sender: TObject);
     procedure ButtonFlatMusicClick(Sender: TObject);
     procedure LinkLogClick(Sender: TObject);
     procedure ButtonFlatGetMessageInfoClick(Sender: TObject);
@@ -393,6 +453,20 @@ type
     procedure ButtonFlatMarketClick(Sender: TObject);
     procedure ButtonFlatNotesClick(Sender: TObject);
     procedure ButtonFlatFaveDelClick(Sender: TObject);
+    procedure ButtonFlatGetNotesInfoClick(Sender: TObject);
+    procedure ButtonFlatNotesCalcClick(Sender: TObject);
+    procedure ButtonFlatNotesDelClick(Sender: TObject);
+    procedure ButtonFlatGetBoardInfoClick(Sender: TObject);
+    procedure ButtonFlatGroupMessagesClick(Sender: TObject);
+    procedure ButtonFlatBoardCalcClick(Sender: TObject);
+    procedure ButtonFlatBoardDelClick(Sender: TObject);
+    procedure ButtonFlatGetMarketInfoClick(Sender: TObject);
+    procedure TableExProductTypesGetData(FCol, FRow: Integer; var Value: string);
+    procedure TableExProductTypesDrawCellData(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
+    procedure TableExProductTypesItemColClick(Sender: TObject; MouseButton: TMouseButton; const Index: Integer);
+    procedure ButtonFlatProductTypesClick(Sender: TObject);
+    procedure ButtonFlatGroupMarketClick(Sender: TObject);
+    procedure ButtonFlatMarketCalcClick(Sender: TObject);
   private
     //Форма и методы авторизации
     FAuthForm: TFormOAuth2;
@@ -420,6 +494,10 @@ type
     FVideos: TVideos;
     FFaveTypes: TFaveTypes;
     FFaves: TFaves;
+    FNotes: TNotes;
+    FBoards: TBoards;
+    FProducts: TProducts;
+    FProductTypes: TProductTypes;
     //Данные группы и выбрана ли группа
     FIsGroup: Boolean;
     FGroupID: Integer;
@@ -441,6 +519,7 @@ type
     procedure SetOnBeforeRedirect(const Value: TOAuth2WebFormRedirectEvent);
     procedure SetOperProgress(const Value: Integer);
     procedure OpenMenu;
+    procedure GetGroupInfo;
     property OnAfterRedirect: TOAuth2WebFormRedirectEvent read FOnAfterRedirect write SetOnAfterRedirect;
     property OnBeforeRedirect: TOAuth2WebFormRedirectEvent read FOnBeforeRedirect write SetOnBeforeRedirect;
   public
@@ -824,9 +903,12 @@ end;
 
 procedure TFormMain.TableExLogMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-  if not FLog.IndexIn(TableExLog.ItemIndex) then
-    Exit;
-  PopupMenuLog.Popup(Mouse.CursorPos.X, Mouse.CursorPos.Y);
+  if Button = mbRight then
+  begin
+    if not FLog.IndexIn(TableExLog.ItemIndex) then
+      Exit;
+    PopupMenuLog.Popup(Mouse.CursorPos.X, Mouse.CursorPos.Y);
+  end;
 end;
 
 procedure TFormMain.TableExPhotosAlbumsDrawCellData(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
@@ -858,6 +940,40 @@ begin
   if not FAlbums.IndexIn(TableExPhotosAlbums.ItemIndex) then
     Exit;
   FAlbums.Checked[TableExPhotosAlbums.ItemIndex] := not FAlbums.Checked[TableExPhotosAlbums.ItemIndex];
+end;
+
+procedure TFormMain.TableExProductTypesDrawCellData(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
+begin
+  if ACol <> 0 then
+    Exit;
+  if not FProductTypes.IndexIn(ARow) then
+    Exit;
+  with TableExProductTypes.Canvas do
+  begin
+    if FProductTypes.Checked[ARow] then
+      ImageList16.Draw(TableExProductTypes.Canvas, Rect.CenterPoint.X - 12, Rect.Top, 8, True)
+    else
+      ImageList16.Draw(TableExProductTypes.Canvas, Rect.CenterPoint.X - 12, Rect.Top, 9, True);
+  end;
+end;
+
+procedure TFormMain.TableExProductTypesGetData(FCol, FRow: Integer; var Value: string);
+begin
+  if not FProductTypes.IndexIn(FRow) then
+    Exit;
+  case FCol of
+    0:
+      Value := '';
+    1:
+      Value := FProductTypes[FRow].Section + ' - ' + FProductTypes[FRow].Name;
+  end;
+end;
+
+procedure TFormMain.TableExProductTypesItemColClick(Sender: TObject; MouseButton: TMouseButton; const Index: Integer);
+begin
+  if not FProductTypes.IndexIn(TableExProductTypes.ItemIndex) then
+    Exit;
+  FProductTypes.Checked[TableExProductTypes.ItemIndex] := not FProductTypes.Checked[TableExProductTypes.ItemIndex];
 end;
 
 procedure TFormMain.TableExVideosAlbumsDrawCellData(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
@@ -923,6 +1039,19 @@ function TFormMain.IsCancel: Boolean;
 begin
   Application.ProcessMessages;
   Result := FDoCancelOperation;
+end;
+
+procedure TFormMain.ButtonFlatGetBoardInfoClick(Sender: TObject);
+begin
+  if not StartOperation then
+    Exit;
+  ButtonFlatBoardDel.Caption := 'Удалить обсуждения';
+  try
+    if Execute('board.getTopics', [VkGroup(FGroupID), VkCount1]) then
+      LabelBoardCaption.Caption := 'Обсуждения (' + RESTResponse.JSONValue.GetValue<Integer>('response.count', -1).ToString + ')';
+  finally
+    EndedOperation;
+  end;
 end;
 
 procedure TFormMain.ButtonFlatGetFriendsDelClick(Sender: TObject);
@@ -1231,18 +1360,21 @@ begin
       begin
         JS := RESTResponse.JSONValue;
         Cnt := JS.GetValue<integer>('response.count', 0);
-        JArr := JS.GetValue<TJSONArray>('response.items');
-        for i := 0 to JArr.Count - 1 do
+        if Cnt > 0 then
         begin
-          if IsCancel then
-            Break;
-          Item.Name := JArr.Items[i].GetValue<string>('name');
-          Item.ID := JArr.Items[i].GetValue<Integer>('id');
-          Item.ScreenName := JArr.Items[i].GetValue<string>('screen_name');
-          Item.LastMessage.DateTime := 0;
-          FGroups.Add(Item);
+          JArr := JS.GetValue<TJSONArray>('response.items');
+          for i := 0 to JArr.Count - 1 do
+          begin
+            if IsCancel then
+              Break;
+            Item.Name := JArr.Items[i].GetValue<string>('name');
+            Item.ID := JArr.Items[i].GetValue<Integer>('id');
+            Item.ScreenName := JArr.Items[i].GetValue<string>('screen_name');
+            Item.LastMessage.DateTime := 0;
+            FGroups.Add(Item);
+          end;
+          Offset := Offset + Cnt;
         end;
-        Offset := Offset + Cnt;
       end;
     until Cnt <= Offset;
     FGroups.EndUpdate;
@@ -1405,6 +1537,20 @@ begin
   ButtonFlatDocsGetInfoClick(nil);
 end;
 
+procedure TFormMain.GetGroupInfo;
+begin
+  if Execute('groups.getSettings', [VkGroup(FGroupID)]) then
+  begin
+    ButtonFlatGroupMarket.Enabled := RESTResponse.JSONValue.GetValue<Boolean>('response.market.enabled');
+    ButtonFlatGroupPhotos.Enabled := RESTResponse.JSONValue.GetValue<Boolean>('response.photos');
+    ButtonFlatGroupVideos.Enabled := RESTResponse.JSONValue.GetValue<Boolean>('response.video');
+    ButtonFlatGroupAudio.Enabled := RESTResponse.JSONValue.GetValue<Boolean>('response.audio');
+    ButtonFlatGroupDocs.Enabled := RESTResponse.JSONValue.GetValue<Boolean>('response.docs');
+    ButtonFlatGroupBoard.Enabled := RESTResponse.JSONValue.GetValue<Boolean>('response.topics');
+    ButtonFlatGroupMessages.Enabled := RESTResponse.JSONValue.GetValue<Boolean>('response.messages');
+  end;
+end;
+
 procedure TFormMain.ButtonFlatGroupID_NumClick(Sender: TObject);
 begin
   FIsGroup := True;
@@ -1414,12 +1560,123 @@ begin
   ButtonFlatCurrentOwner.Caption := FGroupName;
   ButtonFlatCurrentOwner.Visible := True;
   LinkOpenCurrentGroup.Caption := 'https://vk.com/public' + FGroupID.ToString;
+  GetGroupInfo;
   OpenPage(TabSheetGroupMenu);
 end;
 
-procedure TFormMain.ButtonFlatGroupMessageClick(Sender: TObject);
+procedure TFormMain.ButtonFlatGroupMarketClick(Sender: TObject);
 begin
-  MessageBox(Handle, 'В скором времени будет доступно!', 'В разработке', MB_ICONINFORMATION or MB_OK);
+  OpenPage(TabSheetMarket, beGroupMenu);
+  ButtonFlatGetMarketInfoClick(nil);
+end;
+
+procedure TFormMain.ButtonFlatGroupMessagesClick(Sender: TObject);
+begin
+  MessageBox(Handle, 'Пока очистка сообщений не доступна. Ждём подтверждения законности приложения.', 'Упс', MB_ICONINFORMATION or MB_OK);
+  Exit;
+end;
+
+procedure TFormMain.ButtonFlatBoardCalcClick(Sender: TObject);
+const
+  MaxCnt = 100;
+var
+  Offset, Cnt: Integer;
+  JSArray: TJSONArray;
+  Item: TBoard;
+  i: Integer;
+begin
+  if not StartOperation then
+    Exit;
+  try
+    Offset := 0;
+    FProgressText := 'Анализ обсуждений';
+    FBoards.BeginUpdate;
+    FBoards.Clear;
+    repeat
+      if IsCancel then
+        Break;
+      if not Execute('board.getTopics', [VkGroup(FGroupID), VkCount(MaxCnt), VkOffset(Offset)]) then
+        Break;
+      Cnt := RESTResponse.JSONValue.GetValue<Integer>('response.count');
+      OperProgress := Round(100 / Cnt * Offset);
+      JSArray := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
+      for i := 0 to JSArray.Count - 1 do
+      begin
+        if IsCancel then
+          Break;
+        Item.ID := JSArray.Items[i].GetValue<Integer>('id');
+        Item.Title := JSArray.Items[i].GetValue<string>('title');
+        Item.IsClosed := JSArray.Items[i].GetValue<Boolean>('is_closed');
+        if CheckBoxBoardClosed.Checked then
+          if not Item.IsClosed then
+            Continue;
+        Item.Comments := JSArray.Items[i].GetValue<Integer>('comments');
+        if CheckBoxBoardComments.Checked then
+          if Item.Comments > SpinEditBoardComments.Value then
+            Continue;
+        Item.Created := UnixToDateTime(JSArray.Items[i].GetValue<Integer>('created'), False);
+        if CheckBoxBoardDateCreate.Checked then
+          if not DateTimeInRange(DateOf(Item.Created), DateOf(CalendarPickerBoardDateS.Date), DateOf(CalendarPickerBoardDateE.Date), True) then
+            Continue;
+        Item.Updated := UnixToDateTime(JSArray.Items[i].GetValue<Integer>('updated'), False);
+        if CheckBoxBoardOlded.Checked then
+          if DateOf(Item.Updated) > DateOf(CalendarPickerBoardDateLast.Date) then
+            Continue;
+        FBoards.Add(Item);
+      end;
+      if Cnt <= MaxCnt then
+        Break;
+      Offset := Offset + MaxCnt;
+    until JSArray.Count <= 0;
+    LabelBoardCaption.Caption := 'Обсуждения (' + Cnt.ToString + ')';
+    FBoards.EndUpdate;
+  finally
+    EndedOperation;
+  end;
+  ButtonFlatBoardDel.Caption := 'Удалить обсуждения (' + FBoards.Count.ToString + ')';
+end;
+
+procedure TFormMain.ButtonFlatGroupBoardClick(Sender: TObject);
+begin
+  OpenPage(TabSheetBoard, beGroupMenu);
+  ButtonFlatGetBoardInfoClick(nil);
+end;
+
+procedure TFormMain.ButtonFlatBoardDelClick(Sender: TObject);
+var
+  i: Integer;
+  ErrNotifed: Boolean;
+begin
+  if MessageBox(Handle, PChar('Будет удалено обсуждений: ' + FBoards.Count.ToString + ' Продолжить?'), 'Внимание', MB_ICONWARNING or MB_YESNOCANCEL) <> ID_YES then
+    Exit;
+  if not StartOperation then
+    Exit;
+  try
+    ErrNotifed := False;
+    for i := 0 to FBoards.Count - 1 do
+    begin
+      OperProgress := Round(100 / FBoards.Count * i);
+      FProgressText := 'Удаление. Осталось времени ~' + Round(((FBoards.Count - i) * 400) / (1000 * 60)).ToString + ' мин.';
+      if IsCancel then
+        Break;
+      if not Execute('board.deleteTopic', [VkGroup(FGroupID), VkTopic(FBoards[i].ID)]) then
+      begin
+        Log('Не удалось удалить обсуждение ' + FBoards[i].ID.ToString);
+        if not ErrNotifed then
+        begin
+          ErrNotifed := True;
+          if MessageBox(Handle, PChar('Не удалось удалить обсуждение ' + FBoards[i].ID.ToString + #13#10 + 'Прервать?'), 'Ошибка', MB_ICONSTOP or MB_YESNO) = ID_YES then
+            Break;
+        end;
+      end;
+    end;
+    FBoards.Clear;
+    ButtonFlatGetBoardInfoClick(nil);
+    ButtonFlatBoardDel.TimedText('Готово', 3000);
+    ButtonFlatBoardDel.Caption := 'Удалить обсуждения';
+  finally
+    EndedOperation;
+  end;
 end;
 
 procedure TFormMain.ButtonFlatGroupPhotosClick(Sender: TObject);
@@ -1486,7 +1743,7 @@ begin
         case r of
           1:
             begin
-              if not Execute('photos.get', [VkOwner(-FGroupID, not FIsGroup), VkExtended, VkCount(MaxCnt), VkOffset(Offset)]) then
+              if not Execute('photos.getAll', [VkOwner(-FGroupID, not FIsGroup), VkExtended, VkCount(MaxCnt), VkOffset(Offset)]) then
                 Break;
             end;
           2:
@@ -1585,9 +1842,61 @@ begin
   end;
 end;
 
+procedure TFormMain.ButtonFlatProductTypesClick(Sender: TObject);
+var
+  PT: TPoint;
+begin
+  PanelProductTypes.Height := Min(TableExProductTypes.DefaultRowHeight * TableExProductTypes.ItemCount, 300);
+  PT := CheckBoxProductTypes.ClientToScreen(Point(0, 0));
+  FPopupMenu := TFormPopup.CreatePopup(Self, PanelProductTypes,
+    procedure
+    begin
+      FPopupMenu := nil;
+    end, PT.X, PT.Y + CheckBoxProductTypes.Height, [psShadow]);
+end;
+
 procedure TFormMain.ButtonFlat10Click(Sender: TObject);
 begin
   WebOpen('https://vk.com/app6326142_-184755622');
+end;
+
+procedure TFormMain.ButtonFlatGetMarketInfoClick(Sender: TObject);
+var
+  JSArray: TJSONArray;
+  Item: TProductType;
+  i: Integer;
+  OwnerID: Integer;
+begin
+  if not StartOperation then
+    Exit;
+  ButtonFlatMarketDel.Caption := 'Удалить товары';
+  FProductTypes.BeginUpdate;
+  FProductTypes.Clear;
+  try
+    if FIsGroup then
+      OwnerID := -FGroupID
+    else
+      OwnerID := FProfile.ID;
+    if Execute('market.get', [VkCount1, VkOwner(OwnerID)]) then
+    begin
+      LabelMarketCaption.Caption := 'Товары (' + RESTResponse.JSONValue.GetValue<Integer>('response.count', -1).ToString + ')';
+    end;
+    //
+    if Execute('market.getCategories', [VkCount(1000)]) then
+    begin
+      JSArray := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
+      for i := 0 to JSArray.Count - 1 do
+      begin
+        Item.ID := JSArray.Items[i].GetValue<Integer>('id', -1);
+        Item.Name := JSArray.Items[i].GetValue<string>('name', '');
+        Item.Section := JSArray.Items[i].GetValue<string>('section.name', '');
+        FProductTypes.Add(Item);
+      end;
+    end;
+  finally
+    FProductTypes.EndUpdate;
+    EndedOperation;
+  end;
 end;
 
 procedure TFormMain.ButtonFlatGetMessageInfoClick(Sender: TObject);
@@ -1600,6 +1909,19 @@ begin
     begin
       LabelMessagesCaption.Caption := 'Диалоги (' + RESTResponse.JSONValue.GetValue<Integer>('response.count', -1).ToString + ')';
     end;
+  finally
+    EndedOperation;
+  end;
+end;
+
+procedure TFormMain.ButtonFlatGetNotesInfoClick(Sender: TObject);
+begin
+  if not StartOperation then
+    Exit;
+  ButtonFlatNotesDel.Caption := 'Удалить заметки';
+  try
+    if Execute('notes.get', [VkCount1]) then
+      LabelNotesCaption.Caption := 'Заметки (' + RESTResponse.JSONValue.GetValue<Integer>('response.count', -1).ToString + ')';
   finally
     EndedOperation;
   end;
@@ -1710,9 +2032,77 @@ begin
   ButtonFlatDocsGetInfoClick(nil);
 end;
 
+procedure TFormMain.ButtonFlatMarketCalcClick(Sender: TObject);
+const
+  MaxCnt = 200;
+var
+  Offset, Cnt: Integer;
+  JSArray: TJSONArray;
+  Item: TProduct;
+  i, OwnerID: Integer;
+begin
+  if not StartOperation then
+    Exit;
+  try
+    Offset := 0;
+    FProgressText := 'Анализ товаров';
+    FProducts.BeginUpdate;
+    FProducts.Clear;
+    if FIsGroup then
+      OwnerID := -FGroupID
+    else
+      OwnerID := FProfile.ID;
+    repeat
+      if IsCancel then
+        Break;
+      if not Execute('market.get', [VkOwner(OwnerID), VkCount(MaxCnt), VkOffset(Offset)]) then
+        Break;
+      Cnt := RESTResponse.JSONValue.GetValue<Integer>('response.count');
+      OperProgress := Round(100 / Cnt * Offset);
+      JSArray := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
+      for i := 0 to JSArray.Count - 1 do
+      begin
+        Item.ID := JSArray.Items[i].GetValue<Integer>('id');
+        Item.OwnerID := JSArray.Items[i].GetValue<Integer>('owner_id');
+        Item.Title := JSArray.Items[i].GetValue<string>('title');
+        Item.Amount := JSArray.Items[i].GetValue<Integer>('price.amount', -1);
+        if CheckBoxProductAmount.Checked then
+        begin
+          case ComboBoxProductAmountType.ItemIndex of
+            0:
+              if Item.Amount div 100 > SpinEditProductAmount.Value then
+                Continue;
+            1:
+              if Item.Amount div 100 < SpinEditProductAmount.Value then
+                Continue;
+          end;
+        end;
+        Item.Date := UnixToDateTime(JSArray.Items[i].GetValue<Integer>('date'), False);
+        if CheckBoxProductDate.Checked then
+          if not DateTimeInRange(DateOf(Item.Date), DateOf(CalendarPickerProductDateS.Date), DateOf(CalendarPickerProductDateE.Date), True) then
+            Continue;
+        Item.CategoryID := JSArray.Items[i].GetValue<Integer>('category.id');
+        if CheckBoxProductTypes.Checked then
+          if FProductTypes.FindCheckedID(Item.CategoryID) < 0 then
+            Continue;
+        FProducts.Add(Item);
+      end;
+      if Cnt <= MaxCnt then
+        Break;
+      Offset := Offset + MaxCnt;
+    until JSArray.Count <= 0;
+    LabelMarketCaption.Caption := 'Товары (' + Cnt.ToString + ')';
+    FProducts.EndUpdate;
+  finally
+    EndedOperation;
+  end;
+  ButtonFlatMarketDel.Caption := 'Удалить товары (' + FProducts.Count.ToString + ')';
+end;
+
 procedure TFormMain.ButtonFlatMarketClick(Sender: TObject);
 begin
-  //
+  OpenPage(TabSheetMarket);
+  ButtonFlatGetMarketInfoClick(nil);
 end;
 
 procedure TFormMain.ButtonFlatDocsCalcClick(Sender: TObject);
@@ -1857,21 +2247,6 @@ begin
                 Continue;
             Item.Seen := JSArray.Items[i].GetValue<Boolean>('seen', True);
             Item.AddedDate := UnixToDateTime(JSArray.Items[i].GetValue<Integer>('added_date', -1), False);
-
-            {if Item.FaveType = 'product' then
-              Item.Item_ID := JSArray.Items[i].GetValue<Integer>('product.id')
-            else if Item.FaveType = 'post' then
-              Item.Item_ID := JSArray.Items[i].GetValue<Integer>('post.id')
-            else if Item.FaveType = 'video' then
-              Item.Item_ID := JSArray.Items[i].GetValue<Integer>('video.id')
-            else if Item.FaveType = 'article' then
-              Item.Item_ID := JSArray.Items[i].GetValue<Integer>('article.id')
-            else if Item.FaveType = 'link' then
-              Item.Item_ID := JSArray.Items[i].GetValue<Integer>('link.id')
-            else if Item.FaveType = 'user' then
-              Item.Item_ID := JSArray.Items[i].GetValue<Integer>('user.id')
-            else if Item.FaveType = 'group' then
-              Item.Item_ID := JSArray.Items[i].GetValue<Integer>('group.id');   }
 
             Item.Item_ID := JSArray.Items[i].GetValue<Integer>(Item.FaveType + '.id');
             Item.ItemOwner_ID := JSArray.Items[i].GetValue<Integer>(Item.FaveType + '.owner_id', 0);
@@ -2252,9 +2627,95 @@ begin
   MessageBox(Handle, 'К сожалению, ВК не позволяет управлять Музыкой стороним приложениям с 16 декабря 2016 года.' + #13 + #10 + 'Если в будущем появится возможность, мы обязятельно этим воспользуемся.', 'Упс', MB_ICONINFORMATION or MB_OK);
 end;
 
+procedure TFormMain.ButtonFlatNotesCalcClick(Sender: TObject);
+const
+  MaxCnt = 100;
+var
+  Offset, Cnt: Integer;
+  JSArray: TJSONArray;
+  Item: TNote;
+  i: Integer;
+begin
+  if not StartOperation then
+    Exit;
+  try
+    Offset := 0;
+    FProgressText := 'Анализ заметок';
+    FNotes.BeginUpdate;
+    FNotes.Clear;
+    repeat
+      if IsCancel then
+        Break;
+      if not Execute('notes.get', [VkCount(MaxCnt), VkOffset(Offset)]) then
+        Break;
+      Cnt := RESTResponse.JSONValue.GetValue<Integer>('response.count');
+      OperProgress := Round(100 / Cnt * Offset);
+      JSArray := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
+      for i := 0 to JSArray.Count - 1 do
+      begin
+        if IsCancel then
+          Break;
+        Item.ID := JSArray.Items[i].GetValue<Integer>('id');
+        Item.Title := JSArray.Items[i].GetValue<string>('title');
+        Item.Date := UnixToDateTime(JSArray.Items[i].GetValue<Integer>('date'), False);
+        if CheckBoxNotesDate.Checked then
+          if not DateTimeInRange(DateOf(Item.Date), DateOf(CalendarPickerNotesDateS.Date), DateOf(CalendarPickerNotesDateE.Date), True) then
+            Continue;
+        FNotes.Add(Item);
+      end;
+      if Cnt <= MaxCnt then
+        Break;
+      Offset := Offset + MaxCnt;
+    until JSArray.Count <= 0;
+    LabelNotesCaption.Caption := 'Заметки (' + Cnt.ToString + ')';
+    FNotes.EndUpdate;
+  finally
+    EndedOperation;
+  end;
+  ButtonFlatNotesDel.Caption := 'Удалить заметки (' + FNotes.Count.ToString + ')';
+end;
+
 procedure TFormMain.ButtonFlatNotesClick(Sender: TObject);
 begin
-  //
+  OpenPage(TabSheetNotes);
+  ButtonFlatGetNotesInfoClick(nil);
+end;
+
+procedure TFormMain.ButtonFlatNotesDelClick(Sender: TObject);
+var
+  i: Integer;
+  ErrNotifed: Boolean;
+begin
+  if MessageBox(Handle, PChar('Будет удалено заметок: ' + FNotes.Count.ToString + ' Продолжить?'), 'Внимание', MB_ICONWARNING or MB_YESNOCANCEL) <> ID_YES then
+    Exit;
+  if not StartOperation then
+    Exit;
+  try
+    ErrNotifed := False;
+    for i := 0 to FNotes.Count - 1 do
+    begin
+      OperProgress := Round(100 / FNotes.Count * i);
+      FProgressText := 'Удаление. Осталось времени ~' + Round(((FNotes.Count - i) * 400) / (1000 * 60)).ToString + ' мин.';
+      if IsCancel then
+        Break;
+      if not Execute('notes.delete', [VkNote(FNotes[i].ID)]) then
+      begin
+        Log('Не удалось удалить заметку ' + FNotes[i].ID.ToString);
+        if not ErrNotifed then
+        begin
+          ErrNotifed := True;
+          if MessageBox(Handle, PChar('Не удалось удалить заметку ' + FNotes[i].ID.ToString + #13#10 + 'Прервать?'), 'Ошибка', MB_ICONSTOP or MB_YESNO) = ID_YES then
+            Break;
+        end;
+      end;
+    end;
+    FNotes.Clear;
+    ButtonFlatGetNotesInfoClick(nil);
+    ButtonFlatNotesDel.TimedText('Готово', 3000);
+    ButtonFlatNotesDel.Caption := 'Удалить документы';
+  finally
+    EndedOperation;
+  end;
 end;
 
 procedure TFormMain.WebOpen(URL: string);
@@ -2347,6 +2808,10 @@ begin
   FDocs := TDocs.Create;
   FFaveTypes := TFaveTypes.Create(TableExFaves);
   FFaves := TFaves.Create;
+  FNotes := TNotes.Create;
+  FBoards := TBoards.Create;
+  FProducts := TProducts.Create;
+  FProductTypes := TProductTypes.Create(TableExProductTypes);
 
   FAuthForm := TFormOAuth2.Create(nil);
   FAuthForm.OnAfterRedirect := AfterRedirect;
@@ -2358,6 +2823,14 @@ end;
 
 procedure TFormMain.FormDestroy(Sender: TObject);
 begin
+  FProducts.Clear;
+  FProducts.Free;
+  FProductTypes.Clear;
+  FProductTypes.Free;
+  FBoards.Clear;
+  FBoards.Free;
+  FNotes.Clear;
+  FNotes.Free;
   FDocTypes.Clear;
   FDocTypes.Free;
   FFaveTypes.Clear;
@@ -2389,9 +2862,14 @@ procedure TFormMain.FormResize(Sender: TObject);
 begin
   DrawPanelVideosClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelVideosClean.Width div 2;
   DrawPanelPhotosClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelPhotosClean.Width div 2;
-  DrawPanelFullClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelFullClean.Width div 2;
   DrawPanelPostsClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelPostsClean.Width div 2;
+  DrawPanelFullClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelFullClean.Width div 2;
+  DrawPanelFaveClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelFaveClean.Width div 2;
   DrawPanelDocClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelDocClean.Width div 2;
+  DrawPanelMessagesClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelMessagesClean.Width div 2;
+  DrawPanelNotesClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelNotesClean.Width div 2;
+  DrawPanelBoardClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelBoardClean.Width div 2;
+  DrawPanelMarketClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelMarketClean.Width div 2;
 end;
 
 procedure TFormMain.LinkRestorePassClick(Sender: TObject);

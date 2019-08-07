@@ -18,7 +18,11 @@ uses
   VKClean.Docs in 'VKClean.Docs.pas',
   VKClean.RequestConstruct in 'VKClean.RequestConstruct.pas',
   VKClean.Profile in 'VKClean.Profile.pas',
-  VKClean.Fave in 'VKClean.Fave.pas';
+  VKClean.Fave in 'VKClean.Fave.pas',
+  VKClean.Notes in 'VKClean.Notes.pas',
+  VKClean.Board in 'VKClean.Board.pas',
+  VKClean.MarketTypes in 'VKClean.MarketTypes.pas',
+  VKClean.Market in 'VKClean.Market.pas';
 
 {$R *.res}
 
