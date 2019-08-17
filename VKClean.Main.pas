@@ -11,11 +11,11 @@ uses
   Vcl.Samples.Spin, Vcl.WinXCalendars, System.Generics.Defaults, System.Types,
   HGM.Controls.Labels, HGM.Button, HGM.Controls.PanelExt, HGM.Popup,
   System.UITypes, HGM.Controls.VirtualTable, HGM.Controls.SpinEdit,
-  HGM.Common.Utils, VK.OAuth2, VKClean.Groups, VKClean.Friends, VKClean.InnerLog,
-  VKClean.Posts, VKClean.RequestConstruct, VKClean.Photos, VKClean.Albums,
-  VKClean.Videos, VKClean.DocTypes, VKClean.Docs, VKClean.Profile, Vcl.Menus,
-  VKClean.Fave, VKClean.Notes, VKClean.Board, VKClean.Market,
-  VKClean.MarketTypes;
+  HGM.Common.Utils, VKClean.OAuth2, VKClean.Groups, VKClean.Friends,
+  VKClean.InnerLog, VKClean.Posts, VKClean.RequestConstruct, VKClean.Photos,
+  VKClean.Albums, VKClean.Videos, VKClean.DocTypes, VKClean.Docs,
+  VKClean.Profile, Vcl.Menus, VKClean.Fave, VKClean.Notes, VKClean.Board,
+  VKClean.Market, VKClean.MarketTypes, System.Win.TaskbarCore, Vcl.Taskbar;
 
 type
   TBackToElements = (beMenu = 0, beWelcome, beGroupMenu);
@@ -47,7 +47,6 @@ type
     Label2: TLabel;
     Label3: TLabel;
     ButtonFlatCancelOp: TButtonFlat;
-    TableExGroupClean: TTableEx;
     PanelGroupCleanTools: TPanel;
     ButtonFlatGetGroups: TButtonFlat;
     ButtonFlatLeaveGroup: TButtonFlat;
@@ -57,7 +56,6 @@ type
     ButtonFlatGetFriendsDel: TButtonFlat;
     ButtonFlatFriendDel: TButtonFlat;
     ImageListProfile: TImageList;
-    ImageMask: TImage;
     PanelLog: TPanel;
     Shape5: TShape;
     Panel7: TPanel;
@@ -359,6 +357,22 @@ type
     SpinEditProductAmount: TlkSpinEdit;
     ComboBoxProductAmountType: TComboBox;
     ButtonFlat1: TButtonFlat;
+    ImageMask: TImage;
+    DrawPanelGroupsClean: TDrawPanel;
+    Label28: TLabel;
+    Label42: TLabel;
+    Label43: TLabel;
+    Shape26: TShape;
+    Shape27: TShape;
+    ButtonFlatGroupsCalc: TButtonFlat;
+    CheckBoxGroupsSubs: TCheckBoxFlat;
+    SpinEditGroupsSubs: TlkSpinEdit;
+    CheckBoxGroupsClosed: TCheckBoxFlat;
+    CalendarPickerGroupsDate: TCalendarPicker;
+    ButtonFlatGroupsDel: TButtonFlat;
+    TableExGroupClean: TTableEx;
+    TaskDialogError: TTaskDialog;
+    Taskbar: TTaskbar;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure LinkRestorePassClick(Sender: TObject);
@@ -467,6 +481,9 @@ type
     procedure ButtonFlatProductTypesClick(Sender: TObject);
     procedure ButtonFlatGroupMarketClick(Sender: TObject);
     procedure ButtonFlatMarketCalcClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure ButtonFlatGroupsCalcClick(Sender: TObject);
+    procedure ButtonFlatGroupsDelClick(Sender: TObject);
   private
     //Форма и методы авторизации
     FAuthForm: TFormOAuth2;
@@ -478,6 +495,7 @@ type
     FDoCancelOperation: Boolean;
     FOpeartion: Boolean;
     FOperProgress: Integer;
+    FSkipErrors: Boolean;
     FProgOffset: Integer;
     FProgressText: string;
     //Данные из ВК
@@ -528,7 +546,7 @@ type
     function Execute(Request: TRESTRequest; FreeRequset: Boolean = False): Boolean; overload;
     function IsCancel: Boolean;
     procedure CancelOperation;
-    procedure Error(Text: string);
+    procedure Error(Text: string; OnlyLog: Boolean = False);
     procedure Log(Text: string);
     procedure OpenPage(Tab: TTabSheet; BackToWelcome: TBackToElements = beMenu);
     procedure ProcError(ErrorCode: Integer);
@@ -780,6 +798,7 @@ function TFormMain.StartOperation: Boolean;
 begin
   if FOpeartion then
     Exit(False);
+  FSkipErrors := False;
   ButtonFlatCancelOp.Show;
   DrawPanelProgress.Show;
   FDoCancelOperation := False;
@@ -878,13 +897,11 @@ begin
     Exit;
   case FCol of
     0:
-      Value := FGroups[FRow].ID.ToString;
-    1:
       Value := FGroups[FRow].Name;
-    2:
+    1:
       if FGroups[FRow].LastMessage.DateTime <> 0 then
         Value := DateToStr(FGroups[FRow].LastMessage.DateTime);
-    3:
+    2:
       Value := FGroups[FRow].LastMessage.Text;
   end;
 end;
@@ -1130,16 +1147,23 @@ begin
   Clipboard.AsText := FLog[TableExLog.ItemIndex].Text;
 end;
 
-procedure TFormMain.Error(Text: string);
+procedure TFormMain.Error(Text: string; OnlyLog: Boolean = False);
 var
   Item: TLog;
 begin
   Item.DateTime := Now;
   Item.Text := Text;
   FLog.Insert(0, Item);
+  if OnlyLog then
+    Exit;
   if not PanelLog.Visible then
     PanelLog.Show;
-  MessageBox(Handle, PChar(Text), 'Ошибка', MB_ICONSTOP or MB_OK);
+  if FSkipErrors then
+    Exit;
+  TaskDialogError.Text := Text;
+  Taskbar.ProgressState := TTaskBarProgressState.Error;
+  if TaskDialogError.Execute then
+    FSkipErrors := tfVerificationFlagChecked in TaskDialogError.Flags;
 end;
 
 function TFormMain.AskCapcha(const CapchaImg: string; var Answer: string): Boolean;
@@ -1256,7 +1280,11 @@ var
   CaptchaAns: string;
   ErrorCode: Integer;
   IsDone: Boolean;
+  TimeStamp: Cardinal;
+  TimeStampLast: Cardinal;
 begin
+  TimeStamp := GetTickCount;
+  TimeStampLast := FStartRequest;
   Result := False;
   try
     IsDone := False;
@@ -1266,8 +1294,8 @@ begin
     //Если уже 3 запроса было, то ждём до конца секунды FStartRequest
     if FRequests > RequestLimit then
     begin
-      WaitTime(1200 - Int64(GetTickCount - FStartRequest));
       FRequests := 0;
+      WaitTime(1300 - Int64(GetTickCount - FStartRequest));
     end;
 
     Request.ExecuteAsync(
@@ -1286,7 +1314,7 @@ begin
     begin
       ErrorCode := JS.GetValue<Integer>('error_code', -1);
       case ErrorCode of
-        14:
+        14: //Капча
           begin
             CaptchaSID := JS.GetValue<string>('captcha_sid', '');
             CaptchaImg := JS.GetValue<string>('captcha_img', '');
@@ -1304,7 +1332,7 @@ begin
             else
               ProcError(ErrorCode);
           end;
-        24:
+        24: //Подтверждение для ВК
           begin
             CaptchaAns := JS.GetValue<string>('confirmation_text', '');
             if MessageBox(Handle, PChar(CaptchaAns), 'Вопрос', MB_ICONQUESTION or MB_YESNO) = ID_YES then
@@ -1318,6 +1346,15 @@ begin
             end
             else
               ProcError(ErrorCode);
+          end;
+        6: //Превышено кол-во запросов в сек.
+          begin
+            Error(Format('Превышено кол-во запросов в сек. (%d/%d, Enter %d, StartRequest %d, LastRequest %d)', [FRequests, RequestLimit, TimeStamp, FStartRequest, TimeStampLast]), True);
+            WaitTime(1000);
+            Result := Execute(Request);
+            if FreeRequset then
+              Request.Free;
+            Exit;
           end;
       else
         ProcError(ErrorCode);
@@ -1375,45 +1412,11 @@ begin
           end;
           Offset := Offset + Cnt;
         end;
-      end;
+      end
+      else
+        Break;
     until Cnt <= Offset;
     FGroups.EndUpdate;
-    OperProgress := 10;
-    FProgressText := 'Анализ группы';
-    for i := 0 to FGroups.Count - 1 do
-    begin
-      OperProgress := Round(80 / FGroups.Count * i) + 10;
-      if IsCancel then
-        Break;
-      if Execute('wall.get', [VkOwner(-FGroups[i].ID), VkCount(2)]) then
-      begin
-        JS := RESTResponse.JSONValue;
-        JArr := JS.GetValue<TJSONArray>('response.items');
-        if JArr.Count > 0 then
-        begin
-          if JArr.Count > 1 then
-          begin
-            if JArr.Items[0].GetValue<Boolean>('is_pinned', False) then
-              p := 1
-            else
-              p := 0;
-          end
-          else
-            p := 0;
-          Item := FGroups[i];
-          Item.LastMessage.DateTime := UnixToDateTime(JArr.Items[p].GetValue<Integer>('date'), False);
-          Item.LastMessage.Text := JArr.Items[p].GetValue<string>('text');
-          FGroups[i] := Item;
-        end;
-      end;
-    end;
-
-    FGroups.Sort(TComparer<TGroup>.Construct(
-      function(const Left, Right: TGroup): Integer
-      begin
-        Result := CompareDate(Left.LastMessage.DateTime, Right.LastMessage.DateTime);
-      end));
-    FGroups.UpdateTable;
   finally
     EndedOperation;
   end;
@@ -1685,6 +1688,77 @@ begin
   ButtonFlatGetPhotosInfoClick(nil);
 end;
 
+procedure TFormMain.ButtonFlatGroupsCalcClick(Sender: TObject);
+const
+  MaxCnt = 200;
+var
+  JArr: TJSONArray;
+  Item: TGroup;
+  i, p: Integer;
+begin
+  if not StartOperation then
+    Exit;
+  try
+    FProgressText := 'Анализ групп';
+    FGroups.UnCheckAll;
+    for i := 0 to FGroups.Count - 1 do
+    begin
+      OperProgress := Round(100 / FGroups.Count * i);
+      if IsCancel then
+        Break;
+      Item := FGroups[i];
+      if Execute('wall.get', [VkOwner(-FGroups[i].ID), VkCount(2)]) then
+      begin
+        JArr := RESTResponse.JSONValue.GetValue<TJSONArray>('response.items');
+        if JArr.Count > 0 then
+        begin
+          if JArr.Count > 1 then
+          begin
+            if JArr.Items[0].GetValue<Boolean>('is_pinned', False) then
+              p := 1
+            else
+              p := 0;
+          end
+          else
+            p := 0;
+          Item.LastMessage.DateTime := UnixToDateTime(JArr.Items[p].GetValue<Integer>('date', 0), False);
+          Item.LastMessage.Text := JArr.Items[p].GetValue<string>('text', '');
+        end;
+      end;
+      if Execute('groups.getMembers', [VkGroup(Item.ID), VkCount(0)]) then
+        Item.Subs := RESTResponse.JSONValue.GetValue<Integer>('response.count', -1)
+      else
+        Item.Subs := -1;
+      FGroups[i] := Item;
+
+      if CheckBoxGroupsClosed.Checked then
+        if DateOF(Item.LastMessage.DateTime) < DateOF(CalendarPickerGroupsDate.Date) then
+          Continue;
+      if CheckBoxGroupsClosed.Checked then
+        if (Item.Subs <> -1) and (Item.Subs > SpinEditGroupsSubs.Value) then
+          Continue;
+      FGroups.Checked[i] := True;
+    end;
+    i := 0;
+    while (FGroups.Count > 0) and (i < FGroups.Count) do
+    begin
+      if FGroups.Checked[i] then
+        FGroups.Delete(i)
+      else
+        Inc(i);
+    end;
+    FGroups.Sort(TComparer<TGroup>.Construct(
+      function(const Left, Right: TGroup): Integer
+      begin
+        Result := CompareDate(Left.LastMessage.DateTime, Right.LastMessage.DateTime);
+      end));
+    FGroups.UpdateTable;
+  finally
+    EndedOperation;
+  end;
+  ButtonFlatGroupsDel.Caption := 'Отписаться от групп (' + FGroups.Count.ToString + ')';
+end;
+
 procedure TFormMain.ButtonFlatGroupUsersClick(Sender: TObject);
 begin
   OpenPage(TabSheetFriends, beGroupMenu);
@@ -1858,6 +1932,42 @@ end;
 procedure TFormMain.ButtonFlat10Click(Sender: TObject);
 begin
   WebOpen('https://vk.com/app6326142_-184755622');
+end;
+
+procedure TFormMain.ButtonFlatGroupsDelClick(Sender: TObject);
+var
+  i: Integer;
+  ErrNotifed: Boolean;
+begin
+  if MessageBox(Handle, PChar('Будет удалено записей: ' + FPosts.Count.ToString + ' Продолжить?'), 'Внимание', MB_ICONWARNING or MB_YESNOCANCEL) <> ID_YES then
+    Exit;
+  if not StartOperation then
+    Exit;
+  try
+    ErrNotifed := False;
+    for i := 0 to FPosts.Count - 1 do
+    begin
+      OperProgress := Round(100 / FPosts.Count * i);
+      FProgressText := 'Удаление. Осталось времени ~' + Round(((FPosts.Count - i) * 400) / (1000 * 60)).ToString + ' мин.';
+      if IsCancel then
+        Break;
+      if not Execute('wall.delete', [VkOwner(FPosts[i].OwnerID), VkPost(FPosts[i].ID)]) then
+      begin
+        Log('Не удалось удалить пост ' + FPosts[i].ID.ToString);
+        if not ErrNotifed then
+        begin
+          ErrNotifed := True;
+          if MessageBox(Handle, PChar('Не удалось удалить пост ' + FPosts[i].ID.ToString + #13#10 + 'Прервать?'), 'Ошибка', MB_ICONSTOP or MB_YESNO) = ID_YES then
+            Break;
+        end;
+      end;
+    end;
+    ButtonFlatGetWallInfoClick(nil);
+    ButtonFlatPostDel.TimedText('Готово', 3000);
+    ButtonFlatPostDel.Caption := 'Удалить записи';
+  finally
+    EndedOperation;
+  end;
 end;
 
 procedure TFormMain.ButtonFlatGetMarketInfoClick(Sender: TObject);
@@ -2784,6 +2894,23 @@ begin
   end;
 end;
 
+procedure TFormMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  CanClose := False;
+  if FOpeartion then
+  begin
+    if MessageBox(Handle, 'Будет прервана операция и закрыто приложение, продолжить?', 'Подтверждение', MB_ICONINFORMATION or MB_YESNOCANCEL) <> ID_YES then
+      Exit;
+    CancelOperation;
+  end
+  else
+  begin
+    if MessageBox(Handle, 'Будет закрыто приложение, продолжить?', 'Подтверждение', MB_ICONINFORMATION or MB_YESNOCANCEL) <> ID_YES then
+      Exit;
+  end;
+  CanClose := True;
+end;
+
 procedure TFormMain.FormCreate(Sender: TObject);
 var
   i: Integer;
@@ -2860,6 +2987,8 @@ end;
 
 procedure TFormMain.FormResize(Sender: TObject);
 begin
+  DrawPanelGroupsClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelGroupsClean.Width div 2;
+  DrawPanelGroupsClean.Height := TabSheetWelcome.ClientHeight - 60;
   DrawPanelVideosClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelVideosClean.Width div 2;
   DrawPanelPhotosClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelPhotosClean.Width div 2;
   DrawPanelPostsClean.Left := TabSheetWelcome.ClientRect.CenterPoint.X - DrawPanelPostsClean.Width div 2;
@@ -2912,6 +3041,23 @@ end;
 procedure TFormMain.SetOperProgress(const Value: Integer);
 begin
   FOperProgress := Min(Max(Value, 0), 100);
+  if FOperProgress > 0 then
+  begin
+    if FOperProgress = 100 then
+    begin
+      Taskbar.ProgressState := TTaskBarProgressState.None;
+    end
+    else
+    begin
+      Taskbar.ProgressValue := FOperProgress;
+      Taskbar.ProgressState := TTaskBarProgressState.Normal;
+    end;
+  end
+  else
+  begin
+    Taskbar.ProgressState := TTaskBarProgressState.None;
+    Taskbar.ProgressValue := 0;
+  end;
   DrawPanelProgress.Repaint;
 end;
 

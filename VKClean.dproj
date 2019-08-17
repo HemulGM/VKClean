@@ -107,8 +107,8 @@
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <Icon_MainIcon>VKClean_Icon.ico</Icon_MainIcon>
-        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.229;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
-        <VerInfo_Build>229</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.250;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
+        <VerInfo_Build>250</VerInfo_Build>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -129,8 +129,8 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <Icon_MainIcon>VKClean_Icon.ico</Icon_MainIcon>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Build>5</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.5;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
+        <VerInfo_Build>11</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.11;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
     </PropertyGroup>
@@ -146,7 +146,7 @@
             <Form>FormMain</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="VK.OAuth2.pas">
+        <DCCReference Include="VKClean.OAuth2.pas">
             <Form>FormOAuth2</Form>
             <FormType>dfm</FormType>
         </DCCReference>

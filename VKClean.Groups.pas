@@ -14,6 +14,7 @@ type
       Text: string;
       DateTime: TDateTime;
     end;
+    Subs: Integer;
     GroupType: string;
   end;
 

@@ -1,4 +1,4 @@
-unit VK.OAuth2;
+unit VKClean.OAuth2;
 
 interface
 
