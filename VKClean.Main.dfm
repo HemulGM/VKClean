@@ -258,7 +258,7 @@ object FormMain: TFormMain
     Top = 71
     Width = 1056
     Height = 490
-    ActivePage = TabSheetVideo
+    ActivePage = TabSheetGroups
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
@@ -272,6 +272,10 @@ object FormMain: TFormMain
     object TabSheetWelcome: TTabSheet
       Caption = 'Welcome'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       DesignSize = (
         1048
         459)
@@ -316,7 +320,7 @@ object FormMain: TFormMain
             AlignWithMargins = True
             Left = 3
             Top = 44
-            Width = 531
+            Width = 467
             Height = 92
             Align = alTop
             Alignment = taCenter
@@ -335,13 +339,12 @@ object FormMain: TFormMain
             ParentFont = False
             Transparent = False
             WordWrap = True
-            ExplicitWidth = 467
           end
           object Label3: TLabel
             AlignWithMargins = True
             Left = 3
             Top = 3
-            Width = 531
+            Width = 400
             Height = 35
             Align = alTop
             Alignment = taCenter
@@ -356,7 +359,6 @@ object FormMain: TFormMain
             ParentColor = False
             ParentFont = False
             Transparent = False
-            ExplicitWidth = 400
           end
         end
         object DrawPanelAuth: TDrawPanel
@@ -687,6 +689,10 @@ object FormMain: TFormMain
     object TabSheetLicense: TTabSheet
       Caption = 'License'
       ImageIndex = 7
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object RichEditLicense: TRichEdit
         AlignWithMargins = True
         Left = 30
@@ -716,6 +722,10 @@ object FormMain: TFormMain
     end
     object TabSheetAuth: TTabSheet
       Caption = 'Auth'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PanelLogin: TPanel
         Left = 0
         Top = 0
@@ -753,6 +763,10 @@ object FormMain: TFormMain
     object TabSheetMenu: TTabSheet
       Caption = 'Menu'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       DesignSize = (
         1048
         459)
@@ -5280,7 +5294,7 @@ object FormMain: TFormMain
           end
           item
             Caption = #1057#1090#1072#1090#1091#1089' '#1072#1082#1082#1072#1091#1085#1090#1072
-            Width = 829
+            Width = 528
           end>
         ItemCount = 1
         LineColor = 15856113
@@ -5908,6 +5922,10 @@ object FormMain: TFormMain
     object TabSheetPhotos: TTabSheet
       Caption = 'Photos'
       ImageIndex = 6
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DrawPanelPhotosClean: TDrawPanel
         Left = 10
         Top = 30
@@ -6555,6 +6573,10 @@ object FormMain: TFormMain
     object TabSheetVideo: TTabSheet
       Caption = 'Videos'
       ImageIndex = 9
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel10: TPanel
         Left = 0
         Top = 0
@@ -7202,6 +7224,10 @@ object FormMain: TFormMain
     object TabSheetDocs: TTabSheet
       Caption = 'Docs'
       ImageIndex = 11
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DrawPanelDocClean: TDrawPanel
         Left = 10
         Top = 30
@@ -7652,7 +7678,7 @@ object FormMain: TFormMain
             end
             item
               Caption = 'Name'
-              Width = 279
+              Width = 228
             end>
           ItemCount = 1
           LineColor = 15856113
@@ -7688,6 +7714,10 @@ object FormMain: TFormMain
     object TabSheetMessages: TTabSheet
       Caption = 'Messages'
       ImageIndex = 12
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DrawPanelMessagesClean: TDrawPanel
         Left = 10
         Top = 30
@@ -8178,7 +8208,7 @@ object FormMain: TFormMain
             end
             item
               Caption = 'Name'
-              Width = 309
+              Width = 258
             end>
           ItemCount = 1
           LineColor = 15856113
@@ -8235,6 +8265,10 @@ object FormMain: TFormMain
     object TabSheetFave: TTabSheet
       Caption = 'Fave'
       ImageIndex = 13
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DrawPanelFaveClean: TDrawPanel
         Left = 10
         Top = 30
@@ -8685,7 +8719,7 @@ object FormMain: TFormMain
             end
             item
               Caption = 'Name'
-              Width = 279
+              Width = 228
             end>
           ItemCount = 1
           LineColor = 15856113
@@ -8721,6 +8755,10 @@ object FormMain: TFormMain
     object TabSheetNotes: TTabSheet
       Caption = 'Notes'
       ImageIndex = 14
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DrawPanelNotesClean: TDrawPanel
         Left = 10
         Top = 30
@@ -9048,6 +9086,10 @@ object FormMain: TFormMain
     object TabSheetBoard: TTabSheet
       Caption = 'Board'
       ImageIndex = 15
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DrawPanelBoardClean: TDrawPanel
         Left = 10
         Top = 30
@@ -9561,6 +9603,10 @@ object FormMain: TFormMain
     object TabSheetMarket: TTabSheet
       Caption = 'Market'
       ImageIndex = 16
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DrawPanelMarketClean: TDrawPanel
         Left = 10
         Top = 30
@@ -10096,7 +10142,7 @@ object FormMain: TFormMain
             end
             item
               Caption = 'Name'
-              Width = 279
+              Width = 228
             end>
           ItemCount = 1
           LineColor = 15856113
@@ -10132,6 +10178,10 @@ object FormMain: TFormMain
     object TabSheetGroupMes: TTabSheet
       Caption = 'TabSheetGroupMes'
       ImageIndex = 17
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object PanelWOMenu: TPanel
@@ -10549,7 +10599,7 @@ object FormMain: TFormMain
     Top = 635
   end
   object OAuth2Authenticator: TOAuth2Authenticator
-    Scope = 'groups,friends,wall,photos,video,docs,notes,market'
+    Scope = 'groups,friends,wall,photos,video,docs,notes,market,messages'
     Left = 235
     Top = 635
   end
@@ -10560,7 +10610,7 @@ object FormMain: TFormMain
     Left = 532
     Top = 636
     Bitmap = {
-      494C01011F0088001C0118001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01011F0088002C0118001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000C000000001002000000000000020
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

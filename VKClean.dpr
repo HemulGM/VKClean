@@ -22,7 +22,8 @@ uses
   VKClean.Notes in 'VKClean.Notes.pas',
   VKClean.Board in 'VKClean.Board.pas',
   VKClean.MarketTypes in 'VKClean.MarketTypes.pas',
-  VKClean.Market in 'VKClean.Market.pas';
+  VKClean.Market in 'VKClean.Market.pas',
+  VKClean.Messages in 'VKClean.Messages.pas';
 
 {$R *.res}
 

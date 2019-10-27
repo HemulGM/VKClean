@@ -15,7 +15,8 @@ uses
   VKClean.InnerLog, VKClean.Posts, VKClean.RequestConstruct, VKClean.Photos,
   VKClean.Albums, VKClean.Videos, VKClean.DocTypes, VKClean.Docs,
   VKClean.Profile, Vcl.Menus, VKClean.Fave, VKClean.Notes, VKClean.Board,
-  VKClean.Market, VKClean.MarketTypes, System.Win.TaskbarCore, Vcl.Taskbar;
+  VKClean.Market, VKClean.MarketTypes, System.Win.TaskbarCore, Vcl.Taskbar,
+  VKClean.Messages;
 
 type
   TBackToElements = (beMenu = 0, beWelcome, beGroupMenu);
@@ -504,6 +505,7 @@ type
     FDocs: TDocs;
     FDocTypes: TDocTypes;
     FFriends: TFriends;
+    FConversationFriends: TFriends;
     FGroups: TGroups;
     FLog: TLogs;
     FPhotos: TPhotos;
@@ -1575,8 +1577,10 @@ end;
 
 procedure TFormMain.ButtonFlatGroupMessagesClick(Sender: TObject);
 begin
-  MessageBox(Handle, 'Пока очистка сообщений не доступна. Ждём подтверждения законности приложения.', 'Упс', MB_ICONINFORMATION or MB_OK);
-  Exit;
+  //MessageBox(Handle, 'Пока очистка сообщений не доступна. Ждём подтверждения законности приложения.', 'Упс', MB_ICONINFORMATION or MB_OK);
+  //Exit;
+  OpenPage(TabSheetMessages, beGroupMenu);
+  ButtonFlatGetMessageInfoClick(nil);
 end;
 
 procedure TFormMain.ButtonFlatBoardCalcClick(Sender: TObject);
@@ -2726,8 +2730,8 @@ end;
 
 procedure TFormMain.ButtonFlatMessagesClick(Sender: TObject);
 begin
-  MessageBox(Handle, 'Пока очистка сообщений не доступна. Ждём подтверждения законности приложения.', 'Упс', MB_ICONINFORMATION or MB_OK);
-  Exit;
+  //MessageBox(Handle, 'Пока очистка сообщений не доступна. Ждём подтверждения законности приложения.', 'Упс', MB_ICONINFORMATION or MB_OK);
+  //Exit;
   OpenPage(TabSheetMessages);
   ButtonFlatGetMessageInfoClick(nil);
 end;
