@@ -174,10 +174,10 @@ object FormMain: TFormMain
       Margins.Top = 0
       Margins.Right = 10
       Margins.Bottom = 0
+      OnPaint = DrawPanelLoginPaint
       DefaultPaint = False
       OnMouseEnter = DrawPanelLoginMouseEnter
       OnMouseLeave = DrawPanelLoginMouseLeave
-      OnPaint = DrawPanelLoginPaint
       Align = alRight
       AutoSize = True
       Color = 9402979
@@ -258,7 +258,7 @@ object FormMain: TFormMain
     Top = 71
     Width = 1056
     Height = 490
-    ActivePage = TabSheetWall
+    ActivePage = TabSheetGroups
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
@@ -367,8 +367,8 @@ object FormMain: TFormMain
           Margins.Top = 7
           Margins.Right = 175
           Margins.Bottom = 7
-          DefaultPaint = False
           OnPaint = DrawPanelPostsCleanPaint
+          DefaultPaint = False
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
@@ -484,8 +484,8 @@ object FormMain: TFormMain
           Margins.Top = 7
           Margins.Right = 175
           Margins.Bottom = 7
-          DefaultPaint = False
           OnPaint = DrawPanelPostsCleanPaint
+          DefaultPaint = False
           Align = alTop
           BevelOuter = bvNone
           Color = clWhite
@@ -556,8 +556,8 @@ object FormMain: TFormMain
           Margins.Top = 7
           Margins.Right = 175
           Margins.Bottom = 7
-          DefaultPaint = False
           OnPaint = DrawPanelPostsCleanPaint
+          DefaultPaint = False
           Align = alTop
           BevelOuter = bvNone
           Color = clWhite
@@ -638,8 +638,8 @@ object FormMain: TFormMain
           Margins.Top = 7
           Margins.Right = 175
           Margins.Bottom = 7
-          DefaultPaint = False
           OnPaint = DrawPanelPostsCleanPaint
+          DefaultPaint = False
           Align = alTop
           BevelOuter = bvNone
           Color = clWhite
@@ -1368,6 +1368,7 @@ object FormMain: TFormMain
             ColorNormal = 15789805
             ColorOver = 15459809
             ColorPressed = 15789805
+            Enabled = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = 7558185
             Font.Height = -13
@@ -1496,8 +1497,8 @@ object FormMain: TFormMain
             Height = 210
             Margins.Top = 7
             Margins.Bottom = 7
-            DefaultPaint = False
             OnPaint = DrawPanelPostsCleanPaint
+            DefaultPaint = False
             Align = alTop
             BevelOuter = bvNone
             Color = clWhite
@@ -1925,8 +1926,8 @@ object FormMain: TFormMain
             Height = 182
             Margins.Top = 7
             Margins.Bottom = 7
-            DefaultPaint = False
             OnPaint = DrawPanelPostsCleanPaint
+            DefaultPaint = False
             Align = alTop
             BevelOuter = bvNone
             Color = clWhite
@@ -3012,8 +3013,8 @@ object FormMain: TFormMain
             Height = 219
             Margins.Top = 7
             Margins.Bottom = 7
-            DefaultPaint = False
             OnPaint = DrawPanelPostsCleanPaint
+            DefaultPaint = False
             Align = alTop
             BevelOuter = bvNone
             Color = clWhite
@@ -3257,8 +3258,8 @@ object FormMain: TFormMain
             Height = 65
             Margins.Top = 7
             Margins.Bottom = 7
-            DefaultPaint = False
             OnPaint = DrawPanelPostsCleanPaint
+            DefaultPaint = False
             Align = alTop
             BevelOuter = bvNone
             Color = clWhite
@@ -3880,8 +3881,8 @@ object FormMain: TFormMain
             Height = 219
             Margins.Top = 7
             Margins.Bottom = 7
-            DefaultPaint = False
             OnPaint = DrawPanelPostsCleanPaint
+            DefaultPaint = False
             Align = alTop
             BevelOuter = bvNone
             Color = clWhite
@@ -4044,8 +4045,8 @@ object FormMain: TFormMain
             Height = 65
             Margins.Top = 7
             Margins.Bottom = 7
-            DefaultPaint = False
             OnPaint = DrawPanelPostsCleanPaint
+            DefaultPaint = False
             Align = alTop
             BevelOuter = bvNone
             Color = clWhite
@@ -4115,8 +4116,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 419
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -4582,8 +4583,8 @@ object FormMain: TFormMain
           Margins.Top = 7
           Margins.Right = 175
           Margins.Bottom = 7
-          DefaultPaint = False
           OnPaint = DrawPanelPostsCleanPaint
+          DefaultPaint = False
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
@@ -4879,8 +4880,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 403
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -5063,6 +5064,7 @@ object FormMain: TFormMain
           ParentFont = False
           TabOrder = 2
           Value = 100
+          LightButtons = False
         end
         object CheckBoxGroupsClosed: TCheckBoxFlat
           Left = 20
@@ -5189,6 +5191,7 @@ object FormMain: TFormMain
           Font.Quality = fqClearType
           ParentFont = False
           TabOrder = 6
+          StyleElements = [seBorder]
           ItemIndex = -1
           GetData = TableExGroupCleanGetData
           Columns = <
@@ -5260,6 +5263,7 @@ object FormMain: TFormMain
         Font.Quality = fqClearType
         ParentFont = False
         TabOrder = 0
+        StyleElements = [seBorder]
         ItemIndex = -1
         GetData = TableExFriendCleanGetData
         Columns = <
@@ -5475,8 +5479,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 303
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -5665,6 +5669,7 @@ object FormMain: TFormMain
           ParentFont = False
           TabOrder = 2
           Value = 100
+          LightButtons = False
         end
         object CheckBoxPostFromOnly: TCheckBoxFlat
           Left = 20
@@ -5902,6 +5907,7 @@ object FormMain: TFormMain
           ParentFont = False
           TabOrder = 9
           Value = 100
+          LightButtons = False
         end
       end
     end
@@ -5913,8 +5919,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 303
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -6099,6 +6105,7 @@ object FormMain: TFormMain
           ParentFont = False
           TabOrder = 2
           Value = 100
+          LightButtons = False
         end
         object CheckBoxPhotosFromOnly: TCheckBoxFlat
           Left = 20
@@ -6335,6 +6342,7 @@ object FormMain: TFormMain
           ParentFont = False
           TabOrder = 9
           Value = 100
+          LightButtons = False
         end
         object CheckBoxPhotosAlbums: TCheckBoxFlat
           Left = 20
@@ -6506,6 +6514,7 @@ object FormMain: TFormMain
           Font.Quality = fqClearType
           ParentFont = False
           TabOrder = 0
+          StyleElements = [seBorder]
           OnDrawCellData = TableExPhotosAlbumsDrawCellData
           ItemIndex = -1
           OnItemColClick = TableExPhotosAlbumsItemColClick
@@ -6635,6 +6644,7 @@ object FormMain: TFormMain
           Font.Quality = fqClearType
           ParentFont = False
           TabOrder = 0
+          StyleElements = [seBorder]
           OnDrawCellData = TableExVideosAlbumsDrawCellData
           ItemIndex = -1
           OnItemColClick = TableExVideosAlbumsItemColClick
@@ -6685,8 +6695,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 303
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -6871,6 +6881,7 @@ object FormMain: TFormMain
           ParentFont = False
           TabOrder = 2
           Value = 100
+          LightButtons = False
         end
         object CheckBoxVideoFromOnly: TCheckBoxFlat
           Left = 20
@@ -7107,6 +7118,7 @@ object FormMain: TFormMain
           ParentFont = False
           TabOrder = 9
           Value = 100
+          LightButtons = False
         end
         object CheckBoxVideoAlbums: TCheckBoxFlat
           Left = 20
@@ -7207,8 +7219,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 303
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -7639,6 +7651,7 @@ object FormMain: TFormMain
           Font.Quality = fqClearType
           ParentFont = False
           TabOrder = 0
+          StyleElements = [seBorder]
           OnDrawCellData = TableExDocTypesDrawCellData
           ItemIndex = -1
           OnItemColClick = TableExDocTypesItemColClick
@@ -7693,8 +7706,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 303
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -8165,6 +8178,7 @@ object FormMain: TFormMain
           Font.Quality = fqClearType
           ParentFont = False
           TabOrder = 0
+          StyleElements = [seBorder]
           OnDrawCellData = TableExDocTypesDrawCellData
           ItemIndex = -1
           OnItemColClick = TableExDocTypesItemColClick
@@ -8240,8 +8254,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 303
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -8672,6 +8686,7 @@ object FormMain: TFormMain
           Font.Quality = fqClearType
           ParentFont = False
           TabOrder = 0
+          StyleElements = [seBorder]
           OnDrawCellData = TableExFavesDrawCellData
           ItemIndex = -1
           OnItemColClick = TableExFavesItemColClick
@@ -8726,8 +8741,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 303
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -9053,8 +9068,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 303
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -9500,6 +9515,7 @@ object FormMain: TFormMain
           ParentFont = False
           TabOrder = 9
           Value = 100
+          LightButtons = False
         end
       end
       object Panel16: TPanel
@@ -9566,8 +9582,8 @@ object FormMain: TFormMain
         Top = 30
         Width = 495
         Height = 303
-        DefaultPaint = False
         OnPaint = DrawPanelPostsCleanPaint
+        DefaultPaint = False
         BevelOuter = bvNone
         Color = clWhite
         ParentBackground = False
@@ -9979,6 +9995,7 @@ object FormMain: TFormMain
           ParentFont = False
           TabOrder = 8
           Value = 100
+          LightButtons = False
         end
         object ComboBoxProductAmountType: TComboBox
           Left = 295
@@ -10083,6 +10100,7 @@ object FormMain: TFormMain
           Font.Quality = fqClearType
           ParentFont = False
           TabOrder = 0
+          StyleElements = [seBorder]
           OnDrawCellData = TableExProductTypesDrawCellData
           ItemIndex = -1
           OnItemColClick = TableExProductTypesItemColClick
@@ -10243,8 +10261,8 @@ object FormMain: TFormMain
       Top = 3
       Width = 481
       Height = 18
-      DefaultPaint = False
       OnPaint = DrawPanelProgressPaint
+      DefaultPaint = False
       Align = alRight
       ParentBackground = False
       TabOrder = 2
@@ -10365,6 +10383,7 @@ object FormMain: TFormMain
       Font.Quality = fqClearType
       ParentFont = False
       TabOrder = 1
+      StyleElements = [seBorder]
       OnMouseUp = TableExLogMouseUp
       ItemIndex = -1
       GetData = TableExLogGetData
@@ -10537,10 +10556,9 @@ object FormMain: TFormMain
     BaseURL = 'https://api.vk.com/method'
     Params = <
       item
-        name = 'v'
+        Name = 'v'
         Value = '5.101'
       end>
-    HandleRedirects = True
     Left = 331
     Top = 635
   end
@@ -10560,7 +10578,7 @@ object FormMain: TFormMain
     Left = 532
     Top = 636
     Bitmap = {
-      494C01011F008800300118001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01011F008800040018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000C000000001002000000000000020
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -24,8 +24,7 @@ type
     procedure BrowserNavigateComplete2(ASender: TObject; const pDisp: IDispatch; const URL: OleVariant);
     procedure BrowserBeforeNavigate2(ASender: TObject; const pDisp: IDispatch; const URL, Flags, TargetFrameName, PostData, Headers: OleVariant; var Cancel: WordBool);
     procedure EditAddrChange(Sender: TObject);
-    procedure BrowserNavigateError(ASender: TObject; const pDisp: IDispatch;
-      const URL, Frame, StatusCode: OleVariant; var Cancel: WordBool);
+    procedure BrowserNavigateError(ASender: TObject; const pDisp: IDispatch; const URL, Frame, StatusCode: OleVariant; var Cancel: WordBool);
   private
     FOnBeforeRedirect: TOAuth2WebFormRedirectEvent;
     FOnAfterRedirect: TOAuth2WebFormRedirectEvent;
@@ -35,9 +34,9 @@ type
     FLastURL: string;
     FNeedShow: Boolean;
   public
-    procedure DeleteCache(URLContains: string);
+    class procedure DeleteCache(URLContains: string);
     procedure ShowWithURL(const AURL: string); overload;
-    procedure ShowWithURL(Parent: TWinControl; const AURL: string); overload;
+    procedure ShowWithURL(AParent: TWinControl; const AURL: string); overload;
     property LastTitle: string read FLastTitle;
     property LastURL: string read FLastURL;
     property OnAfterRedirect: TOAuth2WebFormRedirectEvent read FOnAfterRedirect write FOnAfterRedirect;
@@ -56,7 +55,7 @@ uses
 
 {$R *.dfm}
 
-procedure TFormOAuth2.DeleteCache;
+class procedure TFormOAuth2.DeleteCache;
 var
   lpEntryInfo: PInternetCacheEntryInfo;
   hCacheDir: LongWord;
@@ -133,9 +132,7 @@ begin
   end;
 end;
 
-procedure TFormOAuth2.BrowserNavigateError(ASender: TObject;
-  const pDisp: IDispatch; const URL, Frame, StatusCode: OleVariant;
-  var Cancel: WordBool);
+procedure TFormOAuth2.BrowserNavigateError(ASender: TObject; const pDisp: IDispatch; const URL, Frame, StatusCode: OleVariant; var Cancel: WordBool);
 begin
   if Assigned(FOnError) then
     FOnError(URL, StatusCode, Cancel);
@@ -183,11 +180,12 @@ begin
   end;
 end;
 
-procedure TFormOAuth2.ShowWithURL(Parent: TWinControl; const AURL: string);
+procedure TFormOAuth2.ShowWithURL(AParent: TWinControl; const AURL: string);
 var
   TS: Cardinal;
 begin
-  SetParent(Parent);
+  if Assigned(AParent) then
+    SetParent(AParent);
   Align := alClient;
   BorderStyle := bsNone;
 
