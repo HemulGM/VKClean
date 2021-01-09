@@ -128,8 +128,8 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <Icon_MainIcon>VKClean_Icon.ico</Icon_MainIcon>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Build>14</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.14;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
+        <VerInfo_Build>16</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.16;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
     </PropertyGroup>
