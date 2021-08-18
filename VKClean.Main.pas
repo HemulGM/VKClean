@@ -16,7 +16,7 @@ uses
   VKClean.Albums, VKClean.Videos, VKClean.DocTypes, VKClean.Docs,
   VKClean.Profile, Vcl.Menus, VKClean.Fave, VKClean.Notes, VKClean.Board,
   VKClean.Market, VKClean.MarketTypes, System.Win.TaskbarCore, Vcl.Taskbar,
-  VKClean.Messages;
+  VKClean.Messages, REST.Types;
 
 type
   TBackToElements = (beMenu = 0, beWelcome, beGroupMenu);
@@ -524,7 +524,6 @@ type
     FGroupName: string;
     FGroupIsPage: Boolean;
     //Дата последнего запроса в ВК
-    FLastRequest: Cardinal;
     FStartRequest: Cardinal;
     FPartOfRequest: Cardinal;
     FRequests: Integer;
@@ -652,7 +651,7 @@ var
 begin
   PT := DrawPanelLogin.ClientToScreen(Point(0, 0));
   FPopupMenu := TFormPopup.CreatePopup(Self, PanelProfileMenu,
-    procedure
+    procedure(Form: TFormPopup)
     begin
       FPopupMenu := nil;
     end, PT.X, PT.Y + DrawPanelLogin.Height, [psShadow]);
@@ -1112,7 +1111,7 @@ begin
           Item.ID := JArr.Items[i].GetValue<Integer>('id');
           Item.AccState := JArr.Items[i].GetValue<string>('deactivated', '');
           if Item.AccState = '' then
-            Item.LastOnline := UnixToDateTime(JArr.Items[i].GetValue<Integer>('last_seen.time'), False)
+            Item.LastOnline := UnixToDateTime(JArr.Items[i].GetValue<Integer>('last_seen.time', 0), False)
           else
             Item.LastOnline := 0;
           FFriends.Add(Item);
@@ -1927,7 +1926,7 @@ begin
   PanelProductTypes.Height := Min(TableExProductTypes.DefaultRowHeight * TableExProductTypes.ItemCount, 300);
   PT := CheckBoxProductTypes.ClientToScreen(Point(0, 0));
   FPopupMenu := TFormPopup.CreatePopup(Self, PanelProductTypes,
-    procedure
+    procedure(Form: TFormPopup)
     begin
       FPopupMenu := nil;
     end, PT.X, PT.Y + CheckBoxProductTypes.Height, [psShadow]);
@@ -2085,7 +2084,7 @@ begin
   PanelDocTypes.Height := Min(TableExDocTypes.DefaultRowHeight * TableExDocTypes.ItemCount, 300);
   PT := CheckBoxDocTypes.ClientToScreen(Point(0, 0));
   FPopupMenu := TFormPopup.CreatePopup(Self, PanelDocTypes,
-    procedure
+    procedure(Form: TFormPopup)
     begin
       FPopupMenu := nil;
     end, PT.X, PT.Y + CheckBoxDocTypes.Height, [psShadow]);
@@ -2134,7 +2133,7 @@ begin
   PanelPhotosAlbums.Height := Min(TableExPhotosAlbums.DefaultRowHeight * TableExPhotosAlbums.ItemCount, 300);
   PT := CheckBoxPhotosAlbums.ClientToScreen(Point(0, 0));
   FPopupMenu := TFormPopup.CreatePopup(Self, PanelPhotosAlbums,
-    procedure
+    procedure(Form: TFormPopup)
     begin
       FPopupMenu := nil;
     end, PT.X, PT.Y + CheckBoxPhotosAlbums.Height, [psShadow]);
@@ -2470,7 +2469,7 @@ begin
   PanelFaveTypes.Height := Min(TableExFaves.DefaultRowHeight * TableExFaves.ItemCount, 300);
   PT := CheckBoxFaveTypes.ClientToScreen(Point(0, 0));
   FPopupMenu := TFormPopup.CreatePopup(Self, PanelFaveTypes,
-    procedure
+    procedure(Form: TFormPopup)
     begin
       FPopupMenu := nil;
     end, PT.X, PT.Y + CheckBoxFaveTypes.Height, [psShadow]);
@@ -2483,7 +2482,7 @@ begin
   PanelVideoAlbums.Height := Min(TableExVideosAlbums.DefaultRowHeight * TableExVideosAlbums.ItemCount, 300);
   PT := CheckBoxVideoAlbums.ClientToScreen(Point(0, 0));
   FPopupMenu := TFormPopup.CreatePopup(Self, PanelVideoAlbums,
-    procedure
+    procedure(Form: TFormPopup)
     begin
       FPopupMenu := nil;
     end, PT.X, PT.Y + CheckBoxVideoAlbums.Height, [psShadow]);
@@ -2908,9 +2907,9 @@ begin
     CancelOperation;
   end
   else
-  begin
+  begin   {
     if MessageBox(Handle, 'Будет закрыто приложение, продолжить?', 'Подтверждение', MB_ICONINFORMATION or MB_YESNOCANCEL) <> ID_YES then
-      Exit;
+      Exit; }
   end;
   CanClose := True;
 end;
@@ -2919,7 +2918,6 @@ procedure TFormMain.FormCreate(Sender: TObject);
 var
   i: Integer;
 begin
-  FLastRequest := 0;
   FStartRequest := 0;
   FRequests := 0;
   TRequestConstruct.Response := RESTResponse;
