@@ -573,7 +573,7 @@ var
 implementation
 
 uses
-  DateUtils, ShellAPI, Math, Clipbrd, REST.Utils, VKClean.Captcha;
+  DateUtils, ShellAPI, Math, Clipbrd, REST.Utils, VKClean.Captcha, HGM.WinAPI;
 
 {$R *.dfm}
 
@@ -1379,7 +1379,7 @@ procedure TFormMain.ButtonFlatGetGroupsClick(Sender: TObject);
 var
   JS: TJSONValue;
   JArr: TJSONArray;
-  i, p: Integer;
+  i: Integer;
   Item: TGroup;
   Offset, Cnt: Integer;
 const
@@ -2587,7 +2587,7 @@ begin
       if IsCancel then
         Break;
 
-      if not Execute('videos.delete', [VkOwner(FVideos[i].OwnerID), VkVideo(FVideos[i].ID)]) then
+      if not Execute('video.delete', [VkOwner(FVideos[i].OwnerID), VkVideo(FVideos[i].ID)]) then
         Break;
     end;
     ButtonFlatGetVideosInfoClick(nil);

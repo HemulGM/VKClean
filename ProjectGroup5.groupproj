@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1D7D3BAD-7199-44EB-9B23-80D42261F733}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="VKClean.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\VK_API\Samples\Auth\VKAuth.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="VKClean">
+        <MSBuild Projects="VKClean.dproj"/>
+    </Target>
+    <Target Name="VKClean:Clean">
+        <MSBuild Projects="VKClean.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VKClean:Make">
+        <MSBuild Projects="VKClean.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VKAuth">
+        <MSBuild Projects="..\VK_API\Samples\Auth\VKAuth.dproj"/>
+    </Target>
+    <Target Name="VKAuth:Clean">
+        <MSBuild Projects="..\VK_API\Samples\Auth\VKAuth.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VKAuth:Make">
+        <MSBuild Projects="..\VK_API\Samples\Auth\VKAuth.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="VKClean;VKAuth"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="VKClean:Clean;VKAuth:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="VKClean:Make;VKAuth:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

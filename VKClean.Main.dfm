@@ -258,7 +258,7 @@ object FormMain: TFormMain
     Top = 71
     Width = 1056
     Height = 490
-    ActivePage = TabSheetGroups
+    ActivePage = TabSheetWelcome
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
@@ -8192,7 +8192,7 @@ object FormMain: TFormMain
             end
             item
               Caption = 'Name'
-              Width = 258
+              Width = 309
             end>
           ItemCount = 1
           LineColor = 15856113
@@ -10567,7 +10567,7 @@ object FormMain: TFormMain
     Top = 635
   end
   object OAuth2Authenticator: TOAuth2Authenticator
-    Scope = 'groups,friends,wall,photos,video,docs,notes,market,messages'
+    Scope = 'groups,friends,wall,photos,video,docs,notes,market'
     Left = 235
     Top = 635
   end

@@ -17,9 +17,6 @@ type
 
 implementation
 
-end.
-
-
 
 {
 "id": 11934106,
@@ -29,3 +26,5 @@ end.
 "date": 1497606004,
 "title": "—сылки",
 }
+end.
+

@@ -1,4 +1,4 @@
-unit VKClean.OAuth2;
+﻿unit VKClean.OAuth2;
 
 interface
 
@@ -51,7 +51,7 @@ var
 implementation
 
 uses
-  WinInet;
+  WinInet, Registry;
 
 {$R *.dfm}
 
@@ -162,8 +162,28 @@ begin
   end;
 end;
 
+procedure FixIE;
+const
+  IEVersion = 11001;
+var
+  Reg: TRegistry;
+begin
+  Reg := TRegIniFile.Create(KEY_WRITE);
+  Reg.RootKey := HKEY_CURRENT_USER;
+  if Reg.OpenKey('SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION', True) then
+  begin
+    try
+      Reg.WriteInteger(ExtractFileName(Application.ExeName), IEVersion);
+    except
+    end;
+  end;
+  Reg.CloseKey;
+  Reg.Free;
+end;
+
 procedure TFormOAuth2.FormCreate(Sender: TObject);
 begin
+  FixIE;
   FOnAfterRedirect := nil;
   FOnBeforeRedirect := nil;
   FOnBrowserTitleChanged := nil;
