@@ -107,8 +107,8 @@
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <Icon_MainIcon>VKClean_Icon.ico</Icon_MainIcon>
-        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.276;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
-        <VerInfo_Build>276</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.278;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
+        <VerInfo_Build>278</VerInfo_Build>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -128,10 +128,12 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <Icon_MainIcon>VKClean_Icon.ico</Icon_MainIcon>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Build>18</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.18;InternalName=VKClean;LegalCopyright=HGM 2019;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
+        <VerInfo_Build>22</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=HGM;FileDescription=VK Cleaner;FileVersion=0.1.0.22;InternalName=VKClean;LegalCopyright=HGM 2022;LegalTrademarks=;OriginalFilename=VKClean.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=VK Cleaner;ProductVersion=0.1;Comments=</VerInfo_Keys>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
+        <VerInfo_MajorVer>0</VerInfo_MajorVer>
+        <VerInfo_MinorVer>1</VerInfo_MinorVer>
+        <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -196,11 +198,9 @@
                     <Source Name="MainSource">VKClean.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\18.0\Bpl\AlphaDBDX10Berlin.bpl">AlphaControls DB-aware pack</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\18.0\Bpl\acntDX10Berlin.bpl">AlphaControls</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Геннадий\Desktop\pascalscript-master\Dcu\D24\win32\PascalScript_Core_D24.bpl">File C:\Users\Геннадий\Desktop\pascalscript-master\Dcu\D24\win32\PascalScript_Core_D24.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k240.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp240.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="D:\Projects\FMXTrayIcon\FmxTrayIcon.bpl">(untitled)</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp270.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">

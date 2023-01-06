@@ -28,33 +28,35 @@ function VkNeedSystem: TParam;
 
 function VkCount1: TParam;
 
-function VkCount(Value: Integer): TParam;  
+function VkCount(Value: Int64): TParam;
      
-function VkOffset(Value: Integer): TParam;
+function VkOffset(Value: Int64): TParam;
 
-function VkTopic(Value: Integer): TParam;
+function VkTopic(Value: Int64): TParam;
 
-function VkOwner(Value: Integer): TParam; overload;
+function VkOwner(Value: Int64): TParam; overload;
 
-function VkOwner(Value: Integer; Ignore: Boolean): TParam; overload;
+function VkOwner(Value: Int64; Ignore: Boolean): TParam; overload;
 
-function VkGroup(Value: Integer): TParam; overload;
+function VkTarget(Value: Int64; Ignore: Boolean): TParam;
 
-function VkGroup(Value: Integer; Ignore: Boolean): TParam;  overload;
+function VkGroup(Value: Int64): TParam; overload;
 
-function VkAlbum(Value: Integer): TParam; overload;
+function VkGroup(Value: Int64; Ignore: Boolean): TParam;  overload;
+
+function VkAlbum(Value: Int64): TParam; overload;
 
 function VkAlbum(Value: string): TParam; overload;
 
-function VkVideo(Value: Integer): TParam;
+function VkVideo(Value: Int64): TParam;
 
-function VkUser(Value: Integer): TParam;
+function VkUser(Value: Int64): TParam;
 
-function VkPost(Value: Integer): TParam;
+function VkPost(Value: Int64): TParam;
 
-function VkDoc(Value: Integer): TParam;
+function VkDoc(Value: Int64): TParam;
 
-function VkPhoto(Value: Integer): TParam;
+function VkPhoto(Value: Int64): TParam;
 
 function VkFilter(Value: string): TParam;
 
@@ -62,47 +64,47 @@ function VkFields(Value: string): TParam;
 
 function VkOrder(Value: string): TParam;
 
-function VkArticle(Value: Integer): TParam;
+function VkArticle(Value: Int64): TParam;
 
-function VkLink(Value: Integer): TParam;
+function VkLink(Value: Int64): TParam;
 
-function VkID(Value: Integer): TParam;
+function VkID(Value: Int64): TParam;
 
-function VkNote(Value: Integer): TParam;
+function VkNote(Value: Int64): TParam;
 
 implementation
 
-function VkTopic(Value: Integer): TParam;
+function VkTopic(Value: Int64): TParam;
 begin
   Result[0] := 'topic_id';
   Result[1] := Value.ToString;
 end;
 
-function VkNote(Value: Integer): TParam;
+function VkNote(Value: Int64): TParam;
 begin
   Result[0] := 'note_id';
   Result[1] := Value.ToString;
 end;
 
-function VkID(Value: Integer): TParam;
+function VkID(Value: Int64): TParam;
 begin
   Result[0] := 'id';
   Result[1] := Value.ToString;
 end;
 
-function VkLink(Value: Integer): TParam;
+function VkLink(Value: Int64): TParam;
 begin
   Result[0] := 'link_id';
   Result[1] := Value.ToString;
 end;
 
-function VkArticle(Value: Integer): TParam;
+function VkArticle(Value: Int64): TParam;
 begin
   Result[0] := 'article_id';
   Result[1] := Value.ToString;
 end;
 
-function VkDoc(Value: Integer): TParam;
+function VkDoc(Value: Int64): TParam;
 begin
   Result[0] := 'doc_id';
   Result[1] := Value.ToString;
@@ -126,19 +128,19 @@ begin
   Result[1] := Value;
 end;
 
-function VkPhoto(Value: Integer): TParam;
+function VkPhoto(Value: Int64): TParam;
 begin
   Result[0] := 'photo_id';
   Result[1] := Value.ToString;
 end;
 
-function VkPost(Value: Integer): TParam;
+function VkPost(Value: Int64): TParam;
 begin
   Result[0] := 'post_id';
   Result[1] := Value.ToString;
 end;
 
-function VkGroup(Value: Integer; Ignore: Boolean): TParam;
+function VkGroup(Value: Int64; Ignore: Boolean): TParam;
 begin
   if not Ignore then
   begin
@@ -148,31 +150,31 @@ begin
   else Result[0] := '';
 end;
 
-function VkGroup(Value: Integer): TParam;
+function VkGroup(Value: Int64): TParam;
 begin
   Result[0] := 'group_id';
   Result[1] := Value.ToString;
 end;
 
-function VkUser(Value: Integer): TParam;
+function VkUser(Value: Int64): TParam;
 begin
   Result[0] := 'user_id';
   Result[1] := Value.ToString;
 end;
 
-function VkOffset(Value: Integer): TParam;
+function VkOffset(Value: Int64): TParam;
 begin
   Result[0] := 'offset';
   Result[1] := Value.ToString;
 end;
 
-function VkVideo(Value: Integer): TParam;
+function VkVideo(Value: Int64): TParam;
 begin
   Result[0] := 'video_id';
   Result[1] := Value.ToString;
 end;
 
-function VkAlbum(Value: Integer): TParam;
+function VkAlbum(Value: Int64): TParam;
 begin
   Result[0] := 'album_id';
   Result[1] := Value.ToString;
@@ -184,17 +186,28 @@ begin
   Result[1] := Value;
 end;
 
-function VkOwner(Value: Integer): TParam;
+function VkOwner(Value: Int64): TParam;
 begin
   Result[0] := 'owner_id';
   Result[1] := Value.ToString;
 end;
 
-function VkOwner(Value: Integer; Ignore: Boolean): TParam;
+function VkOwner(Value: Int64; Ignore: Boolean): TParam;
 begin
   if not Ignore then
   begin
     Result[0] := 'owner_id';
+    Result[1] := Value.ToString;
+  end
+  else
+    Result[0] := '';
+end;
+
+function VkTarget(Value: Int64; Ignore: Boolean): TParam;
+begin
+  if not Ignore then
+  begin
+    Result[0] := 'target_id';
     Result[1] := Value.ToString;
   end
   else
@@ -207,7 +220,7 @@ begin
   Result[1] := '1';
 end;
 
-function VkCount(Value: Integer): TParam;
+function VkCount(Value: Int64): TParam;
 begin
   Result[0] := 'count';
   Result[1] := Value.ToString;

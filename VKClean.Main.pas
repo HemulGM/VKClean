@@ -5,9 +5,9 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  IPPeerClient, REST.Client, REST.Authenticator.OAuth, Data.Bind.Components,
-  Data.Bind.ObjectScope, Vcl.StdCtrls, Vcl.ComCtrls, JSON, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.Imaging.jpeg,
+  vcl.Imaging.jpeg, IPPeerClient, REST.Client, REST.Authenticator.OAuth,
+  Data.Bind.Components, Data.Bind.ObjectScope, Vcl.StdCtrls, Vcl.ComCtrls, JSON,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, Vcl.Grids,
   Vcl.Samples.Spin, Vcl.WinXCalendars, System.Generics.Defaults, System.Types,
   HGM.Controls.Labels, HGM.Button, HGM.Controls.PanelExt, HGM.Popup,
   System.UITypes, HGM.Controls.VirtualTable, HGM.Controls.SpinEdit,
@@ -2587,7 +2587,12 @@ begin
       if IsCancel then
         Break;
 
-      if not Execute('video.delete', [VkOwner(FVideos[i].OwnerID), VkVideo(FVideos[i].ID)]) then
+      if not Execute('video.delete', [
+        VkOwner(FVideos[i].OwnerID),
+        VkTarget(FProfile.ID, FIsGroup),
+        VkTarget(-FGroupID, not FIsGroup),
+        VkVideo(FVideos[i].ID)])
+        then
         Break;
     end;
     ButtonFlatGetVideosInfoClick(nil);
@@ -3066,7 +3071,7 @@ end;
 procedure TFormMain.GetProfile;
 var
   Mem: TMemoryStream;
-  JPG: TJPEGImage;
+  JPG: TPicture;
   BMP: TBitmap;
 begin
   if Execute('users.get', [VkFields('photo_50, nickname')]) then
@@ -3079,7 +3084,7 @@ begin
     if FProfile.Photo50 <> '' then
     begin
       Mem := DownloadURL(FProfile.Photo50);
-      JPG := TJPEGImage.Create;
+      JPG := TPicture.Create;
       BMP := TBitmap.Create;
       BMP.PixelFormat := pf24bit;
       BMP.SetSize(28, 28);
@@ -3088,7 +3093,7 @@ begin
         begin
           Mem.Position := 0;
           JPG.LoadFromStream(Mem);
-          BMP.Canvas.StretchDraw(Rect(0, 0, 28, 28), JPG);
+          BMP.Canvas.StretchDraw(Rect(0, 0, 28, 28), JPG.Graphic);
           ImageListProfile.Clear;
           ImageListProfile.Add(BMP, ImageMask.Picture.Bitmap);
         end;

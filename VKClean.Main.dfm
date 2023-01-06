@@ -5207,7 +5207,7 @@ object FormMain: TFormMain
             end
             item
               Caption = #1058#1077#1082#1089#1090' '#1087#1086#1089#1090#1072
-              Width = 161
+              Width = 346
             end>
           ItemCount = 1
           LineColor = clWhite
@@ -6658,7 +6658,7 @@ object FormMain: TFormMain
             end
             item
               Caption = 'Name'
-              Width = 228
+              Width = 279
             end>
           ItemCount = 1
           LineColor = 15856113
@@ -8192,7 +8192,7 @@ object FormMain: TFormMain
             end
             item
               Caption = 'Name'
-              Width = 309
+              Width = 258
             end>
           ItemCount = 1
           LineColor = 15856113
